@@ -22,7 +22,8 @@
 
 ## Models
 
-- Layman
+√ Layman
+
 - Question
 - Answer
 - Reply
@@ -31,8 +32,9 @@
 
 ## The particulars/behaviors/associations(SCHEMA)
 
-- A user/layman has a name, reputation, bio and a profile containing that
-  information
+√ A user/layman has a name, reputation, bio and a profile containing that
+information
+
 - A question has a topic, url, pasted_info, time created
 - A elab has text, time created
 - A reply has text, time created
@@ -41,9 +43,8 @@
 
 ## A Layman >
 
-- has many questions
-- has many elabs through questions
-- has many questions through elabs
+√ has many questions √ has many elabs through questions √ has many questions
+through elabs
 
 ## A Question >
 

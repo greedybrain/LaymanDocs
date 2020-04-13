@@ -3,8 +3,9 @@ class CreateLaymen < ActiveRecord::Migration[6.0]
     create_table :laymen do |t|
       t.string :name
       t.string :email
-      t.string :password_digest
       t.text :bio
+      t.string :gender
+      t.string :password_digest
 
       t.timestamps
     end

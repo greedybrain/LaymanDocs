@@ -1,2 +1,0 @@
-class LaymenController < ApplicationController
-end

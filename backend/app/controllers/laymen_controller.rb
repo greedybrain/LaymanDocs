@@ -1,0 +1,2 @@
+class LaymenController < ApplicationController
+end

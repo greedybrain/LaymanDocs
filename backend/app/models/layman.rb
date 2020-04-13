@@ -1,0 +1,2 @@
+class Layman < ApplicationRecord
+end

@@ -3855,3 +3855,100 @@ Processing by QuestionsController#create as */*
 Completed 200 OK in 45ms (Views: 0.3ms | ActiveRecord: 14.6ms | Allocations: 14558)
 
 
+Started GET "/questions" for ::1 at 2020-04-14 10:36:21 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:7:in `index'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 6985)
+
+
+Started GET "/laymen/6" for ::1 at 2020-04-14 10:36:28 -0400
+Processing by LaymenController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mLayman Load (0.8ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/laymen_controller.rb:12:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 8238)
+
+
+Started GET "/laymen/6/questions/12" for ::1 at 2020-04-14 10:36:41 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"6", "id"=>"12"}
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `set_questions_layman'
+Completed 500 Internal Server Error in 214ms (ActiveRecord: 0.5ms | Allocations: 72704)
+
+
+  
+NameError (undefined local variable or method `layman' for #<QuestionsController:0x00007fe6bdd220c0>
+Did you mean?  layman_url):
+  
+app/controllers/questions_controller.rb:49:in `set_laymans_question'
+Started GET "/laymen/6/questions/12" for ::1 at 2020-04-14 10:38:49 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"6", "id"=>"12"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `set_questions_layman'
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 8.7ms | Allocations: 78709)
+
+
+  
+NameError (undefined local variable or method `layman' for #<QuestionsController:0x00007fe6be51dd88>
+Did you mean?  @layman):
+  
+app/controllers/questions_controller.rb:49:in `set_laymans_question'
+Started GET "/laymen/6/questions/12" for ::1 at 2020-04-14 10:39:05 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"6", "id"=>"12"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `set_questions_layman'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 6], ["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:49:in `set_laymans_question'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 5.8ms | Allocations: 12683)
+
+
+Started GET "/laymen/5" for ::1 at 2020-04-14 10:40:56 -0400
+Processing by LaymenController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/laymen_controller.rb:12:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 5]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 5]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 3442)
+
+
+Started GET "/laymen/5/questions/10" for ::1 at 2020-04-14 10:41:03 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"5", "id"=>"10"}
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `set_questions_layman'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 5], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:49:in `set_laymans_question'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 1659)
+
+
+Started GET "/laymen/5/questions/10" for ::1 at 2020-04-14 10:41:30 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"5", "id"=>"10"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:44:in `set_questions_layman'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 5], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:48:in `set_laymans_question'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 5.3ms | Allocations: 12648)
+
+
+Started GET "/laymen/5/questions/11" for ::1 at 2020-04-14 10:41:33 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"5", "id"=>"11"}
+  [1m[36mLayman Load (1.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:44:in `set_questions_layman'
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 5], ["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:48:in `set_laymans_question'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 1666)
+
+

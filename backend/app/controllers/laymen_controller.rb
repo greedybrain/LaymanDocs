@@ -3,6 +3,7 @@ class LaymenController < ApplicationController
      # this renders all activity (questions and elabs)
      def index 
           laymen = Layman.all
+          # render json: laymen
           render json: LaymanSerializer.new(laymen).serializable_hash
      end
 

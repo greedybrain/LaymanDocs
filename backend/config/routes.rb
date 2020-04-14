@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :laymen, except: [:new, :create, :update] do 
-    resources :questions
+  resources :laymen, except: [:new, :edit, :create, :update] do 
+    resources :questions # All CRUD functions under laymen
   end
-  
+
+  resources :questions, except: [:new, :edit, :create, :update]
 
   # Login and Signup functionality 
   resources :sessions, except: [:create, :destroy]

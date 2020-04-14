@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :topic
       t.string :url
       t.text :pasted_info
+      t.integer :layman_id
 
       t.timestamps
     end

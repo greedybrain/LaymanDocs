@@ -37,6 +37,8 @@ class QuestionsController < ApplicationController
           question = layman.questions.find(params[:id])
           if question.destroy
                render json: { message: "Post deleted" }
+          else
+               render json: { message: "You must be logged in and the owner of this post to do that " }
           end
      end
 

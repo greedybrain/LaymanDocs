@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
+  
+  resources :laymen
 
-  namespace :api do 
-    namespace :v1 do 
-      resources :laymen
+  get "/signup", to: "laymen#create", as: "signup"
 
-      
-    end
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

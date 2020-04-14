@@ -33,31 +33,32 @@
 
 - A user/layman has a name, reputation, bio and a profile containing that
   information √√√√
-- A question has a topic, url, pasted_info, time created
-- A elab has text, time created
+- A question has a topic, url, pasted_info, time created √√√√
+- A elab has text, time created √√√√
 - A reply has text, time created
 - An upvote is an integer
 - A downvote is an integer
 
 ## A Layman >
 
-- has many questions √√√√
-- has many elabs through questions √√√√
-- has many questions through elabs √√√√
+- has_many :questions, dependent: :destroy √√√√
+- has_many :elabs, through: :questions √√√√
+- has_many :elabs, dependent: :destroy √√√√
+- has_many :questions, through: :elabs √√√√
 
 ## A Question >
 
-- belongs to a layman
-- has many elabs
-- has many laymans through elabs
+- belongs to a layman √√√√
+- has many elabs √√√√
+- has many laymans through elabs √√√√
 - has many upvotes
 - has many downvotes
 - has many laymans through votes
 
 ## An Elab >
 
-- belongs to a question
-- belongs to a layman
+- belongs to a question √√√√
+- belongs to a layman √√√√
 - has many replies
 - has many Upvotes
 - has many Downvotes

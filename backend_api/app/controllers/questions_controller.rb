@@ -1,7 +1,12 @@
 class QuestionsController < ApplicationController
 
      def index
-          questions = Question.all
+          if params[:layman_id]
+               layman = Layman.find(params[:layman_id])
+               questions = layman.questions
+          else
+               questions = Question.all
+          end
           render json: QuestionSerializer.new(questions).serializable_hash
      end
 
@@ -9,11 +14,10 @@ class QuestionsController < ApplicationController
           if params[:layman_id]
                layman = Layman.find(params[:layman_id])
                question = layman.questions.find(params[:id])
-               render json: QuestionSerializer.new(question).serializable_hash
           else
                question = Question.find(params[:id])
-               render json: QuestionSerializer.new(question).serializable_hash
           end
+          render json: QuestionSerializer.new(question).serializable_hash
      end
 
      def create 

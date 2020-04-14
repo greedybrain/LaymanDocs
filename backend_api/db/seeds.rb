@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-layman = Layman.create(
+poster = Layman.create(
      name: "Naya Willis",
      email: "willisnaya@gmail.com",
      bio: "Just a guy who likes to code",
@@ -14,11 +14,27 @@ layman = Layman.create(
      password: "password"
 )
 
+responder = Layman.create(
+     name: "Marissa Joseph",
+     email: "marissajoseph@gmail.com",
+     bio: "Just a woman who knows everything",
+     gender: "female",
+     password: "password"
+)
+
 10.times do 
      Question.create(
           topic: "Topic: #{Faker::Lorem.word}",
           url: Faker::Internet.url,
-          pasted_info: Faker::Lorem.paragraph(sentence_count: 5),
-          layman_id: layman.id
+          pasted_info: Faker::Lorem.paragraph(sentence_count: 10),
+          layman_id: poster.id
+     )
+end
+
+20.times do 
+     Elab.create(
+          text: Faker::Lorem.paragraph(sentence_count: 5),
+          question_id: Question.all.sample.id
+          layman_id: responder.id 
      )
 end

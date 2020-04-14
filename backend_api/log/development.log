@@ -4619,3 +4619,1066 @@ Completed 404 Not Found in 6ms (ActiveRecord: 3.2ms | Allocations: 1368)
 ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
   
 app/controllers/questions_controller.rb:36:in `destroy'
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "laymen"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Started DELETE "/questions/2" for ::1 at 2020-04-14 12:02:56 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#destroy as */*
+  Parameters: {"id"=>"2"}
+Completed 404 Not Found in 8ms (ActiveRecord: 3.6ms | Allocations: 2303)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/questions_controller.rb:36:in `destroy'
+Started DELETE "/questions/2" for ::1 at 2020-04-14 12:03:02 -0400
+Processing by QuestionsController#destroy as */*
+  Parameters: {"id"=>"2"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/questions_controller.rb:36:in `destroy'
+Started GET "/questions/2" for ::1 at 2020-04-14 12:03:06 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14:in `show'
+Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 7.5ms | Allocations: 6711)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:09:52 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 12ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 8760)
+
+
+Started GET "/laymen" for ::1 at 2020-04-14 12:09:57 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (1.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.2ms | Allocations: 9157)
+
+
+  
+NameError (uninitialized constant Layman::Elab):
+  
+app/controllers/laymen_controller.rb:8:in `index'
+Started GET "/laymen" for ::1 at 2020-04-14 12:10:38 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 6.3ms | Allocations: 8106)
+
+
+  
+NameError (uninitialized constant Layman::Elab):
+  
+app/controllers/laymen_controller.rb:8:in `index'
+Started GET "/laymen" for ::1 at 2020-04-14 12:10:58 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 3.1ms | Allocations: 8047)
+
+
+  
+NameError (uninitialized constant Layman::Elab):
+  
+app/controllers/laymen_controller.rb:8:in `index'
+Started GET "/laymen" for ::1 at 2020-04-14 12:11:14 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 200 OK in 30ms (Views: 0.1ms | ActiveRecord: 5.4ms | Allocations: 15947)
+
+
+Started GET "/laymen" for ::1 at 2020-04-14 12:25:56 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.2) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateElabs (20200414161404)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+, CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200414161404"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (5041.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (31.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (31.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_test"[0m
+  [1m[35m (178.2ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_development" ENCODING = 'unicode'[0m
+  [1m[35m (62.2ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 16:26:49.019866"], ["updated_at", "2020-04-14 16:26:49.019866"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 16:26:49.026701"], ["updated_at", "2020-04-14 16:26:49.026701"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 16:26:49.100948"], ["updated_at", "2020-04-14 16:26:49.100948"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-14 16:26:49.105974"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 16:26:49.111063"], ["updated_at", "2020-04-14 16:26:49.111063"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.7ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Naya Willis"], ["email", "willisnaya@gmail.com"], ["bio", "Just a guy who likes to code"], ["gender", "male"], ["password_digest", "$2a$12$RLL6IPRECWeuonSOK9wmZ.33ftHUcxzj7q2MxscRFHm40BOqGQXMy"], ["created_at", "2020-04-14 16:26:49.391004"], ["updated_at", "2020-04-14 16:26:49.391004"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: et"], ["url", "http://mitchell.co/carrol.terry"], ["pasted_info", "Alias et dolorum. Dolorem reprehenderit molestiae. Cumque nesciunt est. Quis corporis numquam. Reiciendis velit ut."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.593284"], ["updated_at", "2020-04-14 16:26:49.593284"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: ut"], ["url", "http://hirthehomenick.io/tasia"], ["pasted_info", "Blanditiis reiciendis enim. Magni aut autem. Ut earum maxime. Repellat ut recusandae. Qui quidem et."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.609111"], ["updated_at", "2020-04-14 16:26:49.609111"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: qui"], ["url", "http://harris.biz/fletcher"], ["pasted_info", "Non quibusdam qui. Nihil est totam. Laborum mollitia tenetur. Asperiores commodi ullam. Sapiente architecto molestiae."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.614917"], ["updated_at", "2020-04-14 16:26:49.614917"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: quia"], ["url", "http://strosin.co/dino.kirlin"], ["pasted_info", "Eum excepturi ea. Maiores quaerat sed. Omnis id possimus. In eius porro. Maxime corrupti voluptatibus."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.619761"], ["updated_at", "2020-04-14 16:26:49.619761"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: id"], ["url", "http://schadencremin.co/daina"], ["pasted_info", "Iste aut omnis. Aut recusandae laboriosam. Et dolorum inventore. Fuga a nostrum. Est deserunt quo."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.624466"], ["updated_at", "2020-04-14 16:26:49.624466"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: sint"], ["url", "http://corkery.biz/elias.volkman"], ["pasted_info", "Similique deserunt quam. Deleniti esse dolores. Et nemo adipisci. Laborum sapiente quae. Est ea omnis."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.629600"], ["updated_at", "2020-04-14 16:26:49.629600"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: provident"], ["url", "http://hauck.com/allan_crist"], ["pasted_info", "Quasi voluptas perspiciatis. Et et accusantium. Ex doloremque eveniet. Dolorem quos id. Quisquam voluptatem eos."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.634805"], ["updated_at", "2020-04-14 16:26:49.634805"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: mollitia"], ["url", "http://skiles.co/tracie.olson"], ["pasted_info", "Quo et consequatur. Nam iure autem. Mollitia sit maiores. Nesciunt quia optio. In ut vel."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.640048"], ["updated_at", "2020-04-14 16:26:49.640048"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: molestias"], ["url", "http://swaniawskipredovic.com/waylon_metz"], ["pasted_info", "Dolorem maiores aut. Incidunt sequi rerum. Et suscipit corrupti. Natus dicta nostrum. Nobis aut sapiente."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.645979"], ["updated_at", "2020-04-14 16:26:49.645979"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: qui"], ["url", "http://macgyver.biz/bryanna"], ["pasted_info", "Recusandae incidunt eos. Cupiditate doloribus et. Et aut tenetur. Sed omnis incidunt. Doloremque sint et."], ["layman_id", 1], ["created_at", "2020-04-14 16:26:49.651321"], ["updated_at", "2020-04-14 16:26:49.651321"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/laymen" for ::1 at 2020-04-14 12:26:59 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 200 OK in 66ms (Views: 0.1ms | ActiveRecord: 10.3ms | Allocations: 19316)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:27:05 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 1.0ms | Allocations: 6479)
+
+
+  
+NoMethodError (undefined method `elaborations' for #<Question:0x00007f839daa90b0>
+Did you mean?  elab_ids):
+  
+app/controllers/questions_controller.rb:5:in `index'
+Started GET "/questions" for ::1 at 2020-04-14 12:27:48 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 89ms (Views: 9.3ms | ActiveRecord: 13.4ms | Allocations: 39122)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:28:36 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 114ms (Views: 38.2ms | ActiveRecord: 12.3ms | Allocations: 39090)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:29:43 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 97ms (Views: 8.9ms | ActiveRecord: 12.4ms | Allocations: 39019)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:29:50 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (8.0ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 82ms (Views: 9.9ms | ActiveRecord: 13.4ms | Allocations: 28831)
+
+
+Started GET "/laymen" for ::1 at 2020-04-14 12:30:02 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 7611)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:30:12 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 69ms (Views: 10.3ms | ActiveRecord: 5.5ms | Allocations: 28806)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:30:34 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 86ms (Views: 37.5ms | ActiveRecord: 11.9ms | Allocations: 39083)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:32:26 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 97ms (Views: 10.0ms | ActiveRecord: 15.9ms | Allocations: 43130)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 12:32:29 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 69ms (Views: 21.5ms | ActiveRecord: 5.6ms | Allocations: 28825)
+
+
+Started GET "/laymen/1" for ::1 at 2020-04-14 12:59:45 -0400
+Processing by LaymenController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/laymen_controller.rb:32:in `set_layman'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:13:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:13:in `show'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:13:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/laymen_controller.rb:13:in `show'
+Completed 200 OK in 41ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 14898)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 12:59:52 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:56:in `set_laymans_question'
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 1499)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 13:00:03 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (1.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 90ms (Views: 9.1ms | ActiveRecord: 8.8ms | Allocations: 32960)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:00:21 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:56:in `set_laymans_question'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 1495)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:12 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:56:in `set_laymans_question'
+  [1m[36mQuestion Load (1.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 1478)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:27 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 33ms (Views: 0.2ms | ActiveRecord: 11.5ms | Allocations: 12035)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:28 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 1478)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:40 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 60ms (Views: 0.2ms | ActiveRecord: 8.3ms | Allocations: 16072)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:41 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (1.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 1494)
+
+
+Started GET "/laymen/1/questions" for ::1 at 2020-04-14 13:01:42 -0400
+Processing by QuestionsController#index as */*
+  Parameters: {"layman_id"=>"1"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 1494)
+
+
+Started GET "/laymen/1/questions/1" for ::1 at 2020-04-14 13:01:47 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"1", "id"=>"1"}
+  [1m[36mLayman Load (4.8ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:16:in `show'
+Completed 404 Not Found in 10ms (ActiveRecord: 5.3ms | Allocations: 1698)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=1 [WHERE "elabs"."layman_id" = $1]):
+  
+app/controllers/questions_controller.rb:16:in `show'
+Started GET "/laymen/1/questions/1" for ::1 at 2020-04-14 13:02:20 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"1", "id"=>"1"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:17:in `show'
+Completed 404 Not Found in 14188ms (ActiveRecord: 7.0ms | Allocations: 29174)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=1 [WHERE "elabs"."layman_id" = $1]):
+  
+app/controllers/questions_controller.rb:17:in `show'
+Started GET "/laymen/1/questions/1" for ::1 at 2020-04-14 13:03:23 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"layman_id"=>"1", "id"=>"1"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:16:in `show'
+Completed 404 Not Found in 22ms (ActiveRecord: 6.4ms | Allocations: 11707)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=1 [WHERE "elabs"."layman_id" = $1]):
+  
+app/controllers/questions_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 13:03:37 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 204 No Content in 13090ms (ActiveRecord: 0.3ms | Allocations: 12088)
+
+

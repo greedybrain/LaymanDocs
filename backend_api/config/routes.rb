@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   
   resources :laymen, except: [:new, :edit, :create, :update] do 
-    resources :questions # All CRUD functions under laymen
+    resources :questions, except: [:new, :edit] # All other CRUD under laymen
   end
 
-  resources :questions, except: [:new, :edit, :create, :update]
+  resources :questions, only: [:index, :show] do 
+    resources :elabs, except: [:new, :edit] # All other CRUD under questions
+  end
 
-  # Login and Signup functionality 
+  resources :elabs, only: [:index, :show] 
+
+
+  # Signup, Login, and Logout routing
   resources :sessions, except: [:create, :destroy]
   post "/signup", to: "laymen#create", as: "signup"
   post "/login", to: "sessions#create", as: "login"
@@ -14,3 +19,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
+# ****** NOTE ******
+# Only the elbaorator can delete their elaborations DIRECTLY 
+# When a laymen deletes a question/post, then all elaborations go with it

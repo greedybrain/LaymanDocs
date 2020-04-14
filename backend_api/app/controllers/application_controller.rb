@@ -6,8 +6,8 @@ class ApplicationController < ActionController::API
           @current_layman ||= Layman.find(session[:layman_id])
      end
 
-     # def authenticate_question(q)
-     #      @current_layman.questions.include?(q)
-     # end
+     def logged_in? 
+          !session[:layman_id].nil?
+     end
 
 end

@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   end
 
   resources :questions, only: [:index, :show] do 
-    resources :elabs, except: [:new, :edit] # All other CRUD under questions
+    resources :elabs # All other CRUD under questions
   end
 
-  resources :elabs, only: [:index, :show] 
+  resources :elabs, except: [:create]
 
 
   # Signup, Login, and Logout routing

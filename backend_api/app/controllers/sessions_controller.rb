@@ -5,6 +5,8 @@ class SessionsController < ApplicationController
           if layman&.authenticate(params[:password])
                session[:layman_id] = layman.id
                render json: LaymanSerializer.new(layman).serializable_hash
+          else
+               render json: { message: "Incorrect email or password" }
           end
      end
 

@@ -26,15 +26,15 @@ responder = Layman.create(
      Question.create(
           topic: "Topic: #{Faker::Lorem.word}",
           url: Faker::Internet.url,
-          pasted_info: Faker::Lorem.paragraph(sentence_count: 10),
+          pasted_info: "#{poster.name.capitalize} posted #{Faker::Lorem.paragraph(sentence_count: 10)}",
           layman_id: poster.id
      )
 end
 
 20.times do 
      Elab.create(
-          text: Faker::Lorem.paragraph(sentence_count: 5),
-          question_id: Question.all.sample.id
+          elaboration: "#{responder.name.capitalize} responded #{Faker::Lorem.paragraph(sentence_count: 5)}",
+          question_id: Question.all.sample.id,
           layman_id: responder.id 
      )
 end

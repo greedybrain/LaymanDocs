@@ -5682,3 +5682,1592 @@ Processing by ElabsController#show as */*
 Completed 204 No Content in 13090ms (ActiveRecord: 0.3ms | Allocations: 12088)
 
 
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (27.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (24.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_test"[0m
+  [1m[35m (138.0ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_development" ENCODING = 'unicode'[0m
+  [1m[35m (64.5ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:20:55.833611"], ["updated_at", "2020-04-14 17:20:55.833611"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:20:55.840632"], ["updated_at", "2020-04-14 17:20:55.840632"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:20:55.917811"], ["updated_at", "2020-04-14 17:20:55.917811"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-14 17:20:55.922988"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:20:55.927796"], ["updated_at", "2020-04-14 17:20:55.927796"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (34.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (27.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_test"[0m
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_development" ENCODING = 'unicode'[0m
+  [1m[35m (64.6ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:21:10.384526"], ["updated_at", "2020-04-14 17:21:10.384526"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:21:10.391808"], ["updated_at", "2020-04-14 17:21:10.391808"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:21:10.470587"], ["updated_at", "2020-04-14 17:21:10.470587"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-14 17:21:10.475725"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:21:10.480358"], ["updated_at", "2020-04-14 17:21:10.480358"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.7ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Naya Willis"], ["email", "willisnaya@gmail.com"], ["bio", "Just a guy who likes to code"], ["gender", "male"], ["password_digest", "$2a$12$Bh6M6OTqLkDGJ7N6Cj39G.tK8Zj8CrytMTQCDBse.bgsUo3jKafMm"], ["created_at", "2020-04-14 17:21:10.757630"], ["updated_at", "2020-04-14 17:21:10.757630"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.3ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Marissa Joseph"], ["email", "marissajoseph@gmail.com"], ["bio", "Just a woman who knows everything"], ["gender", "female"], ["password_digest", "$2a$12$z1YhIN3WmeK0s.0z9uZ.wuvIAEUnBjISNNPQ4dFgPJCxYSx9dmS3m"], ["created_at", "2020-04-14 17:21:10.996657"], ["updated_at", "2020-04-14 17:21:10.996657"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: unde"], ["url", "http://douglashane.info/marcel"], ["pasted_info", "Cum a possimus. Corrupti impedit aut. Aperiam neque consequatur. Repellendus dignissimos velit. Voluptatum enim laudantium. Aut incidunt perferendis. Unde aut et. Porro soluta qui. Illo molestiae ut. Mollitia ullam sit."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.210418"], ["updated_at", "2020-04-14 17:21:11.210418"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: fugiat"], ["url", "http://boyle.co/kristopher.haag"], ["pasted_info", "Autem explicabo corporis. Adipisci non iusto. Non dolores cum. Tempore ut consequatur. Vel est labore. Libero sed voluptas. Aut beatae commodi. Expedita laboriosam eveniet. Qui possimus et. Iure perspiciatis eius."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.216325"], ["updated_at", "2020-04-14 17:21:11.216325"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: explicabo"], ["url", "http://hane.info/rudy"], ["pasted_info", "Corrupti unde rerum. Eveniet est totam. Quo dolore et. Sit dolorem amet. Possimus dolorem corporis. Unde dolores sunt. Ullam dolore officiis. Qui accusamus dolorem. Et quisquam consequatur. Ea distinctio quasi."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.221644"], ["updated_at", "2020-04-14 17:21:11.221644"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: vero"], ["url", "http://schoen.co/rhonda_roob"], ["pasted_info", "Quia velit mollitia. Magnam placeat ut. Sunt odit culpa. Necessitatibus dolore molestias. Voluptas molestiae dolores. Reprehenderit hic quo. Magni eligendi fuga. Quos eligendi molestias. Veritatis voluptas voluptatibus. Dolorum quos ducimus."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.227085"], ["updated_at", "2020-04-14 17:21:11.227085"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: ab"], ["url", "http://stokes.org/leon"], ["pasted_info", "Totam eius qui. Delectus ut omnis. Distinctio molestias fugiat. Sint aut qui. Sed consequatur asperiores. Sunt veritatis neque. Modi neque et. Aut officia cupiditate. Laborum quia est. Nulla natus quo."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.232268"], ["updated_at", "2020-04-14 17:21:11.232268"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: vitae"], ["url", "http://weinatruecker.io/retha"], ["pasted_info", "Est magni reprehenderit. Ab tempora recusandae. Atque cum a. In corrupti aliquid. Dignissimos doloremque iste. Id et aliquam. Rem recusandae quis. Ut est rerum. Est totam expedita. Modi voluptatem voluptas."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.238716"], ["updated_at", "2020-04-14 17:21:11.238716"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: sint"], ["url", "http://borerlindgren.co/geoffrey.hamill"], ["pasted_info", "Enim ut molestias. Rerum architecto quae. Placeat voluptatibus exercitationem. Consequatur omnis minima. Et nemo quidem. Ut ea voluptatem. Sunt ipsa deleniti. Molestias reprehenderit ullam. Laborum qui quod. Amet aliquid repudiandae."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.244134"], ["updated_at", "2020-04-14 17:21:11.244134"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: cum"], ["url", "http://bernierrippin.net/lelia"], ["pasted_info", "Saepe recusandae amet. Maxime voluptate iste. Repudiandae nam autem. Eaque minus enim. Ullam voluptatum a. Earum ducimus non. Adipisci eius incidunt. Ea expedita libero. Fugit aut repellendus. Fuga officia qui."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.249634"], ["updated_at", "2020-04-14 17:21:11.249634"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: maxime"], ["url", "http://hanewilkinson.org/keri.kunze"], ["pasted_info", "Occaecati tenetur assumenda. Dolorem suscipit laboriosam. Voluptate autem consequatur. Unde tenetur sed. Aperiam laudantium totam. Aut sed nihil. Quidem adipisci voluptatem. Earum voluptas eum. Reiciendis voluptatum qui. Provident ut ut."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.255450"], ["updated_at", "2020-04-14 17:21:11.255450"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: aut"], ["url", "http://bernierlowe.co/renda_brown"], ["pasted_info", "Quam laboriosam quod. Distinctio voluptates in. Explicabo tenetur hic. Repudiandae odit et. Quis assumenda alias. Qui voluptate porro. Sunt rem totam. Fuga ut est. Quis odio libero. Placeat a aut."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:11.260683"], ["updated_at", "2020-04-14 17:21:11.260683"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (35.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (25.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_test"[0m
+  [1m[35m (58.8ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_development" ENCODING = 'unicode'[0m
+  [1m[35m (58.5ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:21:32.341199"], ["updated_at", "2020-04-14 17:21:32.341199"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:21:32.348305"], ["updated_at", "2020-04-14 17:21:32.348305"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:21:32.425530"], ["updated_at", "2020-04-14 17:21:32.425530"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-14 17:21:32.430773"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:21:32.435653"], ["updated_at", "2020-04-14 17:21:32.435653"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.8ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Naya Willis"], ["email", "willisnaya@gmail.com"], ["bio", "Just a guy who likes to code"], ["gender", "male"], ["password_digest", "$2a$12$MYPwLiGd8/EvsGjvRNZ5Le5IKx4Gq4wHDb0fLFTQwrwlrGavhhRgq"], ["created_at", "2020-04-14 17:21:32.716994"], ["updated_at", "2020-04-14 17:21:32.716994"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.3ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Marissa Joseph"], ["email", "marissajoseph@gmail.com"], ["bio", "Just a woman who knows everything"], ["gender", "female"], ["password_digest", "$2a$12$ccPjJaepuwAzEh48.YP2l.hPLd02k70vzIx.FIfNOtxiuKIxn6O2C"], ["created_at", "2020-04-14 17:21:32.956262"], ["updated_at", "2020-04-14 17:21:32.956262"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.5ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: voluptatum"], ["url", "http://aufderhar.biz/reginald"], ["pasted_info", "Vel distinctio hic. Quas ut earum. Tempora dignissimos facere. Voluptas est porro. Exercitationem et laboriosam. Consequatur quis accusamus. Autem non facere. Vitae ut sunt. Facilis voluptatem in. Eaque recusandae aut."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.094822"], ["updated_at", "2020-04-14 17:21:33.094822"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: nam"], ["url", "http://littletromp.name/benito.christiansen"], ["pasted_info", "Esse consequatur quas. Et totam rerum. Ducimus rerum et. Earum qui mollitia. Blanditiis soluta facilis. Ipsa adipisci ut. Rem inventore nisi. Molestiae maiores dolorem. Qui dolorem vitae. Eos aliquam sed."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.101025"], ["updated_at", "2020-04-14 17:21:33.101025"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: consequatur"], ["url", "http://farrell.org/renaldo"], ["pasted_info", "Natus numquam voluptatum. Voluptatum itaque ea. Possimus qui et. Qui animi voluptas. Similique alias aperiam. Ipsa doloribus quibusdam. Nisi consequatur sequi. Aperiam et quo. Sed ut fugit. Magni illum iure."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.107278"], ["updated_at", "2020-04-14 17:21:33.107278"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: amet"], ["url", "http://torp.net/maye"], ["pasted_info", "Aperiam pariatur error. Nam reprehenderit in. Incidunt exercitationem ut. Exercitationem recusandae enim. Iste deleniti assumenda. Ea modi ut. Hic incidunt ea. Alias consequatur qui. Neque optio aut. Eligendi facere non."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.112412"], ["updated_at", "2020-04-14 17:21:33.112412"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: ea"], ["url", "http://kolangworth.co/luci_gulgowski"], ["pasted_info", "Quia odit quam. Repudiandae earum sint. Temporibus officiis dignissimos. Autem quis aperiam. Nam cum amet. Eos est quo. Dolorem eum facere. Sed minus sunt. Architecto est occaecati. Repellat voluptatem qui."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.117271"], ["updated_at", "2020-04-14 17:21:33.117271"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: voluptatem"], ["url", "http://wuckerthamill.info/danilo"], ["pasted_info", "Non delectus tenetur. Fugiat eos atque. Sed deserunt labore. Facilis aut rerum. Tenetur voluptates et. Qui ipsam voluptatem. Ea voluptas illo. Odit quis quae. Quas delectus ea. Quo est eius."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.122370"], ["updated_at", "2020-04-14 17:21:33.122370"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: rerum"], ["url", "http://runolfon.com/gabriele"], ["pasted_info", "Et repellat explicabo. Et ratione ut. Est explicabo ipsum. Et facere id. Eaque quae commodi. Occaecati sunt est. Ea atque delectus. Eum eos laboriosam. Necessitatibus voluptatibus suscipit. Non veniam reiciendis."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.127501"], ["updated_at", "2020-04-14 17:21:33.127501"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: tempora"], ["url", "http://jacobson.io/tam"], ["pasted_info", "Voluptatibus perferendis quo. Molestias consequuntur quasi. Dolorem laboriosam aut. Voluptatum ut dolores. Fugiat quia libero. Quasi doloribus vel. Voluptatem voluptatibus et. A dolorem expedita. Velit et voluptatibus. Odio sed perferendis."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.132658"], ["updated_at", "2020-04-14 17:21:33.132658"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: consequuntur"], ["url", "http://wolfmueller.com/sherri"], ["pasted_info", "Tempore occaecati illo. Culpa consectetur tenetur. Non aut sed. Possimus molestiae voluptatem. Qui ducimus culpa. Ea deleniti sint. Quo aspernatur voluptas. Velit est veritatis. Enim hic iusto. Facere voluptatem numquam."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.138891"], ["updated_at", "2020-04-14 17:21:33.138891"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: exercitationem"], ["url", "http://kuhic.com/florencio"], ["pasted_info", "Quis nemo iste. Dolor possimus qui. Sint sed aliquid. Ad vel consectetur. Numquam et quo. Debitis eos ipsam. Accusamus aut maxime. Cumque non qui. Eligendi et dolores. Qui quod nostrum."], ["layman_id", 1], ["created_at", "2020-04-14 17:21:33.144544"], ["updated_at", "2020-04-14 17:21:33.144544"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (2.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Ab consectetur minus. Error exercitationem provident. Sunt suscipit atque. Ipsa voluptatum enim. Qui iste ipsum."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.161309"], ["updated_at", "2020-04-14 17:21:33.161309"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.4ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Dolores provident odio. Eligendi dolore ut. Laborum dignissimos nulla. Molestiae error consequatur. Voluptatum nemo sint."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.171752"], ["updated_at", "2020-04-14 17:21:33.171752"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "At animi dolore. Dolorem mollitia omnis. Cum ut nam. Expedita deleniti sapiente. Voluptatem temporibus dolorem."], ["question_id", 7], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.179421"], ["updated_at", "2020-04-14 17:21:33.179421"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Sapiente nihil ex. Blanditiis aliquid corrupti. Eveniet illum voluptas. Aut ad id. Accusantium esse natus."], ["question_id", 8], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.187035"], ["updated_at", "2020-04-14 17:21:33.187035"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.4ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Qui omnis rerum. Itaque iure quia. Reiciendis velit quae. Excepturi veritatis maiores. Nobis fuga quia."], ["question_id", 7], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.194406"], ["updated_at", "2020-04-14 17:21:33.194406"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.4ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Totam possimus quo. Quod et cumque. Consequuntur occaecati voluptas. Nemo quaerat fugiat. Totam et sequi."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.202292"], ["updated_at", "2020-04-14 17:21:33.202292"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "In molestias quis. Ut qui commodi. Maxime aut esse. Nemo et quibusdam. Magnam sapiente quam."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.210369"], ["updated_at", "2020-04-14 17:21:33.210369"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Asperiores enim rem. Esse qui et. Nemo qui ea. Repellat ex perspiciatis. Ducimus est et."], ["question_id", 10], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.217572"], ["updated_at", "2020-04-14 17:21:33.217572"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Eos at aut. Id ea facere. Officia qui repellendus. Inventore in fuga. Blanditiis totam nihil."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.224779"], ["updated_at", "2020-04-14 17:21:33.224779"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Laborum officiis repudiandae. Ut a molestiae. Soluta enim sit. Dicta ea voluptatem. Quo alias est."], ["question_id", 1], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.231799"], ["updated_at", "2020-04-14 17:21:33.231799"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Sint laborum rem. Excepturi debitis alias. Ut iste ea. Ut corporis non. Dolorum qui ullam."], ["question_id", 8], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.240018"], ["updated_at", "2020-04-14 17:21:33.240018"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Quasi maxime eos. Perferendis qui eos. Eius sapiente sit. Et delectus sequi. Exercitationem voluptas quo."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.247612"], ["updated_at", "2020-04-14 17:21:33.247612"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Iste rem modi. Maxime commodi accusamus. Enim deleniti sunt. Et aperiam et. Enim id dolorum."], ["question_id", 7], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.255984"], ["updated_at", "2020-04-14 17:21:33.255984"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Facere et ut. Tenetur fuga explicabo. Architecto officia non. Eum qui quis. Quia nostrum et."], ["question_id", 9], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.263329"], ["updated_at", "2020-04-14 17:21:33.263329"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Architecto quas voluptatibus. Et in quasi. Occaecati quis autem. Dolores magnam quidem. Consequatur debitis quia."], ["question_id", 1], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.271084"], ["updated_at", "2020-04-14 17:21:33.271084"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Atque aut ducimus. Molestiae voluptatem harum. Aut dolore nostrum. Qui illum consectetur. Pariatur est odit."], ["question_id", 2], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.278763"], ["updated_at", "2020-04-14 17:21:33.278763"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Dolorem est velit. Id libero qui. Corporis quo fugit. Doloribus odit porro. Ipsum sunt aliquid."], ["question_id", 9], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.285996"], ["updated_at", "2020-04-14 17:21:33.285996"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Libero eligendi quod. Et quos et. A earum voluptatem. Dignissimos voluptatem voluptas. Accusantium in facilis."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.293152"], ["updated_at", "2020-04-14 17:21:33.293152"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Maxime et nobis. Corporis delectus deserunt. Sunt voluptas modi. Et ducimus quis. Quod id est."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.301122"], ["updated_at", "2020-04-14 17:21:33.301122"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Qui vitae reprehenderit. Optio eos sunt. Nostrum esse omnis. Doloribus dolores aut. In rerum qui."], ["question_id", 5], ["layman_id", 2], ["created_at", "2020-04-14 17:21:33.309320"], ["updated_at", "2020-04-14 17:21:33.309320"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "laymen"[0m
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "elabs"[0m
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" ORDER BY "laymen"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 LIMIT $2[0m  [["layman_id", 1], ["LIMIT", 11]]
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (31.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_development"[0m
+  [1m[35m (24.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "LaymanDocs_test"[0m
+  [1m[35m (62.1ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_development" ENCODING = 'unicode'[0m
+  [1m[35m (56.4ms)[0m  [1m[35mCREATE DATABASE "LaymanDocs_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:26:14.917295"], ["updated_at", "2020-04-14 17:26:14.917295"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:26:14.923732"], ["updated_at", "2020-04-14 17:26:14.923732"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "elabs" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "elabs" ("id" bigserial primary key, "elaboration" text, "question_id" bigint NOT NULL, "layman_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_layman_id" ON "elabs"  ("layman_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_elabs_on_question_id" ON "elabs"  ("question_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "laymen" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "laymen" ("id" bigserial primary key, "name" character varying, "email" character varying, "bio" text, "gender" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "questions" CASCADE[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "questions" ("id" bigserial primary key, "topic" character varying, "url" character varying, "pasted_info" text, "layman_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_fb5912edb5"
+FOREIGN KEY ("layman_id")
+  REFERENCES "laymen" ("id")
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "elabs" ADD CONSTRAINT "fk_rails_c27e095969"
+FOREIGN KEY ("question_id")
+  REFERENCES "questions" ("id")
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200414161404)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200413225143),
+(20200414031036);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 17:26:15.000217"], ["updated_at", "2020-04-14 17:26:15.000217"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-04-14 17:26:15.005837"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "c51bf369ccc171fc1ec59220147dd0b5c1c09a02"], ["created_at", "2020-04-14 17:26:15.011180"], ["updated_at", "2020-04-14 17:26:15.011180"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.7ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Naya Willis"], ["email", "willisnaya@gmail.com"], ["bio", "Just a guy who likes to code"], ["gender", "male"], ["password_digest", "$2a$12$LQTmafHmmle.KltcLf7BMuEm6wNwEsdYIo/mCv9LJzO1d94NB9/0q"], ["created_at", "2020-04-14 17:26:15.286090"], ["updated_at", "2020-04-14 17:26:15.286090"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Create (0.3ms)[0m  [1m[32mINSERT INTO "laymen" ("name", "email", "bio", "gender", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Marissa Joseph"], ["email", "marissajoseph@gmail.com"], ["bio", "Just a woman who knows everything"], ["gender", "female"], ["password_digest", "$2a$12$KFqNXpZA4JSPSSNGDOvDi.jZP7JC6GK3HxYX/3y3F3SJ7E0jibtsW"], ["created_at", "2020-04-14 17:26:15.525260"], ["updated_at", "2020-04-14 17:26:15.525260"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.6ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: animi"], ["url", "http://gutkowski.com/belva_ankunding"], ["pasted_info", "Naya willis posted Corrupti est eos. Corrupti in non. Ab harum enim. Non aut et. Fuga facilis consequatur. Aperiam sit eius. Eius unde numquam. Enim veniam vero. Rerum iure ipsam. Minima in et."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.661393"], ["updated_at", "2020-04-14 17:26:15.661393"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: et"], ["url", "http://beattymann.info/nicki"], ["pasted_info", "Naya willis posted Tempora aliquid earum. Dolores quod in. Mollitia ex libero. Aut sit qui. Sit sed ut. Tempore dolor eum. Itaque omnis occaecati. Ducimus blanditiis doloremque. Quis autem ipsa. Recusandae quia perferendis."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.667252"], ["updated_at", "2020-04-14 17:26:15.667252"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: repudiandae"], ["url", "http://torp.org/landon"], ["pasted_info", "Naya willis posted Dolor a eius. Quia commodi nemo. Pariatur et cupiditate. Eius consequuntur totam. Alias nobis ipsum. Perspiciatis qui ipsa. Quis ut eveniet. Reprehenderit quae aliquam. Aut quasi quia. Quisquam reprehenderit culpa."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.672717"], ["updated_at", "2020-04-14 17:26:15.672717"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: nihil"], ["url", "http://metzkonopelski.net/valorie_feest"], ["pasted_info", "Naya willis posted Veniam voluptas voluptas. Accusamus tempore sequi. Quia voluptates inventore. Optio consequatur harum. Et magnam et. Nesciunt dolores et. Nihil facilis eligendi. Vel molestiae dolorem. Libero nesciunt officia. Ex corrupti dolorem."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.678625"], ["updated_at", "2020-04-14 17:26:15.678625"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: dolorum"], ["url", "http://windler.co/leandro_rippin"], ["pasted_info", "Naya willis posted Repellendus ut excepturi. Quia iusto et. Omnis qui repudiandae. Est odio provident. Esse neque fugiat. Rem autem dolor. At eligendi accusantium. Voluptatem dolorem saepe. Numquam in ad. Voluptas odio distinctio."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.684148"], ["updated_at", "2020-04-14 17:26:15.684148"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: minima"], ["url", "http://osinski.biz/jeannetta"], ["pasted_info", "Naya willis posted Occaecati voluptas qui. Velit nulla facilis. Dicta occaecati sed. Ipsum reprehenderit optio. Ea explicabo dolor. Cupiditate consectetur qui. Culpa pariatur est. Consequuntur nulla ut. Nemo animi et. Laborum et voluptas."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.689568"], ["updated_at", "2020-04-14 17:26:15.689568"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: ducimus"], ["url", "http://terry.co/elinor.rosenbaum"], ["pasted_info", "Naya willis posted Eius possimus unde. Animi aut eveniet. In qui qui. Itaque est et. Ut qui non. Itaque consectetur in. Perspiciatis aspernatur cumque. Amet qui perferendis. Assumenda rem ea. Aut temporibus nemo."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.694816"], ["updated_at", "2020-04-14 17:26:15.694816"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: vitae"], ["url", "http://herzog.io/jeanmarie.carter"], ["pasted_info", "Naya willis posted Et vitae quo. In tenetur molestiae. Dolorem maxime et. Dicta ipsum fugiat. Quia et porro. Reprehenderit voluptatum quia. Atque ipsam dolore. Odio omnis qui. Quia consequatur rerum. Voluptates quas ut."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.700405"], ["updated_at", "2020-04-14 17:26:15.700405"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: alias"], ["url", "http://reynolds.name/rosalina"], ["pasted_info", "Naya willis posted Nobis qui nisi. Alias ut illum. Eum quam quisquam. Unde perferendis est. Accusamus aut maiores. Dolorem ipsam et. Fuga excepturi quo. Temporibus corrupti quae. Id iure quia. Ut neque et."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.706015"], ["updated_at", "2020-04-14 17:26:15.706015"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "Topic: beatae"], ["url", "http://olson.net/ena.goodwin"], ["pasted_info", "Naya willis posted Explicabo et perspiciatis. Id maxime cumque. Repudiandae soluta eligendi. Voluptatum magni rerum. Consequatur rerum praesentium. Fugiat ea rerum. Tempore molestiae itaque. Non consequatur dolore. Doloribus doloremque consectetur. Rerum ut possimus."], ["layman_id", 1], ["created_at", "2020-04-14 17:26:15.711633"], ["updated_at", "2020-04-14 17:26:15.711633"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (1.0ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Ex nobis esse. Ea atque voluptatem. Quam nobis dolor. Labore at fugit. Quis sit nam."], ["question_id", 8], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.727869"], ["updated_at", "2020-04-14 17:26:15.727869"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Quod sit laudantium. Ab soluta iure. Aut dolor asperiores. Doloribus asperiores corrupti. Blanditiis aperiam est."], ["question_id", 6], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.736457"], ["updated_at", "2020-04-14 17:26:15.736457"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.4ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded A est quia. Dolor dolor facilis. Sequi consequatur repudiandae. Vitae et deleniti. Eius id harum."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.744757"], ["updated_at", "2020-04-14 17:26:15.744757"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded In sunt qui. Blanditiis corrupti ut. Harum voluptas doloremque. Voluptates eligendi fuga. Dolor repellendus nostrum."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.752578"], ["updated_at", "2020-04-14 17:26:15.752578"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded At voluptas in. Dolor non porro. Sit quas ad. Totam laboriosam et. Amet rerum cumque."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.760068"], ["updated_at", "2020-04-14 17:26:15.760068"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Ullam corporis suscipit. Minima autem labore. Accusantium dolores maxime. Voluptas quasi est. Et dolores adipisci."], ["question_id", 2], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.767371"], ["updated_at", "2020-04-14 17:26:15.767371"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Libero voluptatibus non. Perferendis qui laudantium. Omnis labore perferendis. Qui suscipit labore. Et repellat vel."], ["question_id", 10], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.775161"], ["updated_at", "2020-04-14 17:26:15.775161"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Animi et id. Quidem repudiandae mollitia. Sapiente quis in. Nemo eos consectetur. Laborum et sed."], ["question_id", 6], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.782542"], ["updated_at", "2020-04-14 17:26:15.782542"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Accusantium officiis eius. Velit et et. Corrupti veniam harum. Libero nulla error. A voluptatem cupiditate."], ["question_id", 6], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.789996"], ["updated_at", "2020-04-14 17:26:15.789996"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Architecto ab minus. Est consequatur molestiae. Sit optio enim. Eos nihil cumque. Velit voluptatibus rerum."], ["question_id", 10], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.797116"], ["updated_at", "2020-04-14 17:26:15.797116"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Dolor nulla enim. Doloribus laborum fugiat. Expedita quia voluptatem. Voluptates dolorum in. Tenetur totam dolorem."], ["question_id", 5], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.804187"], ["updated_at", "2020-04-14 17:26:15.804187"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Voluptates autem excepturi. Quidem quis sit. Dolor ut eaque. Dolorem a magnam. Sint autem fugit."], ["question_id", 10], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.812467"], ["updated_at", "2020-04-14 17:26:15.812467"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Autem est pariatur. Maxime atque at. Nemo nam rem. Autem ipsum ut. Ea at quibusdam."], ["question_id", 4], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.819696"], ["updated_at", "2020-04-14 17:26:15.819696"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Assumenda ullam ratione. Voluptatum ex eos. Necessitatibus ea est. Est quo fuga. Et omnis nemo."], ["question_id", 2], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.827935"], ["updated_at", "2020-04-14 17:26:15.827935"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Suscipit vitae dicta. Distinctio magni sequi. Numquam explicabo non. Reiciendis repudiandae sequi. Qui sit voluptatem."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.835464"], ["updated_at", "2020-04-14 17:26:15.835464"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Velit dolor assumenda. Reprehenderit dolores eum. Quos nobis nemo. Rerum recusandae qui. Incidunt tempore delectus."], ["question_id", 3], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.843411"], ["updated_at", "2020-04-14 17:26:15.843411"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Qui aspernatur et. Cum accusamus maiores. Voluptatem quia deserunt. Beatae minus qui. Eaque a labore."], ["question_id", 7], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.850737"], ["updated_at", "2020-04-14 17:26:15.850737"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Et ut et. Ut hic sit. Cum omnis libero. Hic qui sunt. Et et voluptates."], ["question_id", 5], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.858346"], ["updated_at", "2020-04-14 17:26:15.858346"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Et necessitatibus voluptas. Qui at debitis. Aut voluptas ea. Hic veniam nisi. Quia eos eligendi."], ["question_id", 1], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.865675"], ["updated_at", "2020-04-14 17:26:15.865675"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mElab Create (0.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "Marissa joseph responded Aut consequuntur occaecati. Veniam cum provident. Architecto iste qui. Nobis blanditiis reiciendis. Nostrum omnis optio."], ["question_id", 9], ["layman_id", 2], ["created_at", "2020-04-14 17:26:15.873126"], ["updated_at", "2020-04-14 17:26:15.873126"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:03:12 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 54ms (ActiveRecord: 7.0ms | Allocations: 11346)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:03:56 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 25ms (ActiveRecord: 4.9ms | Allocations: 8430)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:03:57 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms | Allocations: 1486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:04:25 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:17:in `show'
+Completed 404 Not Found in 12871ms (ActiveRecord: 8.0ms | Allocations: 23532)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:17:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:05:11 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 23ms (ActiveRecord: 5.5ms | Allocations: 8431)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:05:23 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ (pry):6:in `show'
+  [1m[36mCACHE Elab Load (0.0ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:17:in `show'
+Completed 404 Not Found in 111776ms (ActiveRecord: 7.4ms | Allocations: 38550)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:17:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:07:50 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:17:in `show'
+Completed 404 Not Found in 6583ms (ActiveRecord: 5.8ms | Allocations: 14611)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:17:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:08:13 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 20ms (ActiveRecord: 6.2ms | Allocations: 8410)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:08:40 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 35ms (ActiveRecord: 7.4ms | Allocations: 8409)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:09:03 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 16ms (ActiveRecord: 5.8ms | Allocations: 8429)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1" for ::1 at 2020-04-14 14:09:59 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:20:in `show'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:20:in `show'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:20:in `show'
+Completed 200 OK in 27ms (Views: 7.0ms | ActiveRecord: 3.5ms | Allocations: 11387)
+
+
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 14:10:07 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.2ms | Allocations: 672)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/controllers/elabs_controller.rb:10:in `index'
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 14:11:47 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 1], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.0ms | Allocations: 12586)
+
+
+  [1m[36mCACHE Elab Load (0.0ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 1], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `serializable_json' for #<ElabSerializer:0x00007f904fccfc18>
+Did you mean?  serialized_json
+               serializable_hash):
+  
+app/controllers/elabs_controller.rb:10:in `index'
+  [1m[36mCACHE Elab Load (0.0ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 1], ["LIMIT", 11]]
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 14:12:13 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 45ms (Views: 0.6ms | ActiveRecord: 6.2ms | Allocations: 12524)
+
+
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 14:16:55 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 12452)
+
+
+Started GET "/questions/1/elabs/19" for ::1 at 2020-04-14 14:17:04 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"19"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 200 OK in 8985ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 11200)
+
+
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:18:50 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 21ms (ActiveRecord: 6.0ms | Allocations: 8408)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/1" for ::1 at 2020-04-14 14:21:41 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 404 Not Found in 37ms (ActiveRecord: 5.9ms | Allocations: 8407)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Elab with 'id'=1 [WHERE "elabs"."question_id" = $1]):
+  
+app/controllers/elabs_controller.rb:16:in `show'
+Started GET "/questions/1/elabs/19" for ::1 at 2020-04-14 14:21:43 -0400
+Processing by ElabsController#show as */*
+  Parameters: {"question_id"=>"1", "id"=>"19"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 1], ["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:16:in `show'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 5615)
+
+
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 14:23:56 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (2.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 1664)
+
+
+Started POST "/questions/1/elabs?elaboration=I%20dont%27%20know%20what%20this%20means" for ::1 at 2020-04-14 14:24:40 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"I dont' know what this means", "question_id"=>"1"}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 31)
+
+
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" ORDER BY "elabs"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2020-04-14 14:39:18 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/educationpurposesonly/.rvm/gems/ruby-2.6.3/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/educationpurposesonly/.rvm/gems/ruby-2.6.3/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.2ms | Allocations: 315)
+Completed 200 OK in 19ms (Views: 14.6ms | ActiveRecord: 0.0ms | Allocations: 1904)
+
+
+Started GET "/login" for ::1 at 2020-04-14 14:39:23 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 14:40:00 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 14:40:06 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"willisnaya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "willisnaya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 259ms (ActiveRecord: 4.9ms | Allocations: 7990)
+
+
+Started POST "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 14:40:56 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"willisnaya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "willisnaya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 254ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 7762)
+
+
+Started POST "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 14:40:59 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"willisnaya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "willisnaya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Completed 200 OK in 270ms (Views: 2.8ms | ActiveRecord: 6.4ms | Allocations: 8435)
+
+
+Started GET "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 14:41:39 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/login"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started DELETE "/logout" for ::1 at 2020-04-14 14:46:57 -0400
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 29)
+
+
+Started POST "/login" for ::1 at 2020-04-14 15:27:57 -0400
+Processing by SessionsController#create as */*
+  [1m[36mLayman Load (2.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 3239)
+
+
+Started POST "/login" for ::1 at 2020-04-14 15:28:12 -0400
+Processing by SessionsController#create as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 757)
+
+
+Started POST "/login?email=willisnaya@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 15:28:46 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"willisnaya@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "willisnaya@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."layman_id" = $1[0m  [["layman_id", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Completed 200 OK in 312ms (Views: 3.9ms | ActiveRecord: 11.2ms | Allocations: 19572)
+
+
+Started GET "/questions" for ::1 at 2020-04-14 15:29:02 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 83ms (Views: 35.9ms | ActiveRecord: 8.5ms | Allocations: 40811)
+
+
+Started GET "/questions/1/elabs" for ::1 at 2020-04-14 15:29:12 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1725)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:30:05 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+[31mUnpermitted parameter: :question_id[0m
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 1094)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:30:46 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 5.2ms | Allocations: 11884)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:31:52 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 5.5ms | Allocations: 11854)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:32:12 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 77466ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 37331)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:33:34 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 204 No Content in 179ms (ActiveRecord: 4.9ms | Allocations: 194510)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:33:56 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 422 Unprocessable Entity in 48ms (ActiveRecord: 5.0ms | Allocations: 13690)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Layman must exist):
+  
+app/controllers/elabs_controller.rb:27:in `create'
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:34:40 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 5.9ms | Allocations: 13543)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:35:59 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"i know what this means", "question_id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 26ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 13495)
+
+
+Started POST "/questions/1/elabs?elaboration=i%20know%20what%20this%20means" for ::1 at 2020-04-14 15:39:16 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/questions/1/elabs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/laymen/2/elabs?elaboration=I%20can%20do%20this%21%21%21%21" for ::1 at 2020-04-14 15:42:30 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"I can do this!!!!", "layman_id"=>"2"}
+Completed 204 No Content in 59328ms (ActiveRecord: 0.0ms | Allocations: 18425)
+
+
+Started POST "/laymen/2/elabs?elaboration=I%20can%20do%20this%21%21%21%21" for ::1 at 2020-04-14 15:43:33 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"I can do this!!!!", "layman_id"=>"2"}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 62)
+
+
+Started POST "/laymen/2/elabs?elaboration=I%20can%20do%20this%21%21%21%21" for ::1 at 2020-04-14 15:48:55 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/laymen/2/elabs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/elabs" for ::1 at 2020-04-14 15:49:17 -0400
+Processing by ElabsController#create as */*
+Completed 204 No Content in 10003ms (ActiveRecord: 5.9ms | Allocations: 13682)
+
+
+Started POST "/elabs" for ::1 at 2020-04-14 15:51:07 -0400
+Processing by ElabsController#create as */*
+Completed 204 No Content in 30675ms (ActiveRecord: 0.0ms | Allocations: 83590)
+
+
+Started POST "/elabs" for ::1 at 2020-04-14 15:52:48 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/elabs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/questions" for ::1 at 2020-04-14 15:52:57 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "elabs" ON "laymen"."id" = "elabs"."layman_id" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:10:in `index'
+Completed 200 OK in 104ms (Views: 20.4ms | ActiveRecord: 18.2ms | Allocations: 50159)
+
+
+Started GET "/questions/2/elabs" for ::1 at 2020-04-14 15:53:13 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"2"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 1977)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 15:53:55 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:26:in `create'
+Completed 200 OK in 241775ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 196797)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 15:58:00 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 6.3ms | Allocations: 13494)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/elabs_controller.rb:27:in `create'
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 15:58:31 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 11263ms (Views: 0.2ms | ActiveRecord: 5.9ms | Allocations: 23366)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:01:05 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+Completed 200 OK in 23586ms (Views: 0.2ms | ActiveRecord: 6.2ms | Allocations: 96537)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:01:32 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:26:in `create'
+Completed 200 OK in 730139ms (Views: 0.3ms | ActiveRecord: 5.5ms | Allocations: 34418)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:13:45 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 11]]
+  ↳ app/controllers/elabs_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 9.8ms | Allocations: 18744)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (Layman(#70280656180720) expected, got #<ActiveRecord::Relation [#<Layman id: 2, name: "Marissa Joseph", email: "marissajoseph@gmail.com", bio: "Just a woman who knows everything", gender: "female", password_digest: [FILTERED], created_at: "2020-04-14 17:26:15", updated_at: "2020-04-14 17:26:15">]> which is an instance of Layman::ActiveRecord_Relation(#70280656179820)):
+  
+app/controllers/elabs_controller.rb:27:in `create'
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:14:10 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+  [1m[36mLayman Load (1.8ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE (id = 2) LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/elabs_controller.rb:27:in `create'
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 11.7ms | Allocations: 18591)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (Layman(#70280654269360) expected, got #<ActiveRecord::Relation [#<Layman id: 2, name: "Marissa Joseph", email: "marissajoseph@gmail.com", bio: "Just a woman who knows everything", gender: "female", password_digest: [FILTERED], created_at: "2020-04-14 17:26:15", updated_at: "2020-04-14 17:26:15">]> which is an instance of Layman::ActiveRecord_Relation(#70280654268460)):
+  
+app/controllers/elabs_controller.rb:27:in `create'
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:15:08 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:27:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/elabs_controller.rb:29:in `create'
+  [1m[36mElab Create (3.3ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "this is basically saying..."], ["question_id", 2], ["layman_id", 2], ["created_at", "2020-04-14 20:15:26.554098"], ["updated_at", "2020-04-14 20:15:26.554098"]]
+  ↳ app/controllers/elabs_controller.rb:29:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/elabs_controller.rb:29:in `create'
+Completed 200 OK in 17527ms (Views: 0.2ms | ActiveRecord: 14.1ms | Allocations: 31304)
+
+
+Started POST "/questions/2/elabs?elaboration=this%20is%20basically%20saying..." for ::1 at 2020-04-14 16:15:37 -0400
+Processing by ElabsController#create as */*
+  Parameters: {"elaboration"=>"this is basically saying...", "question_id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:25:in `create'
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:27:in `create'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/elabs_controller.rb:28:in `create'
+  [1m[36mElab Create (0.5ms)[0m  [1m[32mINSERT INTO "elabs" ("elaboration", "question_id", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elaboration", "this is basically saying..."], ["question_id", 2], ["layman_id", 2], ["created_at", "2020-04-14 20:15:37.447696"], ["updated_at", "2020-04-14 20:15:37.447696"]]
+  ↳ app/controllers/elabs_controller.rb:28:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/elabs_controller.rb:28:in `create'
+  [1m[36mLayman Load (0.6ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ (pry):11:in `create'
+Completed 200 OK in 32142ms (Views: 0.2ms | ActiveRecord: 10.1ms | Allocations: 37055)
+
+

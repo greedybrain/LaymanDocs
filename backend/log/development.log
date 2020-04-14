@@ -3642,3 +3642,216 @@ Processing by SessionsController#create as */*
 Completed 200 OK in 730177ms (Views: 3.0ms | ActiveRecord: 7.8ms | Allocations: 26891)
 
 
+Started POST "/login?email=alexjones@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 10:06:07 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"alexjones@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "alexjones@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Completed 200 OK in 804510ms (Views: 1.8ms | ActiveRecord: 9.2ms | Allocations: 37013)
+
+
+Started POST "/questions" for ::1 at 2020-04-14 10:21:28 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/questions"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/questions" for ::1 at 2020-04-14 10:21:35 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 5.2ms | Allocations: 7031)
+
+
+Started DELETE "/laymen/5/questions/1" for ::1 at 2020-04-14 10:22:21 -0400
+Processing by QuestionsController#destroy as */*
+  Parameters: {"layman_id"=>"5", "id"=>"1"}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:39:in `destroy'
+Completed 404 Not Found in 20ms (ActiveRecord: 4.8ms | Allocations: 3457)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/application_controller.rb:10:in `authenticate_question'
+app/controllers/questions_controller.rb:40:in `destroy'
+Started DELETE "/laymen/6" for ::1 at 2020-04-14 10:22:59 -0400
+  
+AbstractController::ActionNotFound (The action 'destroy' could not be found for LaymenController):
+  
+actionpack (6.0.2.2) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.2.2) lib/rack/etag.rb:27:in `call'
+rack (2.2.2) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.2) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/laymen/6" for ::1 at 2020-04-14 10:23:03 -0400
+Processing by LaymenController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/laymen_controller.rb:12:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/laymen_controller.rb:15:in `show'
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 7014)
+
+
+Started POST "/laymen/6/questions?topic=angular&url=https://angular.io/&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components." for ::1 at 2020-04-14 10:24:12 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"https://angular.io/", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components.", "layman_id"=>"6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/login?email=alexjones@gmail.com&password=[FILTERED]" for ::1 at 2020-04-14 10:24:49 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"alexjones@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "alexjones@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "questions"."id" FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."layman_id" = $1[0m  [["layman_id", 6]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Completed 200 OK in 17222ms (Views: 1.4ms | ActiveRecord: 0.8ms | Allocations: 10959)
+
+
+Started POST "/laymen/6/questions?topic=angular&url=https://angular.io/&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:25:55 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"https://angular.io/", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+Completed 404 Not Found in 8ms (ActiveRecord: 3.6ms | Allocations: 1560)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/laymen/6/questions?topic=angular&url=https://angular.io/&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:26:29 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"https://angular.io/", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+Completed 404 Not Found in 5ms (ActiveRecord: 2.4ms | Allocations: 1561)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/laymen/6/questions?topic=angular&url=https://angular.io/&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:27:25 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"https://angular.io/", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+Completed 404 Not Found in 6ms (ActiveRecord: 2.8ms | Allocations: 1575)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/laymen/6/questions?topic=angular&url=https://angular.io/&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:27:40 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"https://angular.io/", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/laymen/6/questions?topic=angular&url=http://angular.io&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:28:29 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"http://angular.io", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+Completed 404 Not Found in 0ms (ActiveRecord: 0.0ms | Allocations: 115)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Layman without an ID):
+  
+app/controllers/application_controller.rb:6:in `current_layman'
+app/controllers/questions_controller.rb:21:in `create'
+Started POST "/laymen/6/questions?topic=angular&url=http://angular.io&pasted_info=Build%20features%20quickly%20with%20simple,%20declarative%20templates.%20Extend%20the%20template%20language%20with%20your%20own%20components%20and%20use%20a%20wide%20array%20of%20existing%20components" for ::1 at 2020-04-14 10:29:20 -0400
+Processing by QuestionsController#create as */*
+  Parameters: {"topic"=>"angular", "url"=>"http://angular.io", "pasted_info"=>"Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components", "layman_id"=>"6"}
+  [1m[36mLayman Load (0.6ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:20:in `create'
+[31mUnpermitted parameter: :layman_id[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:22:in `create'
+  [1m[36mQuestion Create (5.9ms)[0m  [1m[32mINSERT INTO "questions" ("topic", "url", "pasted_info", "layman_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["topic", "angular"], ["url", "http://angular.io"], ["pasted_info", "Build features quickly with simple, declarative templates. Extend the template language with your own components and use a wide array of existing components"], ["layman_id", 6], ["created_at", "2020-04-14 14:29:20.230508"], ["updated_at", "2020-04-14 14:29:20.230508"]]
+  ↳ app/controllers/questions_controller.rb:22:in `create'
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:22:in `create'
+Completed 200 OK in 45ms (Views: 0.3ms | ActiveRecord: 14.6ms | Allocations: 14558)
+
+

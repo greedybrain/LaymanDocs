@@ -1394,3 +1394,142 @@ Processing by LaymenController#index as HTML
 Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 0.5ms | Allocations: 1976)
 
 
+Started DELETE "/logout" for ::1 at 2020-04-13 21:59:11 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 80)
+
+
+Started GET "/laymen" for ::1 at 2020-04-13 21:59:56 -0400
+Processing by LaymenController#index as HTML
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:6:in `index'
+Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 4.4ms | Allocations: 9612)
+
+
+Started POST "/login?mal@aol.com=password" for ::1 at 2020-04-13 22:00:31 -0400
+  
+SyntaxError (/Users/educationpurposesonly/Desktop/git/LaymanDocs/backend/app/controllers/sessions_controller.rb:13: syntax error, unexpected tLABEL
+          render json: status: :ok
+                       ^~~~~~~):
+  
+app/controllers/sessions_controller.rb:13: syntax error, unexpected tLABEL
+app/controllers/sessions_controller.rb:13: syntax error, unexpected tLABEL
+Started POST "/login?mal@aol.com=password" for ::1 at 2020-04-13 22:00:50 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"mal@aol.com"=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 266ms (ActiveRecord: 3.4ms | Allocations: 7699)
+
+
+Started POST "/login?mal@aol.com=password" for ::1 at 2020-04-13 22:01:41 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"mal@aol.com"=>"password"}
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 257ms (ActiveRecord: 4.3ms | Allocations: 8573)
+
+
+Started POST "/login?mal@aol.com=password" for ::1 at 2020-04-13 22:01:54 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"mal@aol.com"=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 259ms (ActiveRecord: 4.2ms | Allocations: 7426)
+
+
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:02:09 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"greg@aol.com\""=>"password"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 248ms (ActiveRecord: 0.3ms | Allocations: 757)
+
+
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:02:41 -0400
+  
+SyntaxError (/Users/educationpurposesonly/Desktop/git/LaymanDocs/backend/app/controllers/sessions_controller.rb:7: syntax error, unexpected '\n', expecting =>
+/Users/educationpurposesonly/Desktop/git/LaymanDocs/backend/app/controllers/sessions_controller.rb:16: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/sessions_controller.rb:7: syntax error, unexpected '\n', expecting =>
+app/controllers/sessions_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+app/controllers/sessions_controller.rb:7: syntax error, unexpected '\n', expecting =>
+app/controllers/sessions_controller.rb:16: syntax error, unexpected end-of-input, expecting end
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:02:49 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"greg@aol.com\""=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 257ms (ActiveRecord: 3.0ms | Allocations: 7404)
+
+
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:02:59 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"greg@aol.com\""=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 258ms (ActiveRecord: 2.9ms | Allocations: 7343)
+
+
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:03:23 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"greg@aol.com\""=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 257ms (ActiveRecord: 3.3ms | Allocations: 7362)
+
+
+Started POST "/login?greg@aol.com%22=password" for ::1 at 2020-04-13 22:03:24 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"greg@aol.com\""=>"password"}
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 247ms (ActiveRecord: 0.2ms | Allocations: 739)
+
+
+Started GET "/laymen" for ::1 at 2020-04-13 22:03:41 -0400
+Processing by LaymenController#index as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen"[0m
+  ↳ app/controllers/laymen_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.3ms | Allocations: 2134)
+
+
+Started GET "/laymen/3" for ::1 at 2020-04-13 22:03:45 -0400
+Processing by LaymenController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/laymen_controller.rb:11:in `show'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 889)
+
+
+Started POST "/login" for ::1 at 2020-04-13 22:03:53 -0400
+Processing by SessionsController#create as */*
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 251ms (ActiveRecord: 0.3ms | Allocations: 757)
+
+
+Started POST "/login?email=mal@aol.com" for ::1 at 2020-04-13 22:04:18 -0400
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"mal@aol.com"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "mal@aol.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 204 No Content in 248ms (ActiveRecord: 0.3ms | Allocations: 702)
+
+
+Started POST "/login?email=mal@aol.com&password=[FILTERED]" for ::1 at 2020-04-13 22:06:05 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"mal@aol.com", "password"=>"[FILTERED]"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."email" = $1 LIMIT $2[0m  [["email", "mal@aol.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 200 OK in 264ms (Views: 0.4ms | ActiveRecord: 4.3ms | Allocations: 8975)
+
+
+Started DELETE "/logout" for ::1 at 2020-04-13 22:06:22 -0400
+Processing by SessionsController#destroy as */*
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 54)
+
+

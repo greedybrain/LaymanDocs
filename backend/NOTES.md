@@ -22,8 +22,7 @@
 
 ## Models
 
-√ Layman
-
+- Layman √√√√
 - Question
 - Answer
 - Reply
@@ -32,9 +31,8 @@
 
 ## The particulars/behaviors/associations(SCHEMA)
 
-√ A user/layman has a name, reputation, bio and a profile containing that
-information
-
+- A user/layman has a name, reputation, bio and a profile containing that
+  information √√√√
 - A question has a topic, url, pasted_info, time created
 - A elab has text, time created
 - A reply has text, time created
@@ -43,8 +41,9 @@ information
 
 ## A Layman >
 
-√ has many questions √ has many elabs through questions √ has many questions
-through elabs
+- has many questions √√√√
+- has many elabs through questions √√√√
+- has many questions through elabs √√√√
 
 ## A Question >
 
@@ -79,3 +78,15 @@ through elabs
 - belongs to a question
 - belongs to an elab
 - belongs to a layman
+
+====================================================================
+
+## FRONT END
+
+## Fetch links Layman registration/sessions
+
+- (GET • all laymen and activity) http://localhost:3000/laymen
+- (GET • a laymen) http://localhost:3000/laymen/:id
+- (POST • create registration) http://localhost:3000/signup
+- (POST • create session) http://localhost:3000/login
+- (DELETE • destroy session) http://localhost:3000/logout

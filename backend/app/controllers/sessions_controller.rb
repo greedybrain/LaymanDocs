@@ -9,7 +9,9 @@ class SessionsController < ApplicationController
      end
 
      def destroy 
-          session[:layman_id].delete
+          session.delete(:layman_id)
      end
 
 end
+
+

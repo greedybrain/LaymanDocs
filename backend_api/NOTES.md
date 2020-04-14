@@ -99,3 +99,8 @@
 - (POST • a question) http://localhost:3000/laymen/:id/questions
 - (PATCH • a question) http://localhost:3000/laymen/:id/questions/:id
 - (DELETE • a question) http://localhost:3000/laymen/:id/questions/:id
+
+## Fetch links Elabs
+
+- (GET • ALL questions/elabs) http://localhost:3000/questions/:id/elabs
+- (GET • A questions/elab) http://localhost:3000/questions/:id/elabs/:id

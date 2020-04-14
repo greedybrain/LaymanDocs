@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :elabs # All other CRUD under questions
   end
 
-  resources :elabs, except: [:create]
+  resources :elabs, except: [:create, :show, :index]
 
 
   # Signup, Login, and Logout routing

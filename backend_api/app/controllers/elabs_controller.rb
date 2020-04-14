@@ -34,15 +34,29 @@ class ElabsController < ApplicationController
      end
 
      def update 
+          marissa = Layman.find(2)
+          elab = marissa.elabs.find(params[:id])
+          if elab.update(elab_params)
+               render json: ElabSerializer.new(elab).serializable_hash
+          else
+               render json: { errors: elab.errors }
+          end
      end
      
      def destroy
+          marissa = Layman.find(2)
+          elab = marissa.elabs.find(params[:id])
+          if elab.destroy 
+               render json: { message: "Elaboration deleted" }
+          else
+               render json: { errors: elab.errors }
+          end
      end
 
      private 
 
      def elab_params
-          params.permit(:elaboration, :question_id)
+          params.permit(:elaboration, :question_id, :id)
      end
 
 end

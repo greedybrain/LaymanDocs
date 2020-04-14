@@ -7947,3 +7947,15 @@ Processing by ElabsController#destroy as */*
 Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 25.6ms | Allocations: 3092)
 
 
+Started GET "/questions/:question_id/elabs/:id" for ::1 at 2020-04-14 17:02:15 -0400
+Processing by ElabsController#show as HTML
+  Parameters: {"question_id"=>":question_id", "id"=>":id"}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:15:in `show'
+Completed 404 Not Found in 11ms (ActiveRecord: 0.8ms | Allocations: 2615)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=:question_id):
+  
+app/controllers/elabs_controller.rb:15:in `show'

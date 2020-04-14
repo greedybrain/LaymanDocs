@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :questions, only: [:index, :show] do 
     resources :elabs # All other CRUD under questions
+    resources :upvotes, only: [:create]
+    resources :downvotes, only: [:create]
   end
 
-  resources :elabs, except: [:create, :show, :index]
 
 
   # Signup, Login, and Logout routing

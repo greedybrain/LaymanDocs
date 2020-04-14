@@ -34,7 +34,7 @@ class ElabsController < ApplicationController
      end
 
      def update 
-          marissa = Layman.find(2)
+          marissa = Layman.find(2)  # hard coded for now
           elab = marissa.elabs.find(params[:id])
           if elab.update(elab_params)
                render json: ElabSerializer.new(elab).serializable_hash
@@ -45,7 +45,7 @@ class ElabsController < ApplicationController
      
      def destroy
           marissa = Layman.find(2)
-          elab = marissa.elabs.find(params[:id])
+          elab = marissa.elabs.find(params[:id]) # hard coded for now
           if elab.destroy 
                render json: { message: "Elaboration deleted" }
           else

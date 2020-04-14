@@ -20,6 +20,8 @@
 
 ====================================
 
+## BACKEND
+
 ## Models
 
 - Layman √√√√
@@ -39,14 +41,14 @@
 - An upvote is an integer
 - A downvote is an integer
 
-## A Layman >
+## A Layman > √√√√
 
 - has_many :questions, dependent: :destroy √√√√
 - has_many :elabs, through: :questions √√√√
 - has_many :elabs, dependent: :destroy √√√√
 - has_many :questions, through: :elabs √√√√
 
-## A Question >
+## A Question > √√√√
 
 - belongs to a layman √√√√
 - has many elabs √√√√
@@ -55,7 +57,7 @@
 - has many downvotes
 - has many laymans through votes
 
-## An Elab >
+## An Elab > √√√√
 
 - belongs to a question √√√√
 - belongs to a layman √√√√
@@ -84,7 +86,7 @@
 
 ## FRONT END
 
-## Fetch links Layman registration/sessions
+## Fetch links Layman registration/sessions √√√√
 
 - (GET • all laymen and activity) http://localhost:3000/laymen
 - (GET • a laymen) http://localhost:3000/laymen/:id
@@ -92,7 +94,7 @@
 - (POST • create session) http://localhost:3000/login
 - (DELETE • destroy session) http://localhost:3000/logout
 
-## Fetch links Questions
+## Fetch links Questions √√√√
 
 - (GET • all questions) http://localhost:3000/questions
 - (GET • a question) http://localhost:3000/laymen/:id/questions/:id
@@ -100,7 +102,18 @@
 - (PATCH • a question) http://localhost:3000/laymen/:id/questions/:id
 - (DELETE • a question) http://localhost:3000/laymen/:id/questions/:id
 
-## Fetch links Elabs
+## Fetch links Elabs √√√√
 
-- (GET • ALL questions/elabs) http://localhost:3000/questions/:id/elabs
-- (GET • A questions/elab) http://localhost:3000/questions/:id/elabs/:id
+- (GET • ALL questions/elabs) http://localhost:3000/questions/:question_id/elabs
+- (GET • A questions/elab)http://localhost:3000/questions/:question_id/elabs/:id
+- (POST • An elab) http://localhost:3000/questions/:question_id/elabs
+- (PATCH • An elab) http://localhost:3000/questions/:question_id/elabs/:id
+- (DELETE • An elab) http://localhost:3000/questions/:question_id/elabs/:id
+
+## Fetch links Upvotes
+
+- (POST • A upvote) http://localhost:3000/questions/:question_id/upvotes
+
+## Fetch links Downvotes
+
+- (POST • A downvote) http://localhost:3000/questions/:question_id/upvotes

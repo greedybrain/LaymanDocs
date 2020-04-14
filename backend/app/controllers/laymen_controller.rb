@@ -1,4 +1,5 @@
 class LaymenController < ApplicationController
+     before_action :set_layman, only: [:show]
 
      # this renders all activity (questions and elabs)
      def index 
@@ -7,12 +8,9 @@ class LaymenController < ApplicationController
           render json: LaymanSerializer.new(laymen).serialized_json
      end
 
-     # this renders a particular layman/laywoman
      def show 
-          layman = Layman.find(params[:id])
           # make sure to assign div a data-id
-          
-          render json: LaymanSerializer.new(layman).serialized_json
+          render json: LaymanSerializer.new(@layman).serialized_json 
      end
 
      def create 
@@ -28,6 +26,10 @@ class LaymenController < ApplicationController
 
      def layman_params
           params.permit(:name, :email, :password, :bio, :gender)
+     end
+
+     def set_layman 
+          @layman = Layman.find(params[:id])
      end
 
 end

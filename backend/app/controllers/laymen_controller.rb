@@ -3,7 +3,7 @@ class LaymenController < ApplicationController
      # this renders all activity (questions and elabs)
      def index 
           laymen = Layman.all
-          render json: laymen, except: [:created_at, :updated_at]
+          render json: LaymanSerializer.new(laymen).serializable_hash
      end
 
      # this renders a particular layman/laywoman
@@ -11,7 +11,7 @@ class LaymenController < ApplicationController
           layman = Layman.find(params[:id])
           # make sure to assign div a data-id
 
-          render json: layman, except: [:created_at, :updated_at]
+          render json: LaymanSerializer.new(layman).serializable_hash
      end
 
      def create 
@@ -19,7 +19,7 @@ class LaymenController < ApplicationController
           layman = Layman.new(layman_params)
           if layman.save 
                session[:layman_id] = layman.id
-               render json: layman, except: [:created_at, :updated_at]
+               render json: LaymanSerializer.new(layman).serializable_hash
           end
      end
 

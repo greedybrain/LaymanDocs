@@ -4,15 +4,15 @@ class LaymenController < ApplicationController
      def index 
           laymen = Layman.all
           # render json: laymen
-          render json: LaymanSerializer.new(laymen).serializable_hash
+          render json: LaymanSerializer.new(laymen).serialized_json
      end
 
      # this renders a particular layman/laywoman
      def show 
           layman = Layman.find(params[:id])
           # make sure to assign div a data-id
-
-          render json: LaymanSerializer.new(layman).serializable_hash
+          
+          render json: LaymanSerializer.new(layman).serialized_json
      end
 
      def create 
@@ -20,7 +20,7 @@ class LaymenController < ApplicationController
           layman = Layman.new(layman_params)
           if layman.save 
                session[:layman_id] = layman.id
-               render json: LaymanSerializer.new(layman).serializable_hash
+               render json: LaymanSerializer.new(layman).serialized_json
           end
      end
 

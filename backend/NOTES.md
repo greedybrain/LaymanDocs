@@ -96,4 +96,5 @@
 - (GET • all questions) http://localhost:3000/questions
 - (GET • a question) http://localhost:3000/laymen/:id/questions/:id
 - (POST • a question) http://localhost:3000/laymen/:id/questions
-- (PATCH• a question) http://localhost:3000/laymen/:id/questions/:id
+- (PATCH • a question) http://localhost:3000/laymen/:id/questions/:id
+- (DELETE • a question) http://localhost:3000/laymen/:id/questions/:id

@@ -55,7 +55,7 @@ class ElabsController < ApplicationController
      private 
 
      def elab_params
-          params.permit(:elaboration, :question_id, :id)
+          params.permit(:elaboration, :question_id)
      end
 
 end

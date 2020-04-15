@@ -86,41 +86,43 @@
 
 ## Fetch links Layman registration/sessions √√√√
 
-- (GET • all laymen and activity) http://localhost:3000/laymen
-- (GET • a laymen) http://localhost:3000/laymen/:id
-- (POST • create registration) http://localhost:3000/signup
-- (POST • create session) http://localhost:3000/login
-- (DELETE • destroy session) http://localhost:3000/logout
+- (GET • all laymen and activity) [http://localhost:3000/laymen]
+- (GET • a laymen) [http://localhost:3000/laymen/:id]
+- (POST • create registration) [http://localhost:3000/signup]
+- (POST • create session) [http://localhost:3000/login]
+- (DELETE • destroy session) [http://localhost:3000/logout]
 
 ## Fetch links Questions √√√√
 
-- (GET • all questions) http://localhost:3000/questions
-- (GET • a question) http://localhost:3000/laymen/:id/questions/:id
-- (POST • a question) http://localhost:3000/laymen/:id/questions
-- (PATCH/PUT • a question) http://localhost:3000/laymen/:id/questions/:id
-- (DELETE • a question) http://localhost:3000/laymen/:id/questions/:id
+- (GET • all questions) [http://localhost:3000/questions] √
+- (GET • a question) [http://localhost:3000/laymen/:id/questions/:id] √
+- (POST • a question) [http://localhost:3000/laymen/:id/questions]
+- (PATCH/PUT • a question) [http://localhost:3000/laymen/:id/questions/:id]
+- (DELETE • a question) [http://localhost:3000/laymen/:id/questions/:id]
 
 ## Fetch links Elabs √√√√
 
-- (GET • ALL questions/elabs) http://localhost:3000/questions/:question_id/elabs
-- (GET • A questions/elab)http://localhost:3000/questions/:question_id/elabs/:id
-- (POST • An elab) http://localhost:3000/questions/:question_id/elabs
-- (PATCH/PUT • An elab) http://localhost:3000/questions/:question_id/elabs/:id
-- (DELETE • An elab) http://localhost:3000/questions/:question_id/elabs/:id
+- (GET • ALL
+  questions/elabs)[http://localhost:3000/questions/:question_id/elabs] √
+- (GET • A
+  questions/elab)[http://localhost:3000/questions/:question_id/elabs/:id] √
+- (POST • An elab) [http://localhost:3000/questions/:question_id/elabs]
+- (PATCH/PUT • An elab) [http://localhost:3000/questions/:question_id/elabs/:id]
+- (DELETE • An elab) [http://localhost:3000/questions/:question_id/elabs/:id]
 
 ## Fetch links Upvotes √√√√
 
-- (POST • A upvote) http://localhost:3000/questions/:question_id/upvotes
-- (POST • A upvote) http://localhost:3000/elabs/:elab_id/upvotes
+- (POST • A upvote) [http://localhost:3000/questions/:question_id/upvotes]
+- (POST • A upvote) [http://localhost:3000/elabs/:elab_id/upvotes]
 
 ## Fetch links Downvotes √√√√
 
 - (POST • A question downvote)
-  http://localhost:3000/questions/:question_id/downvotes
-- (POST • An elab downvote) http://localhost:3000/elabs/:elab_id/downvotes
+  [http://localhost:3000/questions/:question_id/downvotes]
+- (POST • An elab downvote) [http://localhost:3000/elabs/:elab_id/downvotes]
 
 ## Fetch links Replies √√√√
 
-- (POST • A reply) http://localhost:3000/elabs/:elab_id/replies
-- (PATCH/PUT • A reply) http://localhost:3000/elabs/:elab_id/replies/:id
-- (DELETE • A reply) http://localhost:3000/elabs/:elab_id/replies/:id
+- (POST • A reply) [http://localhost:3000/elabs/:elab_id/replies]
+- (PATCH/PUT • A reply) [http://localhost:3000/elabs/:elab_id/replies/:id]
+- (DELETE • A reply) [http://localhost:3000/elabs/:elab_id/replies/:id]

@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_04_15_141621) do
 
   create_table "elabs", force: :cascade do |t|
     t.text "elaboration"
-    t.bigint "question_id", null: false
-    t.bigint "layman_id", null: false
+    t.bigint "question_id"
+    t.bigint "layman_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["layman_id"], name: "index_elabs_on_layman_id"

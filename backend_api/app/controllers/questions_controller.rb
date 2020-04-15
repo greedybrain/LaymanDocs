@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
      end
 
      def show 
-          question = current_opp_layman.questions.find(params[:id])
+          question = current_layman.questions.find(params[:id])
           render json: QuestionSerializer.new(question).serializable_hash
      end
 
@@ -21,6 +21,8 @@ class QuestionsController < ApplicationController
           question = current_layman.questions.find(params[:id])
           if question.update(question_params)
                render json: QuestionSerializer.new(question).serializable_hash
+          else
+               render json: { message: "Seems like this post doesn't belong to you" }
           end
      end
 

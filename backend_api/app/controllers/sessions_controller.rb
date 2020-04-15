@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
      def destroy 
           session.delete(:layman_id)
+          render json: { message: "You successfully logged out" }
      end
 
 end

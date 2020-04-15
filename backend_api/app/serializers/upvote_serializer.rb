@@ -1,6 +1,6 @@
 class UpvoteSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :layman_id, :elab_id 
+  attributes :layman_id, :elab_id, :question_id 
 
   belongs_to :layman
   belongs_to :question

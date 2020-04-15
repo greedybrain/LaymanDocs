@@ -13703,3 +13703,693 @@ Migrating to AddContentToReplies (20200415133131)
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 10:11:21 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (1.9ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 253ms (ActiveRecord: 2.1ms | Allocations: 80316)
+
+
+  
+NameError (undefined local variable or method `reply_params' for #<RepliesController:0x00007fe0d638c890>):
+  
+app/controllers/replies_controller.rb:6:in `create'
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 10:13:43 -0400
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+[31mUnpermitted parameter: :elab_id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[36mReply Create (7.0ms)[0m  [1m[32mINSERT INTO "replies" ("elab_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["elab_id", 15], ["created_at", "2020-04-15 14:13:43.185927"], ["updated_at", "2020-04-15 14:13:43.185927"]]
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+Completed 200 OK in 41ms (Views: 0.2ms | ActiveRecord: 19.0ms | Allocations: 13658)
+
+
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 10:15:28 -0400
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+[31mUnpermitted parameter: :elab_id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[36mReply Create (0.4ms)[0m  [1m[32mINSERT INTO "replies" ("elab_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["elab_id", 15], ["created_at", "2020-04-15 14:15:28.701457"], ["updated_at", "2020-04-15 14:15:28.701457"]]
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 13795)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddLaymanIdToReplies (20200415141621)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "replies" ADD "layman_id" bigint[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200415141621"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 10:17:48 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+[31mUnpermitted parameter: :elab_id[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[36mReply Create (0.7ms)[0m  [1m[32mINSERT INTO "replies" ("elab_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["elab_id", 15], ["created_at", "2020-04-15 14:17:48.661457"], ["updated_at", "2020-04-15 14:17:48.661457"]]
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/replies_controller.rb:7:in `create'
+Completed 200 OK in 72ms (Views: 0.2ms | ActiveRecord: 7.7ms | Allocations: 17921)
+
+
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 10:18:30 -0400
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+  [1m[36mLayman Load (0.7ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+  [1m[36mReply Create (0.3ms)[0m  [1m[32mINSERT INTO "replies" ("elab_id", "created_at", "updated_at", "layman_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["elab_id", 15], ["created_at", "2020-04-15 14:18:30.581462"], ["updated_at", "2020-04-15 14:18:30.581462"], ["layman_id", 1]]
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+Completed 200 OK in 61ms (Views: 0.2ms | ActiveRecord: 9.8ms | Allocations: 21895)
+
+
+Started POST "/elabs/15" for ::1 at 2020-04-15 10:18:40 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/elabs/15"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/elabs/15" for ::1 at 2020-04-15 10:18:44 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/elabs/15"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/elabs/15" for ::1 at 2020-04-15 10:18:45 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/elabs/15"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/questions/11/elabs" for ::1 at 2020-04-15 10:18:56 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"11"}
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[36mReply Load (0.2ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 29ms (Views: 4.1ms | ActiveRecord: 4.7ms | Allocations: 12817)
+
+
+Started GET "/elabs/6" for ::1 at 2020-04-15 10:19:42 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/elabs/6"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/elabs/6/replies?content=Oh%20ok,%20I%20understand" for ::1 at 2020-04-15 10:20:05 -0400
+Processing by RepliesController#create as */*
+  Parameters: {"content"=>"Oh ok, I understand", "elab_id"=>"6"}
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/replies_controller.rb:5:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+  [1m[36mReply Create (0.5ms)[0m  [1m[32mINSERT INTO "replies" ("elab_id", "created_at", "updated_at", "content", "layman_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["elab_id", 6], ["created_at", "2020-04-15 14:20:05.900559"], ["updated_at", "2020-04-15 14:20:05.900559"], ["content", "Oh ok, I understand"], ["layman_id", 1]]
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/replies_controller.rb:8:in `create'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 3446)
+
+
+Started POST "/questions" for ::1 at 2020-04-15 10:20:21 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/questions"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/questions" for ::1 at 2020-04-15 10:20:23 -0400
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.5ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (1.6ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (8.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (6.0ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (2.0ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (1.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 221ms (Views: 62.4ms | ActiveRecord: 48.2ms | Allocations: 91877)
+
+
+Started GET "/questions" for ::1 at 2020-04-15 10:22:03 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#index as */*
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 3]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 4]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 5]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 6]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.3ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 7]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 8]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 9]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 10]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.1ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 12]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 13]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.1ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 14]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 15]]
+  ↳ app/controllers/questions_controller.rb:5:in `index'
+Completed 200 OK in 304ms (Views: 104.5ms | ActiveRecord: 33.4ms | Allocations: 113526)
+
+
+Started GET "/questions/11" for ::1 at 2020-04-15 10:23:11 -0400
+Processing by QuestionsController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_opp_layman'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 2], ["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:9:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+Completed 200 OK in 52ms (Views: 10.9ms | ActiveRecord: 1.9ms | Allocations: 12141)
+
+
+Started GET "/questions/11/elabs" for ::1 at 2020-04-15 10:23:18 -0400
+Processing by ElabsController#index as */*
+  Parameters: {"question_id"=>"11"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/elabs_controller.rb:5:in `index'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 11]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "replies"."id" FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "replies"."id" FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[36mReply Load (0.2ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 6]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+  [1m[36mReply Load (0.5ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1[0m  [["elab_id", 15]]
+  ↳ app/controllers/elabs_controller.rb:10:in `index'
+Completed 200 OK in 58ms (Views: 20.5ms | ActiveRecord: 6.2ms | Allocations: 16302)
+
+
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 11], ["LIMIT", 11]]
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 11], ["id", 6], ["LIMIT", 1]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 11]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 11]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 11]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 11]]
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 LIMIT $2[0m  [["question_id", 11], ["LIMIT", 11]]
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1 AND "elabs"."id" = $2 LIMIT $3[0m  [["question_id", 11], ["id", 6], ["LIMIT", 1]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 11]]
+  [1m[36mReply Load (0.3ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."elab_id" = $1 ORDER BY "replies"."id" ASC LIMIT $2[0m  [["elab_id", 6], ["LIMIT", 1]]
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]

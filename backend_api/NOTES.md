@@ -97,7 +97,7 @@
 - (GET • all questions) http://localhost:3000/questions
 - (GET • a question) http://localhost:3000/laymen/:id/questions/:id
 - (POST • a question) http://localhost:3000/laymen/:id/questions
-- (PATCH • a question) http://localhost:3000/laymen/:id/questions/:id
+- (PATCH/PUT • a question) http://localhost:3000/laymen/:id/questions/:id
 - (DELETE • a question) http://localhost:3000/laymen/:id/questions/:id
 
 ## Fetch links Elabs √√√√
@@ -105,7 +105,7 @@
 - (GET • ALL questions/elabs) http://localhost:3000/questions/:question_id/elabs
 - (GET • A questions/elab)http://localhost:3000/questions/:question_id/elabs/:id
 - (POST • An elab) http://localhost:3000/questions/:question_id/elabs
-- (PATCH • An elab) http://localhost:3000/questions/:question_id/elabs/:id
+- (PATCH/PUT • An elab) http://localhost:3000/questions/:question_id/elabs/:id
 - (DELETE • An elab) http://localhost:3000/questions/:question_id/elabs/:id
 
 ## Fetch links Upvotes √√√√
@@ -115,5 +115,12 @@
 
 ## Fetch links Downvotes √√√√
 
-- (POST • A downvote) http://localhost:3000/questions/:question_id/downvotes
-- (POST • A upvote) http://localhost:3000/elabs/:elab_id/downvotes
+- (POST • A question downvote)
+  http://localhost:3000/questions/:question_id/downvotes
+- (POST • An elab downvote) http://localhost:3000/elabs/:elab_id/downvotes
+
+## Fetch links Replies √√√√
+
+- (POST • A reply) http://localhost:3000/elabs/:elab_id/replies
+- (PATCH/PUT • A reply) http://localhost:3000/elabs/:elab_id/replies/:id
+- (DELETE • A reply) http://localhost:3000/elabs/:elab_id/replies/:id

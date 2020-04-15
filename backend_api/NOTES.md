@@ -74,13 +74,11 @@
 
 - belongs to a question
 - belongs to an elab
-- belongs to a layman
 
 ## A Downvote >
 
 - belongs to a question
 - belongs to an elab
-- belongs to a layman
 
 ====================================================================
 

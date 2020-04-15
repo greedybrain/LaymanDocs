@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_161404) do
+ActiveRecord::Schema.define(version: 2020_04_15_001455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "downvotes", force: :cascade do |t|
+    t.integer "count", default: 0
+    t.integer "question_id"
+    t.integer "layman_id"
+    t.integer "elab_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["elab_id"], name: "index_downvotes_on_elab_id"
+    t.index ["layman_id"], name: "index_downvotes_on_layman_id"
+    t.index ["question_id"], name: "index_downvotes_on_question_id"
+  end
 
   create_table "elabs", force: :cascade do |t|
     t.text "elaboration"
@@ -29,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_161404) do
     t.string "name"
     t.string "email"
     t.text "bio"
-    t.string "gender"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -44,6 +55,24 @@ ActiveRecord::Schema.define(version: 2020_04_14_161404) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "upvotes", force: :cascade do |t|
+    t.integer "count", default: 0
+    t.integer "question_id"
+    t.integer "layman_id"
+    t.integer "elab_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["elab_id"], name: "index_upvotes_on_elab_id"
+    t.index ["layman_id"], name: "index_upvotes_on_layman_id"
+    t.index ["question_id"], name: "index_upvotes_on_question_id"
+  end
+
+  add_foreign_key "downvotes", "elabs"
+  add_foreign_key "downvotes", "laymen"
+  add_foreign_key "downvotes", "questions"
   add_foreign_key "elabs", "laymen"
   add_foreign_key "elabs", "questions"
+  add_foreign_key "upvotes", "elabs"
+  add_foreign_key "upvotes", "laymen"
+  add_foreign_key "upvotes", "questions"
 end

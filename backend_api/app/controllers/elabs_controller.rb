@@ -24,7 +24,7 @@ class ElabsController < ApplicationController
           if params[:question_id]
                question = Question.find(params[:question_id])
                elab = question.elabs.build(elab_params)
-               elab.layman = Layman.find(2) # hard coded for now
+               elab.layman_id = current_opp_layman.id # hard coded for now
                if elab.save
                     render json: ElabSerializer.new(elab).serializable_hash
                else
@@ -34,8 +34,8 @@ class ElabsController < ApplicationController
      end
 
      def update 
-          marissa = Layman.find(2)  # hard coded for now
-          elab = marissa.elabs.find(params[:id])
+          # hard coded for now
+          elab = current_opp_layman.elabs.find(params[:id])
           if elab.update(elab_params)
                render json: ElabSerializer.new(elab).serializable_hash
           else
@@ -44,8 +44,7 @@ class ElabsController < ApplicationController
      end
      
      def destroy
-          marissa = Layman.find(2)
-          elab = marissa.elabs.find(params[:id]) # hard coded for now
+          elab = current_opp_layman.elabs.find(params[:id]) # hard coded for now
           if elab.destroy 
                render json: { message: "Elaboration deleted" }
           else

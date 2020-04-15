@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_022038) do
+ActiveRecord::Schema.define(version: 2020_04_15_133131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2020_04_15_022038) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.bigint "elab_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "content"
+    t.index ["elab_id"], name: "index_replies_on_elab_id"
+  end
+
   create_table "upvotes", force: :cascade do |t|
     t.integer "question_id"
     t.integer "layman_id"
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_022038) do
   add_foreign_key "downvotes", "questions"
   add_foreign_key "elabs", "laymen"
   add_foreign_key "elabs", "questions"
+  add_foreign_key "replies", "elabs"
   add_foreign_key "upvotes", "elabs"
   add_foreign_key "upvotes", "laymen"
   add_foreign_key "upvotes", "questions"

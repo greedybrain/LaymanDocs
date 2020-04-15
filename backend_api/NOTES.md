@@ -25,11 +25,11 @@
 ## Models
 
 - Layman √√√√
-- Question
-- Answer
-- Reply
-- Upvote
-- Downvote
+- Question √√√√
+- Elab √√√√
+- Reply √√√√
+- Upvote √√√√
+- Downvote √√√√
 
 ## The particulars/behaviors/associations(SCHEMA)
 
@@ -38,8 +38,8 @@
 - A question has a topic, url, pasted_info, time created √√√√
 - A elab has text, time created √√√√
 - A reply has text, time created
-- An upvote is an integer
-- A downvote is an integer
+- An upvote is an integer √√√√
+- A downvote is an integer √√√√
 
 ## A Layman > √√√√
 
@@ -53,32 +53,32 @@
 - belongs to a layman √√√√
 - has many elabs √√√√
 - has many laymans through elabs √√√√
-- has many upvotes
-- has many downvotes
-- has many laymans through votes
+- has many upvotes √√√√
+- has many downvotes √√√√
+- has many laymans through votes √√√√
 
 ## An Elab > √√√√
 
 - belongs to a question √√√√
 - belongs to a layman √√√√
 - has many replies
-- has many Upvotes
-- has many Downvotes
+- has many Upvotes √√√√
+- has many Downvotes √√√√
 
 ## A Reply >
 
 - belongs to a elab
 - belongs to a layman
 
-## A Upvote >
+## A Upvote > √√√√
 
-- belongs to a question
-- belongs to an elab
+- belongs to a question √√√√
+- belongs to an elab √√√√
 
-## A Downvote >
+## A Downvote > √√√√
 
-- belongs to a question
-- belongs to an elab
+- belongs to a question √√√√
+- belongs to an elab √√√√
 
 ====================================================================
 
@@ -108,10 +108,12 @@
 - (PATCH • An elab) http://localhost:3000/questions/:question_id/elabs/:id
 - (DELETE • An elab) http://localhost:3000/questions/:question_id/elabs/:id
 
-## Fetch links Upvotes
+## Fetch links Upvotes √√√√
 
 - (POST • A upvote) http://localhost:3000/questions/:question_id/upvotes
+- (POST • A upvote) http://localhost:3000/elabs/:elab_id/upvotes
 
-## Fetch links Downvotes
+## Fetch links Downvotes √√√√
 
-- (POST • A downvote) http://localhost:3000/questions/:question_id/upvotes
+- (POST • A downvote) http://localhost:3000/questions/:question_id/downvotes
+- (POST • A upvote) http://localhost:3000/elabs/:elab_id/downvotes

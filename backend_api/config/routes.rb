@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :laymen, except: [:new, :edit, :create, :update] do 
-    resources :questions, except: [:new, :edit] # All other CRUD under laymen
+  resources :laymen, only: %i[index show destroy] do 
+    resources :questions, except: %i[new edit] # All other CRUD under laymen
   end
 
-  resources :questions, only: [:index, :show] do 
+  resources :questions, only: %i[index show] do 
     resources :elabs # All other CRUD under questions
     resources :upvotes, only: [:create]
     resources :downvotes, only: [:create]
@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   resources :elabs, only: [] do 
     resources :upvotes, only: [:create]
     resources :downvotes, only: [:create]
+    resources :replies, only: %i[create update destroy]
   end
 
-
   # Signup, Login, and Logout routing
-  resources :sessions, except: [:create, :destroy]
+  resources :sessions, except: %i[create destroy]
   post "/signup", to: "laymen#create", as: "signup"
   post "/login", to: "sessions#create", as: "login"
   delete "/logout", to: "sessions#destroy", as: "logout"

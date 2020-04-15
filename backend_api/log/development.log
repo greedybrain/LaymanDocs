@@ -13542,3 +13542,164 @@ Processing by DownvotesController#create as */*
 Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 12.9ms | Allocations: 22041)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateReplies (20200415044520)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "replies" ("id" bigserial primary key, "reply" text, "elab_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_5aa85ed936"
+FOREIGN KEY ("elab_id")
+  REFERENCES "elabs" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_replies_on_elab_id" ON "replies"  ("elab_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200415044520"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/questions/2" for ::1 at 2020-04-15 08:58:53 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLayman Load (0.5ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:10:in `current_opp_layman'
+  [1m[36mQuestion Load (1.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "elabs" ON "questions"."id" = "elabs"."question_id" WHERE "elabs"."layman_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["layman_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:9:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "elabs"."id" FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "laymen"."id" FROM "laymen" INNER JOIN "downvotes" ON "laymen"."id" = "downvotes"."layman_id" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "upvotes"."id" FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "downvotes"."id" FROM "downvotes" WHERE "downvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+  [1m[36mUpvote Load (0.2ms)[0m  [1m[34mSELECT "upvotes".* FROM "upvotes" WHERE "upvotes"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/controllers/questions_controller.rb:10:in `show'
+Completed 200 OK in 304ms (Views: 11.4ms | ActiveRecord: 10.0ms | Allocations: 30734)
+
+
+Started GET "/routes" for ::1 at 2020-04-15 09:13:20 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/routes"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/rails/info/routes?path=l" for ::1 at 2020-04-15 09:13:32 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"l"}
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 3145)
+
+
+Started GET "/rails/info/routes?path=laym" for ::1 at 2020-04-15 09:13:35 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"laym"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 920)
+
+
+Started GET "/rails/info/routes?path=laym" for ::1 at 2020-04-15 09:13:35 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"laym"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 917)
+
+
+Started GET "/rails/info/routes?path=layman" for ::1 at 2020-04-15 09:13:36 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"layman"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 873)
+
+
+Started GET "/rails/info/routes?path=layman" for ::1 at 2020-04-15 09:13:37 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"layman"}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 871)
+
+
+Started GET "/rails/info/routes?path=layman_" for ::1 at 2020-04-15 09:13:46 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"layman_"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 874)
+
+
+Started GET "/rails/info/routes?path=layman_p" for ::1 at 2020-04-15 09:13:48 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"layman_p"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 740)
+
+
+Started GET "/rails/info/routes?path=laym" for ::1 at 2020-04-15 09:13:50 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"laym"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 921)
+
+
+Started GET "/rails/info/routes?path=layman" for ::1 at 2020-04-15 09:13:52 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"layman"}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 873)
+
+
+Started GET "/rails/info/routes?path=laym" for ::1 at 2020-04-15 09:14:07 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"laym"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 919)
+
+
+Started GET "/rails/info/routes?path=laymen" for ::1 at 2020-04-15 09:14:08 -0400
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"laymen"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 939)
+
+
+Started POST "/elabs/15/replies" for ::1 at 2020-04-15 09:19:44 -0400
+Processing by RepliesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+Completed 204 No Content in 9265ms (ActiveRecord: 0.0ms | Allocations: 7003)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveReplyFromReplies (20200415133003)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.4ms)[0m  [1m[35mALTER TABLE "replies" DROP COLUMN "reply"[0m
+  [1m[36mprimary::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200415133003"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddContentToReplies (20200415133131)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mALTER TABLE "replies" ADD "content" text[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200415133131"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7310483573709158430)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7310483573709158430)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

@@ -1,44 +1,31 @@
 class QuestionsController < ApplicationController
 
      def index
-          if params[:layman_id]
-               layman = Layman.find(params[:layman_id])
-               questions = layman.questions
-          else
-               questions = Question.all
-          end
+          questions = Question.all
           render json: QuestionSerializer.new(questions).serializable_hash
      end
 
      def show 
-          if params[:layman_id]
-               layman = Layman.find(params[:layman_id])
-               question = layman.questions.find(params[:id])
-          else
-               question = Question.find(params[:id])
-          end
+          question = current_opp_layman.questions.find(params[:id])
           render json: QuestionSerializer.new(question).serializable_hash
      end
 
      def create 
-          layman = Layman.find(params[:layman_id])
-          question = layman.questions.build(question_params)
+          question = current_layman.questions.build(question_params)
           if question.save
                render json: QuestionSerializer.new(question).serializable_hash
           end
      end
 
-     def update 
-          layman = Layman.find(params[:layman_id])
-          question = layman.questions.find(params[:id])
+     def update
+          question = current_layman.questions.find(params[:id])
           if question.update(question_params)
                render json: QuestionSerializer.new(question).serializable_hash
           end
      end
 
      def destroy 
-          layman = Layman.find(params[:layman_id])
-          question = layman.questions.find(params[:id])
+          question = current_layman.questions.find(params[:id])
           if question.destroy
                render json: { message: "Post deleted" }
           else

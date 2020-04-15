@@ -1,7 +1,7 @@
 class LaymanSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :name, :email, :bio, :gender, :questions, :elabs
+  attributes :name, :email, :bio, :questions, :elabs
   
   has_many :questions, dependent: :destroy
   has_many :elabs, dependent: :destroy

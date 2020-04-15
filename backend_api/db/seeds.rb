@@ -10,7 +10,6 @@ poster = Layman.create(
      name: "Naya Willis",
      email: "willisnaya@gmail.com",
      bio: "Just a guy who likes to code",
-     gender: "male",
      password: "password"
 )
 
@@ -18,11 +17,10 @@ responder = Layman.create(
      name: "Marissa Joseph",
      email: "marissajoseph@gmail.com",
      bio: "Just a woman who knows everything",
-     gender: "female",
      password: "password"
 )
 
-10.times do 
+15.times do 
      Question.create(
           topic: "Topic: #{Faker::Lorem.word}",
           url: Faker::Internet.url,

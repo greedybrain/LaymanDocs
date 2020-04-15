@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :downvotes, only: [:create]
   end
 
+  resources :elabs, except: [:index, :show, :new, :create, :edit, :update, :destroy] do 
+    resources :upvotes, only: [:create]
+    resources :downvotes, only: [:create]
+  end
 
 
   # Signup, Login, and Logout routing

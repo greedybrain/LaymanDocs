@@ -3,14 +3,13 @@ class LaymenController < ApplicationController
      # this renders all activity (questions and elabs)
      def index 
           laymen = Layman.all
-          # render json: laymen
-          render json: LaymanSerializer.new(laymen).serialized_json
+          render json: LaymanSerializer.new(laymen).serializable_hash
      end
 
      def show 
           # make sure to assign div a data-id
           layman = Layman.find(params[:id])
-          render json: LaymanSerializer.new(layman).serialized_json 
+          render json: LaymanSerializer.new(layman).serializable_hash
      end
 
      def create 
@@ -18,7 +17,7 @@ class LaymenController < ApplicationController
           layman = Layman.new(layman_params)
           if layman.save 
                session[:layman_id] = layman.id
-               render json: LaymanSerializer.new(layman).serialized_json
+               render json: LaymanSerializer.new(layman).serializable_hash
           else
                render json: { errors: layman.errors }
           end

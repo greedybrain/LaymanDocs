@@ -10,13 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_001455) do
+ActiveRecord::Schema.define(version: 2020_04_15_022038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "downvotes", force: :cascade do |t|
-    t.integer "count", default: 0
     t.integer "question_id"
     t.integer "layman_id"
     t.integer "elab_id"
@@ -56,7 +55,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_001455) do
   end
 
   create_table "upvotes", force: :cascade do |t|
-    t.integer "count", default: 0
     t.integer "question_id"
     t.integer "layman_id"
     t.integer "elab_id"

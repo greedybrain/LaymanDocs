@@ -1,6 +1,6 @@
 class DownvoteSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :count
+  attributes :layman_id, :elab_id 
 
   belongs_to :layman
   belongs_to :question

@@ -13335,3 +13335,210 @@ NameError (undefined local variable or method `question' for #<UpvotesController
 Did you mean?  question_url):
   
 app/controllers/upvotes_controller.rb:4:in `create'
+Started POST "/elabs/17/downvotes" for ::1 at 2020-04-14 23:50:30 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"17"}
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (1.8ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 1], ["layman_id", 1], ["elab_id", 17], ["created_at", "2020-04-15 03:50:30.787457"], ["updated_at", "2020-04-15 03:50:30.787457"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 17.0ms | Allocations: 22171)
+
+
+Started POST "/elabs/17/downvotes" for ::1 at 2020-04-14 23:50:42 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"17"}
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (0.5ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 1], ["layman_id", 1], ["elab_id", 17], ["created_at", "2020-04-15 03:50:42.039222"], ["updated_at", "2020-04-15 03:50:42.039222"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 3600)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-14 23:51:17 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.3ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.2ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (0.5ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 03:51:17.720738"], ["updated_at", "2020-04-15 03:51:17.720738"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 3600)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-14 23:51:24 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (1.0ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 03:51:24.490896"], ["updated_at", "2020-04-15 03:51:24.490896"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.1ms | Allocations: 3600)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-14 23:54:12 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.2ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (0.4ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 03:54:13.002190"], ["updated_at", "2020-04-15 03:54:13.002190"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 37ms (Views: 0.2ms | ActiveRecord: 8.4ms | Allocations: 21965)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:00:01 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (1.4ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:00:01.893723"], ["updated_at", "2020-04-15 04:00:01.893723"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 99ms (Views: 0.4ms | ActiveRecord: 3.4ms | Allocations: 21424)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:00:05 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (0.7ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:00:05.530478"], ["updated_at", "2020-04-15 04:00:05.530478"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 3601)
+
+
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:07:47 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 0.0ms | Allocations: 72476)
+
+
+  
+NameError (undefined local variable or method `question' for #<DownvotesController:0x00007fe0d582efc0>
+Did you mean?  question_url):
+  
+app/controllers/downvotes_controller.rb:4:in `create'
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:08:47 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.6ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (1.1ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:08:47.266256"], ["updated_at", "2020-04-15 04:08:47.266256"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 57ms (Views: 0.3ms | ActiveRecord: 16.9ms | Allocations: 22183)
+
+
+Started POST "/elabs/15/upvotes" for ::1 at 2020-04-15 00:09:00 -0400
+Processing by UpvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.7ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.4ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+  [1m[36mUpvote Create (2.1ms)[0m  [1m[32mINSERT INTO "upvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:09:00.379885"], ["updated_at", "2020-04-15 04:09:00.379885"]]
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 8.5ms | Allocations: 8328)
+
+
+Started POST "/elabs/15/upvotes" for ::1 at 2020-04-15 00:09:02 -0400
+Processing by UpvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (3.5ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/upvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (1.1ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+  [1m[36mUpvote Create (1.1ms)[0m  [1m[32mINSERT INTO "upvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:09:02.987597"], ["updated_at", "2020-04-15 04:09:02.987597"]]
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/upvotes_controller.rb:20:in `create'
+Completed 200 OK in 58ms (Views: 0.4ms | ActiveRecord: 6.4ms | Allocations: 3600)
+
+
+Started POST "/elabs/15/upvotes" for ::1 at 2020-04-15 00:24:19 -0400
+Processing by UpvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+Completed 404 Not Found in 12ms (ActiveRecord: 4.8ms | Allocations: 3848)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/upvotes_controller.rb:5:in `create'
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:26:38 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 137)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/downvotes_controller.rb:4:in `create'
+Started POST "/elabs/15/downvotes" for ::1 at 2020-04-15 00:27:38 -0400
+Processing by DownvotesController#create as */*
+  Parameters: {"elab_id"=>"15"}
+  [1m[36mElab Load (0.4ms)[0m  [1m[34mSELECT "elabs".* FROM "elabs" WHERE "elabs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/downvotes_controller.rb:16:in `create'
+  [1m[36mLayman Load (0.3ms)[0m  [1m[34mSELECT "laymen".* FROM "laymen" WHERE "laymen"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_layman'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[36mDownvote Create (1.2ms)[0m  [1m[32mINSERT INTO "downvotes" ("question_id", "layman_id", "elab_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["question_id", 11], ["layman_id", 1], ["elab_id", 15], ["created_at", "2020-04-15 04:27:38.316044"], ["updated_at", "2020-04-15 04:27:38.316044"]]
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/downvotes_controller.rb:20:in `create'
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 12.9ms | Allocations: 22041)
+
+

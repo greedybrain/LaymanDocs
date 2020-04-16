@@ -35,20 +35,26 @@ class ElabsController < ApplicationController
 
      def update 
           # hard coded for now
-          elab = current_opp_layman.elabs.find(params[:id])
-          if elab.update(elab_params)
-               render json: ElabSerializer.new(elab).serializable_hash
-          else
-               render json: { errors: elab.errors }
+          if params[:question_id]
+               question = Question.find(params[:question_id])
+               elab = question.elabs.find(params[:id])
+               if elab.update(elab_params)
+                    render json: ElabSerializer.new(elab).serializable_hash
+               else
+                    render json: { errors: elab.errors }
+               end
           end
      end
      
      def destroy
-          elab = current_opp_layman.elabs.find(params[:id]) # hard coded for now
-          if elab.destroy 
-               render json: { message: "Elaboration deleted" }
-          else
-               render json: { errors: elab.errors }
+          if params[:question_id]
+               question = Question.find(params[:question_id])
+               elab = question.elabs.find(params[:id])
+               if elab.destroy 
+                    render json: { message: "Elaboration deleted" }
+               else
+                    render json: { errors: elab.errors }
+               end
           end
      end
 

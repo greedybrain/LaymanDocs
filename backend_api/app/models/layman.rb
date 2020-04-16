@@ -1,6 +1,13 @@
 class Layman < ApplicationRecord
      has_secure_password
 
+     validates :name, :email, presence: true
+     validates :email, uniqueness: true, 
+     format: { 
+          with: /\A(\S+)@(.+)\.(\S+)\z/,
+          message: "Please enter a valid email"
+     }
+
      has_many :questions, dependent: :destroy
      has_many :elabs, through: :questions
      has_many :replies, through: :elabs

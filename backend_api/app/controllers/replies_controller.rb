@@ -17,11 +17,27 @@ class RepliesController < ApplicationController
           if params[:elab_id]
                elab = Elab.find(params[:elab_id])
                reply = elab.replies.find(params[:id])
-
+               if reply.layman_id == current_layman.id
+                    if reply.update(reply_params)
+                         render json: ReplySerializer.new(reply).serializable_hash
+                    else
+                         render json: { message: "It seems like this post doesn't belong to you" }
+                    end
+               end
           end
      end
 
      def destroy 
+          if params[:elab_id]
+               elab = Elab.find(params[:elab_id])
+               reply = elab.replies.find(params[:id])
+               if reply.layman == current_layman
+                    reply.destroy
+                    render json: { message: "Reply deleted" }
+               else
+                    render json: { message: "It seems like this post doesn't belong to you" }
+               end
+          end
      end
 
      private 

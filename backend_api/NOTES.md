@@ -86,8 +86,8 @@
 
 ## Fetch links Layman registration/sessions √√√√
 
-- (GET • all laymen and activity) [http://localhost:3000/laymen]
-- (GET • a laymen) [http://localhost:3000/laymen/:id]
+- (GET • all laymen and activity) [http://localhost:3000/laymen] √
+- (GET • a laymen) [http://localhost:3000/laymen/:id] √
 - (POST • create registration) [http://localhost:3000/signup]
 - (POST • create session) [http://localhost:3000/login]
 - (DELETE • destroy session) [http://localhost:3000/logout]
@@ -96,9 +96,9 @@
 
 - (GET • all questions) [http://localhost:3000/questions] √
 - (GET • a question) [http://localhost:3000/laymen/:id/questions/:id] √
-- (POST • a question) [http://localhost:3000/laymen/:id/questions]
-- (PATCH/PUT • a question) [http://localhost:3000/laymen/:id/questions/:id]
-- (DELETE • a question) [http://localhost:3000/laymen/:id/questions/:id]
+- (POST • a question) [http://localhost:3000/laymen/:id/questions] √
+- (PATCH/PUT • a question) [http://localhost:3000/laymen/:id/questions/:id] √
+- (DELETE • a question) [http://localhost:3000/laymen/:id/questions/:id] √
 
 ## Fetch links Elabs √√√√
 

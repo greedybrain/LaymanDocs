@@ -88,9 +88,9 @@
 
 - (GET • all laymen and activity) [http://localhost:3000/laymen] √
 - (GET • a laymen) [http://localhost:3000/laymen/:id] √
-- (POST • create registration) [http://localhost:3000/signup]
-- (POST • create session) [http://localhost:3000/login]
-- (DELETE • destroy session) [http://localhost:3000/logout]
+- (POST • create registration) [http://localhost:3000/signup] √
+- (POST • create session) [http://localhost:3000/login] √
+- (DELETE • destroy session) [http://localhost:3000/logout] √
 
 ## Fetch links Questions √√√√
 
@@ -180,4 +180,24 @@ Question.find_or_create_by(url: params[:url])
 <Question id: 1, url: "www.google.com", topic: nil, pasted_info: nil >
 # Then assign topic and pasted_info after/later
 
+```
+
+Get all Laymen/js
+
+```js
+fetch(`${BASEURL}/laymen`)
+  .then((res) => {
+    return res.json();
+  })
+  .then((layman) => {
+    layman.data.forEach((layman) => {
+      // debugger
+      let p = document.createElement("p");
+      layman.attributes.questions.forEach((question) => {
+        p.textContent = question.url;
+      });
+      document.body.append(p);
+    });
+  })
+  .catch((err) => console.log(err.message));
 ```

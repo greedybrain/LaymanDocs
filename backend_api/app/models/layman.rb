@@ -7,7 +7,7 @@ class Layman < ApplicationRecord
           with: /\A(\S+)@(.+)\.(\S+)\z/,
           message: "Please enter a valid email"
      }
-     validates :password, presenc: true, length: { minimum: 8 }
+     validates :password, presence: true, length: { minimum: 8 }
 
      has_many :questions, dependent: :destroy
      has_many :elabs, through: :questions

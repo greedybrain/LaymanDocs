@@ -156,3 +156,28 @@ multi_line_post = ""
 
 doesInfoProvidedByThisLink("https://guides.rubyonrails.org/getting_started.html").include?(usersPieceOfDocumentation(multi_line_post))
 ```
+
+Scraping Approach
+
+What I want done?
+
+1. When a user pastes a webpage link in the url field, I want to check if it
+   aleady exists as a value for another questions url key.
+
+```ruby
+# Question.all.select_all{|q| q.url == params[:url]}
+
+#or
+
+Question.find_or_create_by(url: params[:url])
+
+# if found (presented) =>
+
+<Question id: 1, url: "www.google.com", topic: "dogs", pasted_info: "Loere fde magogn gougaojgw bal blah">
+
+# if not found (created) =>
+
+<Question id: 1, url: "www.google.com", topic: nil, pasted_info: nil >
+# Then assign topic and pasted_info after/later
+
+```

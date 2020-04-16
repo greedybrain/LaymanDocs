@@ -15,9 +15,24 @@ class QuestionsController < ApplicationController
      end
 
      def create 
+          # getting page info then testing users pasted_info against the page info to find a match
+          # question = current_layman.questions.where(url: params[:url]).first_or_create(question_params)
           question = current_layman.questions.build(question_params)
+          
           if question.save
-               render json: QuestionSerializer.new(question).serializable_hash
+               info = Scraper.get_doc_content_by(question.url)
+               pasted_data = Scraper.get_laymans_paste_info(question.pasted_info)
+               if !pasted_data.nil?
+                    if info[:body].include?(pasted_data)
+                         render json: question
+                    else
+                         render json: { message: "The information you provided couldn't be found in the documentation." }
+                    end
+               else
+                    render json: { message: "Check the link and try again" }
+               end
+          else
+               render json: { errors: question.errors }
           end
      end
 

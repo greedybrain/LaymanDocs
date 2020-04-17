@@ -14,15 +14,25 @@ class QuestionsController < ApplicationController
           end
      end
 
-     def create 
-          # getting page info then testing users pasted_info against the page info to find a match
-          # question = current_layman.questions.where(url: params[:url]).first_or_create(question_params)
+     def scraping
           if authenticate_layman
-               question = current_layman.questions.build(question_params)
+               @question = current_layman.questions.build
+               questions_that_include_url = Question.all.collect{|q| q.url == params[:url]}
+               if questions_that_include_url.count > 0 
+                    render json: questions_that_include_url
+               else
+                    @documentation_by_url = Scraper.get_doc_content_by(params[:url])
+                    @question.url = params[:url]
+                    render json: { message: "The given url returned a document successfully!" }
+               end
+          else
+               render json: { message: "You must be logged in to do that" } 
           end
-          
+     end
+
+     def create 
           if question.save
-               info = Scraper.get_doc_content_by(question.url)
+               
                pasted_data = Scraper.get_laymans_paste_info(question.pasted_info)
                if !pasted_data.nil?
                     if info[:body].include?(pasted_data)

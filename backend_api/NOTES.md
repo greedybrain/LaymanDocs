@@ -128,6 +128,10 @@
 - (PATCH/PUT • A reply) [http://localhost:3000/elabs/:elab_id/replies/:id] √
 - (DELETE • A reply) [http://localhost:3000/elabs/:elab_id/replies/:id] √
 
+## Fetch url scrape path
+
+- (GET • Scrape results) [http://localhost:3000/validating_url]
+
 =======================================
 
 ## Scraping time

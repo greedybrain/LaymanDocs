@@ -17,7 +17,9 @@ class QuestionsController < ApplicationController
      def create 
           # getting page info then testing users pasted_info against the page info to find a match
           # question = current_layman.questions.where(url: params[:url]).first_or_create(question_params)
-          question = current_layman.questions.build(question_params)
+          if authenticate_layman
+               question = current_layman.questions.build(question_params)
+          end
           
           if question.save
                info = Scraper.get_doc_content_by(question.url)
@@ -40,13 +42,13 @@ class QuestionsController < ApplicationController
           if params[:layman_id]
                layman = Layman.find(params[:layman_id])
                question = layman.questions.find(params[:id])
-               # if question.layman_id == current_layman.id 
+               if authenticate_question(question) 
                     if question.update(question_params)
                          render json: QuestionSerializer.new(question).serializable_hash
                     else
                          render json: { message: "It seems like this post doesn't belong to you" }
                     end
-               # end
+               end
           end
      end
 
@@ -54,17 +56,19 @@ class QuestionsController < ApplicationController
           # should test against current user
           layman = Layman.find(params[:layman_id])
           question = layman.questions.find(params[:id])
-          if question.destroy
-               render json: { message: "Post deleted" }
-          else
-               render json: { message: "You must be logged in and the owner of this post to do that" }
+          if authenticate_question(question)
+               if question.destroy
+                    render json: { message: "Post deleted" }
+               else
+                    render json: { message: "You must be logged in and the owner of this post to do that" }
+               end
           end
      end
 
      private 
      
      def question_params 
-          params.permit(:topic, :url, :pasted_info)
+          params.permit(:topic, :url, :pasted_info, :layman_id)
      end
 
 end

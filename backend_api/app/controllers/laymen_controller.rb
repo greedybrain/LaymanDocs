@@ -17,7 +17,10 @@ class LaymenController < ApplicationController
           layman = Layman.new(layman_params)
           if layman.save 
                session[:layman_id] = layman.id
-               render json: LaymanSerializer.new(layman).serializable_hash
+               render json: {
+                    session: session[:layman_id],
+                    layman: LaymanSerializer.new(layman).serializable_hash
+               }
           else
                render json: { errors: layman.errors }
           end

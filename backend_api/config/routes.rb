@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :replies, only: %i[create update destroy]
   end
 
-  get '/validating_url', to: "scraping#questions", as: "validating"
+  post '/validating_url', to: "questions#validate_url", as: "validating_url"
+  post '/validating_info', to: "questions#validate_pasted_info", as: "validating_info"
 
   # Signup, Login, and Logout routing
   resources :sessions, except: %i[create destroy]

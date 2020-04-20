@@ -6,86 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# poster = Layman.create(
-#      name: "Naya Willis",
-#      email: "willisnaya@gmail.com",
-#      bio: "Just a guy who likes to code",
-#      password: "password"
-# )
 
-# movies = Layman.create([
-#      {
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"    
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-#      {
-          
-#           name: Faker::Name.name,
-#           email: Faker::Internet.email,
-#           bio: Faker::Lorem.paragraph(sentence_count: 10),
-#           password: "password"
-#      },
-# ])
 
-25.times do 
+3.times do 
      Layman.create(
           name: Faker::Name.name,
           email: Faker::Internet.email,
@@ -94,7 +17,7 @@
      )
 end
 
-15.times do 
+20.times do 
      Question.create(
           topic: Faker::Lorem.word,
           url: Faker::Internet.url,
@@ -103,38 +26,38 @@ end
      )
 end
 
-20.times do 
-     Elab.create(
-          elaboration: Faker::Lorem.paragraph(sentence_count: 5),
-          question_id: Question.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-end
+# 10.times do 
+#      Elab.create(
+#           elaboration: Faker::Lorem.paragraph(sentence_count: 5),
+#           question_id: Question.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+# end
 
-35.times do 
-     Reply.create(
-          content: Faker::Lorem.paragraph(sentence_count: 5),
-          elab_id: Elab.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-end
+# 7.times do 
+#      Reply.create(
+#           content: Faker::Lorem.paragraph(sentence_count: 5),
+#           elab_id: Elab.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+# end
 
-50.times do 
-     Upvote.create(
-          question_id: Question.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-     Upvote.create(
-          elab_id: Elab.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-     Downvote.create(
-          question_id: Question.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-     Downvote.create(
-          elab_id: Elab.all.sample.id,
-          layman_id: Layman.all.sample.id
-     )
-end
+# 50.times do 
+#      Upvote.create(
+#           question_id: Question.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+#      Upvote.create(
+#           elab_id: Elab.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+#      Downvote.create(
+#           question_id: Question.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+#      Downvote.create(
+#           elab_id: Elab.all.sample.id,
+#           layman_id: Layman.all.sample.id
+#      )
+# end
 

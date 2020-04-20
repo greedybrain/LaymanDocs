@@ -5,47 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/index.css" />
+    <script
+      src="https://kit.fontawesome.com/125c865154.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
-      <div class="logo">
+      <div class="logo-and-search">
         <h1>LaymanDocs</h1>
+        <form id="search-form">
+          <div class="input-wrapper">
+            <input
+              type="search"
+              name="search"
+              class="search"
+              placeholder="Search all of Layman Docs"
+            />
+          </div>
+        </form>
       </div>
       <div class="search-and-btns">
-        <form id="search-form">
-          <input
-            type="search"
-            name="search"
-            class="search"
-            placeholder="Search all of Layman Docs"
-          />
-        </form>
         <div class="btns">
-          <button class="signup-btn">Signup</button>
-          <button class="login-btn">Login</button>
+          <!-- <button class="signup-btn">Signup</button> -->
+          <button class="login-btn">Logout</button>
         </div>
       </div>
     </header>
 
-    <main>
-      <div class="join-form">
+    <!-- <main> -->
+    <!-- <div class="join-form">
         <form id="signup-form">
           <h2>Join Layman Docs!</h2>
           <div class="name">
             <input type="text" name="name" placeholder="Name" />
           </div>
+          <span class="name-error"></span>
           <div class="email">
             <input type="email" name="email" placeholder="Email" />
           </div>
+          <span class="email-error"></span>
           <div class="password">
             <input type="password" name="password" placeholder="Password" />
           </div>
+          <span class="pw-error"></span>
+          <br />
           <button type="submit">Sign Up</button>
         </form>
-      </div>
-    </main>
+      </div> -->
+    <!-- <div class="post-form">
+        <form id="post-form">
+          <h2>Create a Post</h2>
+          <div class="topic">
+            <input type="text" name="topic" placeholder="Topic here" />
+          </div>
+          <span class="topic-error"></span>
+          <div class="url">
+            <input type="text" name="url" placeholder="Url here" />
+          </div>
+          <span class="url-error"></span>
+          <div class="pasted-info">
+            <textarea
+              name="pasted-info"
+              id="pasted-info"
+              placeholder="Paste Here"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <span class="paste-error"></span>
+          <br />
+          <button type="submit">Create</button>
+        </form>
+      </div> -->
+    <!-- </main> -->
 
     <script src="./js/registrations/registration.js"></script>
-    <script src="./js/registrations/signup_layman.js"></script>
+    <script src="./js/posts/posts.js"></script>
+    <script src="./js/posts/post.js"></script>
   </body>
 </html>

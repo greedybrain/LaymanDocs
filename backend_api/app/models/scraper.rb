@@ -15,13 +15,29 @@ class Scraper < ApplicationRecord
                el.text
           end.join('').split(' ')
 
-          info[:title] = scraped_info.css('title').text.delete!("^\u{0000}-\u{007F}")
+          info[:title] = scraped_info.css('title').text
           info[:body] = clean_up(textCollection)
           info
      end
+
+     @@question = current_layman.questions.build
+     questions_that_include_url = Question.all.select{|q| q.url == params[:url]}
+     if questions_that_include_url.count > 0 
+          render json: {
+               message: "Related Searches",
+               posts: QuestionSerializer.new(questions_that_include_url).serializable_hash
+          }
+     else
+          @@documentation_by_url = Scraper.get_doc_content_by(params[:url])
+          binding.pry
+          @@question.url = params[:url]
+          render json: { 
+               message: @@documentation_by_url[:title]
+          }
+     end
      
-     def self.get_laymans_paste_info(laymans_post)
-          post = laymans_post.split(' ')
+     def self.get_laymans_paste_info(laymans_paste)
+          post = laymans_paste.split(' ')
           clean_up(post)
      end
 
@@ -31,10 +47,3 @@ class Scraper < ApplicationRecord
      end
 
 end
-
-
-
-
-# multi_line_post = ""
-
-# doesInfoProvidedByThisLink("https://guides.rubyonrails.org/getting_started.html").include?(usersPieceOfDocumentation(multi_line_post))

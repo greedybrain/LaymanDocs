@@ -38,13 +38,13 @@ class ElabsController < ApplicationController
           if params[:question_id]
                question = Question.find(params[:question_id])
                elab = question.elabs.find(params[:id])
-               if authenticate_elab(elab)
+               # if authenticate_elab(elab)
                     if elab.update(elab_params)
                          render json: ElabSerializer.new(elab).serializable_hash
                     else
                          render json: { errors: elab.errors }
                     end
-               end
+               # end
           end
      end
      
@@ -52,13 +52,13 @@ class ElabsController < ApplicationController
           if params[:question_id]
                question = Question.find(params[:question_id])
                elab = question.elabs.find(params[:id])
-               if authenticate_elab(elab)
+               # if authenticate_elab(elab)
                     if elab.destroy 
                          render json: { message: "Elaboration deleted" }
                     else
                          render json: { errors: elab.errors }
                     end
-               end
+               # end
           end
      end
 

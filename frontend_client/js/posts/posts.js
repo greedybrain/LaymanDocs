@@ -1,74 +1,85 @@
-document.addEventListener('DOMContentLoaded', e => {
-     document.body.append(createdPostCard())
-})
+let divWrapper = document.querySelector("div.wrapper");
 
-const createdPostCard = () => {
-     let postCard = document.createElement('div');
-     postCard.classList.add('post-card')
+document.addEventListener("DOMContentLoaded", (e) => {
+  getAllPosts();
+});
 
-     postCard.append(cardHeader(), cardBody(), cardFooter())
+const getAllPosts = () => {
+  fetch("http://localhost:3000/questions")
+    .then((res) => res.json())
+    .then((layman) => console.log(layman));
+};
 
-     return postCard
-}
+const createPostCard = (layman) => {
+  let postCard = document.createElement("div");
+  postCard.classList.add("post-card");
+  postCard.setAttribute("data-id", `${layman.id}`);
+  postCard.append(cardHeader(), cardBody(), cardFooter());
+
+  divWrapper.appendChild(postCard);
+};
 
 const cardHeader = () => {
-     let cardHeader = document.createElement('div')
-     cardHeader.classList.add('card-header')
-     let cardHeading = document.createElement('div')
-     cardHeading.classList.add('heading')
-     let topicH2 = document.createElement('h2')
-     topicH2.textContent = "Rails Guides"
-     topicH2.classList.add('topic')
-     let cardMenu = document.createElement('div')
-     cardMenu.classList.add('card-menu')
+  let cardHeader = document.createElement("div");
+  cardHeader.classList.add("card-header");
+  let cardHeading = document.createElement("div");
+  cardHeading.classList.add("heading");
+  let topicH2 = document.createElement("h2");
+  topicH2.textContent = "Rails Guides";
+  topicH2.classList.add("topic");
+  let cardMenu = document.createElement("div");
+  cardMenu.classList.add("card-menu");
 
-     cardMenu.innerHTML += `
+  cardMenu.innerHTML += `
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
-     `
-     cardHeading.append(topicH2)
-     cardHeader.append(cardHeading, cardMenu)
+     `;
+  cardHeading.append(topicH2);
+  cardHeader.append(cardHeading, cardMenu);
 
-     return cardHeader
-}
+  return cardHeader;
+};
 
 const cardBody = () => {
-     let cardBody = document.createElement('div')
-     cardBody.classList.add('card-body')
-     let bodyPara = document.createElement('p')
-     bodyPara.textContent = "This is placeholder text..."
-     bodyPara.innerHTML += `
+  let cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+  let bodyPara = document.createElement("p");
+  bodyPara.textContent = "This is placeholder text...";
+  bodyPara.innerHTML += `
           <i class="doc-icon fas fa-file-alt"></i>
-     `
-     cardBody.append(bodyPara)
+     `;
+  cardBody.append(bodyPara);
 
-     return cardBody
-}
+  return cardBody;
+};
 
 const cardFooter = () => {
-     let cardFooter = document.createElement('div')
-     cardFooter.classList.add("card-footer")
-     let postDate = document.createElement('div')
-     postDate.textContent = "This is placeholder text"
-     let votesDiv = document.createElement('div')
-     votesDiv.classList.add('votes')
-     let upVotes = document.createElement('div')
-     upVotes.classList.add('upvotes')
-     upVotes.innerHTML += `
+  let cardFooter = document.createElement("div");
+  cardFooter.classList.add("card-footer");
+  let postDate = document.createElement("div");
+  postDate.classList.add("post-date");
+  postDate.innerHTML += `
+          1 day ago •<span><a href="#"> Naya Willis</a></span>
+     `;
+  let votesDiv = document.createElement("div");
+  votesDiv.classList.add("votes");
+  let upVotes = document.createElement("div");
+  upVotes.classList.add("upvotes");
+  upVotes.innerHTML += `
           <i class="fas fa-arrow-up"></i> ${0}
-     `
-     let downVotes = document.createElement('div')
-     downVotes.classList.add('downvotes')
-     downVotes.innerHTML += `
+     `;
+  let downVotes = document.createElement("div");
+  downVotes.classList.add("downvotes");
+  downVotes.innerHTML += `
           <i class="fas fa-arrow-down"></i> ${0}
-     `
+     `;
 
-     votesDiv.append(upVotes, downVotes)
-     cardFooter.append(postDate, votesDiv)
+  votesDiv.append(upVotes, downVotes);
+  cardFooter.append(postDate, votesDiv);
 
-     return cardFooter
-}
+  return cardFooter;
+};
 
 `
 <div class="post-card">
@@ -99,4 +110,4 @@ const cardFooter = () => {
         </div>
       </div>
 </div>
-`
+`;

@@ -100,9 +100,26 @@ header .search-and-btns .btns .login-btn {
   font-size: 1rem;
 }
 
-.post-card {
-  width: 450px;
-  margin: 30px 30px;
+div.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 50px 0;
+}
+
+div.wrapper div.post-form {
+  border: 1px solid #333;
+  width: 400px;
+}
+
+div.wrapper .post-card {
+  width: 500px;
   border-radius: 5px;
   -webkit-box-shadow: 1px 6px 23px 0px #bababa;
   box-shadow: 1px 6px 23px 0px #bababa;
@@ -110,7 +127,7 @@ header .search-and-btns .btns .login-btn {
   border: 1px solid #c9c9c9;
 }
 
-.post-card .card-header {
+div.wrapper .post-card .card-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,30 +143,30 @@ header .search-and-btns .btns .login-btn {
   border-top-right-radius: 5px;
 }
 
-.post-card .card-header h2 {
+div.wrapper .post-card .card-header h2 {
   color: #5c5c5c;
   cursor: pointer;
 }
 
-.post-card .card-header h2:hover {
+div.wrapper .post-card .card-header h2:hover {
   color: #8b8b8b;
 }
 
-.post-card .card-header .card-menu {
+div.wrapper .post-card .card-header .card-menu {
   cursor: pointer;
 }
 
-.post-card .card-header .card-menu .dot {
+div.wrapper .post-card .card-header .card-menu .dot {
   border: 2px solid #5c5c5c;
   border-radius: 50px;
   margin: 0 0 3px 0;
 }
 
-.post-card .card-header .card-menu .dot:hover {
+div.wrapper .post-card .card-header .card-menu .dot:hover {
   color: #8b8b8b;
 }
 
-.post-card .card-body p {
+div.wrapper .post-card .card-body p {
   padding: 10px 20px;
   border-bottom: 1px solid #c9c9c9;
   min-height: 125px;
@@ -158,16 +175,16 @@ header .search-and-btns .btns .login-btn {
   line-height: 1.4;
 }
 
-.post-card .card-body p i {
+div.wrapper .post-card .card-body p i {
   font-size: 1.2rem;
   cursor: pointer;
 }
 
-.post-card .card-body p i:hover {
+div.wrapper .post-card .card-body p i:hover {
   color: #8b8b8b;
 }
 
-.post-card .card-footer {
+div.wrapper .post-card .card-footer {
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -180,48 +197,34 @@ header .search-and-btns .btns .login-btn {
           justify-content: space-between;
 }
 
-.post-card .card-footer .post-date {
+div.wrapper .post-card .card-footer .post-date {
   font-size: .8rem;
 }
 
-.post-card .card-footer .votes {
+div.wrapper .post-card .card-footer .votes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.post-card .card-footer .votes i {
+div.wrapper .post-card .card-footer .votes i {
   color: #5c5c5c;
 }
 
-.post-card .card-footer .votes i:hover {
+div.wrapper .post-card .card-footer .votes i:hover {
   color: #8b8b8b;
 }
 
-.post-card .card-footer .votes .upvotes {
+div.wrapper .post-card .card-footer .votes .upvotes {
   margin-right: 20px;
 }
 
-.post-card .card-footer .votes .upvotes i {
+div.wrapper .post-card .card-footer .votes .upvotes i {
   cursor: pointer;
 }
 
-.post-card .card-footer .votes .downvotes i {
+div.wrapper .post-card .card-footer .votes .downvotes i {
   cursor: pointer;
-}
-
-main {
-  width: 100%;
-  height: 90vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .join-form {

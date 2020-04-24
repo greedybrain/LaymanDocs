@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
-     include CurrentLaymanConcern
 
+     include CurrentLaymanConcern
+     
      def logged_in
 
           if @current_layman

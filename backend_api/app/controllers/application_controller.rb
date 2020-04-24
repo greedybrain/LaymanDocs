@@ -1,17 +1,9 @@
 class ApplicationController < ActionController::API
      include AbstractController::Helpers
-     
+
      skip_before_action :verify_authenticity_token
      
-     # helper_method :current_layman, :current_opp_layman, :authenticate_elab, :authenticate_question, :authenticate_layman, :authenticate_reply
-
-     def current_layman
-          @current_layman = Layman.find(Layman.all.sample.id)
-     end
-
-     def random_layman
-          @current_opp_layman = Layman.find(Layman.all.sample.id)
-     end
+     # helper_method :set_current_layman
 
      # def authenticate_layman
      #      current_layman && session[:layman_id]

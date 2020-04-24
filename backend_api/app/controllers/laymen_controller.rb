@@ -22,7 +22,10 @@ class LaymenController < ApplicationController
                     layman: LaymanSerializer.new(layman).serializable_hash
                }
           else
-               render json: { errors: layman.errors }
+               render json: { 
+                    errors: layman.errors,
+                    status: 500
+               }
           end
      end
 

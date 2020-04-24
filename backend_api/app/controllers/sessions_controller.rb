@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
      
      def logged_in
           if @current_layman
-               session[:layman_id] = layman.id
                render json: {
                     logged_in: true,
                     layman: LaymanSerializer.new(@current_layman).serializable_hash

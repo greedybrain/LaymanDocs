@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
      include AbstractController::Helpers
 
-     skip_before_action :verify_authenticity_token
+     # skip_before_action :verify_authenticity_token
      
      # helper_method :set_current_layman
 

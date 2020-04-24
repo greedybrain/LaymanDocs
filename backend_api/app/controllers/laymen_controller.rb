@@ -15,14 +15,14 @@ class LaymenController < ApplicationController
      def create 
           # send signup request through form in html 
           layman = Layman.new(layman_params)
-          if layman.save 
+          if layman.save
                session[:layman_id] = layman.id
                render json: {
-                    session: session[:layman_id],
+                    status: :created,
                     layman: LaymanSerializer.new(layman).serializable_hash
                }
           else
-               render json: { 
+               render json: {  
                     errors: layman.errors,
                     status: 500
                }
@@ -32,7 +32,7 @@ class LaymenController < ApplicationController
      private 
 
      def layman_params
-          params.permit(:name, :email, :password, :bio, :gender)
+          params.permit(:name, :email, :password)
      end
 
 end

@@ -1,9 +1,22 @@
 class SessionsController < ApplicationController
 
      include CurrentLaymanConcern
+
+     def create 
+          layman = Layman.find_by(email: params[:email])
+          if layman&.authenticate(params[:password])
+            session[:layman_id] = layman.id 
+            render json: {
+                 status: :created,
+                 logged_in: true,
+                 layman: LaymanSerializer.new(layman).serializable_hash 
+            }   
+          else
+               render json: { status: 401 }
+          end
+     end
      
      def logged_in
-
           if @current_layman
                session[:layman_id] = layman.id
                render json: {

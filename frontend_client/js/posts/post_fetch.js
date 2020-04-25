@@ -12,7 +12,7 @@ class PostFetch {
                },
                body: JSON.stringify(data)
           }
-          return fetch("http://localhost:3000/validating_url", options)
+          fetch("http://localhost:3000/validating_url", options)
                .then(res => res.json())
                .then(data => console.log(data))
                .catch(err => err.message)
@@ -30,7 +30,7 @@ class PostFetch {
                },
                body: JSON.stringify(data)
           }
-          return fetch("http://localhost:3000/validating_info", options)
+          fetch("http://localhost:3000/validating_info", options)
                .then(res => res.json())
                .then(data => console.log(data))
                .catch(err => err.message)

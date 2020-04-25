@@ -1,6 +1,6 @@
 let pf = new PostFetch();
 
-class PostEvents {
+class PostEvent {
      constructor(urlField, pasteInfoField) {
           this.urlField = urlField
           this.pasteInfoField = pasteInfoField
@@ -8,15 +8,18 @@ class PostEvents {
 
      handleUrlPasteEvent() {
           this.urlField = document.querySelector("input[name=url]")
-
           this.urlField.addEventListener('paste', e => {
-               pf.getUrlData(this.urlField.value)
+               setTimeout(() => {
+                    pf.getUrlData(this.urlField.value)
+               }, 0);
           })
      }
      handlePastedInfoEvent() {
-          this.pasteInfoField = document.querySelector("input[name=pasted-info]")
+          this.pasteInfoField = document.querySelector("textarea[name=pasted-info]")
           this.pasteInfoField.addEventListener('paste', e => {
-               pf.getPasteData(this.pasteInfoField.value)
+               setTimeout(() => {
+                    pf.getPasteData(this.pasteInfoField.value)
+               }, 0);
           })
      }
 }

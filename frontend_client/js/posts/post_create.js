@@ -1,3 +1,19 @@
+const BASE_URL = "http://localhost:3000/"
+const ALL_QUESTIONS = "questions"
+const SIGNUP = "signup"
+const LOGIN = "login"
+const LOGOUT = "logout"
+const VALIDATING_URL = "validating_url"
+const VALIDATING_INFO = "validating_info"
+
+let form = document.querySelector("form#post-form")
+let topicField = document.querySelector("input[name=topic]")
+let topicValue = topicField.value
+let urlField = document.querySelector("input[name=url]")
+let urlValue = urlField.value
+let pasteInfoField = document.querySelector("textarea[name=pasted-info]")
+let pasteInfoValue = pasteInfoField.value
+
 class Post {
   constructor(topic, url, pasteInfo) {
     this.topic = topic
@@ -54,13 +70,26 @@ Post.prototype.createCard = function () {
   return cardDiv
 }
 
-let form = document.querySelector("form#post-form")
-let topicField = document.querySelector("input[name=topic]")
-let topicValue = topicField.value
-let urlField = document.querySelector("input[name=url]")
-let urlValue = urlField.value
-let pasteInfoField = document.querySelector("textarea[name=pasted-info]")
-let pasteInfoValue = pasteInfoField.value
+class Fetch {
+  static getAllPosts() {
+    let options = {
+      headers: {
+        "Content-Type": "application/json",
+        "ACCEPT": "application/json",
+      }
+    }
 
-const newPost = new Post(topicValue, urlValue, pasteInfoValue)
-alert(newPost.topicValue)
+    return fetch(`${BASE_URL}`, options)
+      .then(res => res.json())
+      .then(text => console.log(text))
+      .catch(err => err.message)
+  }
+
+  // Should happen upon paste
+
+}
+
+// Should happen upon submit 
+// const newPost = new Post(topicValue, urlValue, pasteInfoValue)
+
+console.log(Fetch.getAllPosts())

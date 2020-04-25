@@ -130,7 +130,8 @@
 
 ## Fetch url scrape path
 
-- (GET • Scrape results) [http://localhost:3000/validating_url]
+- (POST • Scrape url info) [http://localhost:3000/validating_url]
+- (POST • Scrape info results) [http://localhost:3000/validating_info]
 
 =======================================
 

@@ -3,14 +3,14 @@ class QuestionsController < ApplicationController
 
      def index
           questions = Question.all
-          render json: QuestionSerializer.new(questions).serialized_json
+          render json: QuestionSerializer.new(questions).serializable_hash
      end
 
      def show 
           if params[:layman_id ]
                layman = Layman.find(params[:layman_id])
                @question = layman.questions.find(params[:id])
-               render json: QuestionSerializer.new(@question).serialized_json
+               render json: QuestionSerializer.new(@question).serializable_hash
           end
      end
 
@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
                if questions_that_include_url.count > 0 
                     render json: {
                          message: "Related Searches",
-                         posts: QuestionSerializer.new(questions_that_include_url).serialized_json
+                         posts: QuestionSerializer.new(questions_that_include_url).serializable_hash
                     }
                else
                     @@documentation_by_url = Question.get_doc_content_by(params[:url])
@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
                if questions_that_include_pasted_info.count > 0
                     render json: {
                          message: "Found related searches",
-                         post: QuestionSerializer.new(questions_that_include_pasted_info).serialized_json
+                         post: QuestionSerializer.new(questions_that_include_pasted_info).serializable_hash
                     }
                else
                     pasted_data = Question.get_laymans_paste_info(params[:pasteInfo])
@@ -68,7 +68,7 @@ class QuestionsController < ApplicationController
      def create
           @@question.topic = params[:topic]
           if @@question.save
-               render json: QuestionSerializer.new(@@question).serialized_json
+               render json: QuestionSerializer.new(@@question).serializable_hash
           else
                render json: { errors: @@question.errors }
           end
@@ -80,7 +80,7 @@ class QuestionsController < ApplicationController
                question = layman.questions.find(params[:id])
                # if authenticate_question(question) 
                     if question.update(question_params)
-                         render json: QuestionSerializer.new(question).serialized_json
+                         render json: QuestionSerializer.new(question).serializable_hash
                     else
                          render json: { message: "It seems like this post doesn't belong to you" }
                     end

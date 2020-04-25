@@ -4,7 +4,7 @@ class Post {
     this.url = url
     this.pasteInfo = pasteInfo
   }
-  createHeader() {
+  createCardHeader() {
     // top level parent elements 
     const headerDiv = document.createElement('div')
     headerDiv.classList.add("card-header")
@@ -28,10 +28,10 @@ class Post {
     }
 
     headerDiv.append(topicWrapperDiv, menuWrapperDiv)
-    return headerDiv
+    console.log(headerDiv)
   }
 
-  createBody() {
+  createCardBody() {
     const bodyDiv = document.createElement('div')
     bodyDiv.classList.add("card-body")
     const bodyContentPtag = document.createElement('p')

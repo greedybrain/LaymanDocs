@@ -1,3 +1,4 @@
+// Post event handlers 
 class PostEvents {
      constructor(urlField, pasteInfoField) {
           this.urlField = document.querySelector("input[name=url]")
@@ -5,7 +6,7 @@ class PostEvents {
      }
      get handleUrlPasteEvent() {
           this.urlField.addEventListener('paste', e => {
-
+               PostFetch.
           })
      }
 }

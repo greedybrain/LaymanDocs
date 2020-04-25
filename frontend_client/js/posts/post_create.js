@@ -31,7 +31,3 @@ class Post {
     return headerDiv
   }
 }
-
-let new_post = new Post("Rails", "http://www.google.com", "Nice work Johnny")
-
-new_post.createHeader()

@@ -54,6 +54,4 @@ Post.prototype.createCard = function () {
   return cardDiv
 }
 
-let new_post = new Post("Rails Api", "https://www.rails.org", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, laboriosam reprehenderit!")
-
-console.log(new_post)
+// let new_post = new Post("Rails Api", "https://www.rails.org", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, laboriosam reprehenderit!")

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
           pasteInfoField.value
      )
 
-     const newPostEvent = new PostEvent(urlField, pasteInfoField)
+     const newPostEvent = new PostEvent()
      newPostEvent.handleUrlPasteEvent()
      newPostEvent.handlePastedInfoEvent()
 

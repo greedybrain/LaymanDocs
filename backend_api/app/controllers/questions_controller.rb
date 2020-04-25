@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
 
      def validate_url
           # if authenticate_layman
-               @@question = current_layman.questions.build
+               @@question = Layman.all.sample.questions.build
                questions_that_include_url = Question.all.select{|q| q.url == params[:url]}
                if questions_that_include_url.count > 0 
                     render json: {
@@ -45,6 +45,7 @@ class QuestionsController < ApplicationController
                     }
                else
                     pasted_data = Question.get_laymans_paste_info(params[:pasted_info])
+                    binding.pry
                     if !pasted_data.nil?
                          if @@documentation_by_url[:body].include?(pasted_data)
                               @@question.pasted_info = params[:pasted_info]

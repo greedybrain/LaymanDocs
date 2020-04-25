@@ -12,7 +12,6 @@
      Layman.create(
           name: Faker::Name.name,
           email: Faker::Internet.email,
-          bio: Faker::Lorem.paragraph(sentence_count: 10),
           password: "password"
      )
 end

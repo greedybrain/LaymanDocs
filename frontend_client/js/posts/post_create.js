@@ -16,7 +16,7 @@ Post.prototype.createCardHeader = function () {
 
   const headerTopicH2tag = document.createElement('h2')
   const topicContentAtag = document.createElement('a')
-  topicContentAtag.textContent = this.topic
+  topicContentAtag.textContent = `${this.topic}`
   topicContentAtag.setAttribute('href', `${this.url}`)
   headerTopicH2tag.appendChild(topicContentAtag)
 
@@ -53,3 +53,14 @@ Post.prototype.createCard = function () {
 
   return cardDiv
 }
+
+let form = document.querySelector("form#post-form")
+let topicField = document.querySelector("input[name=topic]")
+let topicValue = topicField.value
+let urlField = document.querySelector("input[name=url]")
+let urlValue = urlField.value
+let pasteInfoField = document.querySelector("textarea[name=pasted-info]")
+let pasteInfoValue = pasteInfoField.value
+
+const newPost = new Post(topicValue, urlValue, pasteInfoValue)
+alert(newPost.topicValue)

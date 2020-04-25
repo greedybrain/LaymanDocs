@@ -1,23 +1,20 @@
-let pf = new PostFetch();
+// let pf = new PostFetch();
+// let urlField = document.querySelector("input[name=url]")
+// let pasteInfoField = document.querySelector("textarea[name=pasted-info]")
 
-class PostEvent {
-     constructor() {
-          this.urlField = document.querySelector("input[name=url]")
-          this.pasteInfoField = document.querySelector("textarea[name=pasted-info]")
-     }
-
-     handleUrlPasteEvent() {
-          this.urlField.addEventListener('paste', e => {
-               setTimeout(() => {
-                    pf.getUrlData(this.urlField.value)
-               }, 0);
-          })
-     }
-     handlePastedInfoEvent() {
-          this.pasteInfoField.addEventListener('paste', e => {
-               setTimeout(() => {
-                    pf.getPasteData(this.pasteInfoField.value)
-               }, 0);
-          })
-     }
-}
+// class PostEvent {
+//      handleUrlPasteEvent(url) {
+//           urlField.addEventListener('paste', () => {
+//                setTimeout(() => {
+//                     pf.getUrlData(url)
+//                }, 0);
+//           })
+//      }
+//      handlePastedInfoEvent(pasteInfo) {
+//           pasteInfoField.addEventListener('paste', () => {
+//                setTimeout(() => {
+//                     pf.getPasteData(pasteInfo)
+//                }, 0);
+//           })
+//      }
+// }

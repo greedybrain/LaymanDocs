@@ -1,3 +1,3 @@
-let new_post = new Post("Rails Api", "https://www.rails.org", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, laboriosam reprehenderit!")
+document.addEventListener("DOMContentLoaded", () => {
 
-alert(new_post.createCard().innerHTML)
+})

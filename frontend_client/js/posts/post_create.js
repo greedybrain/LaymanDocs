@@ -30,4 +30,15 @@ class Post {
     headerDiv.append(topicWrapperDiv, menuWrapperDiv)
     return headerDiv
   }
+
+  createBody() {
+    const bodyDiv = document.createElement('div')
+    bodyDiv.classList.add("card-body")
+    const bodyContentPtag = document.createElement('p')
+    bodyContentPtag.classList.add("body-content")
+    bodyContentPtag.textContent = this.pasteInfo
+    bodyDiv.appendChild(bodyContentPtag)
+
+    console.log(bodyDiv)
+  }
 }

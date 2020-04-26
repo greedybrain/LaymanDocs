@@ -6,14 +6,16 @@ const LOGOUT = "logout"
 const VALIDATING_URL = "validating_url"
 const VALIDATING_INFO = "validating_info"
 
-let form = document.querySelector("form#post-form")
-let topicField = document.querySelector("input[name=topic]")
-let topicValue = topicField.value
-let urlField = document.querySelector("input[name=url]")
-let urlValue = urlField.value
-let pasteInfoField = document.querySelector("textarea[name=pasted-info]")
-let pasteInfoValue = pasteInfoField.value
+const body = document.body
+const form = document.querySelector("form#post-form")
+const topicField = document.querySelector("input[name=topic]")
+const topicValue = topicField.value
+const urlField = document.querySelector("input[name=url]")
+const urlValue = urlField.value
+const pasteInfoField = document.querySelector("textarea[name=pasted-info]")
+const pasteInfoValue = pasteInfoField.value
 
+// POST CLASS STARTS HERE 
 class Post {
   constructor(topic, url, pasteInfo) {
     this.topic = topic
@@ -54,7 +56,7 @@ Post.prototype.createCardBody = function () {
   bodyDiv.classList.add("card-body")
   const bodyContentPtag = document.createElement('p')
   bodyContentPtag.classList.add("body-content")
-  bodyContentPtag.textContent = this.pasteInfo
+  bodyContentPtag.textContent = `${this.pasteInfo}`
   bodyDiv.appendChild(bodyContentPtag)
 
   return bodyDiv
@@ -69,27 +71,59 @@ Post.prototype.createCard = function () {
 
   return cardDiv
 }
+// POST CLASS ENDS HERE 
 
+// FETCH CLASS STARTS HERE 
 class Fetch {
   static getAllPosts() {
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        "ACCEPT": "application/json",
-      }
-    }
-
-    return fetch(`${BASE_URL}`, options)
+    fetch(`${BASE_URL}${ALL_QUESTIONS}`)
       .then(res => res.json())
-      .then(text => console.log(text))
+      .then(posts => {
+        posts.data.forEach(post => {
+          const newPost = new Post(
+            post.attributes.topic,
+            post.attributes.url,
+            post.attributes.pasteInfo
+          )
+          newPost.createCardHeader()
+          newPost.createCardBody()
+          const createdCard = newPost.createCard()
+          body.appendChild(createdCard)
+        })
+      })
       .catch(err => err.message)
   }
 
   // Should happen upon paste
+  static getUrlData() {
+    let data = {
+      url: urlValue,
+    }
+
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+    fetch(`${BASE_URL}${VALIDATING_URL}`, options)
+      .then(res => res.json())
+      .then(post => console.log(post))
+      .catch(err => err.message)
+  }
+}
+// FETCH CLASS ENDS HERE 
+
+// EVENT STARTS HERE 
+class Event {
 
 }
+// EVENT ENDS HERE 
 
 // Should happen upon submit 
 // const newPost = new Post(topicValue, urlValue, pasteInfoValue)
 
-console.log(Fetch.getAllPosts())
+// Fetch.getAllPosts()
+Fetch.getUrlData()

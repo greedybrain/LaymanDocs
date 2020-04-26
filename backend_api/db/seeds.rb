@@ -7,21 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-3.times do 
-     Layman.create(
-          name: Faker::Name.name,
-          email: Faker::Internet.email,
-          password: "password"
-     )
-end
+Layman.create(
+     name: Faker::Name.name,
+     email: Faker::Internet.email,
+     password: "password"
+)
 
 20.times do 
      Question.create(
           topic: Faker::Lorem.word,
           url: Faker::Internet.url,
           pasted_info: Faker::Lorem.paragraph(sentence_count: 10),
-          layman_id: Layman.all.sample.id
+          layman_id: 1
      )
 end
 

@@ -7,7 +7,7 @@ class UpvotesController < ApplicationController
                upvote = question.upvotes.build
                upvote.layman_id = current_layman.id 
                if upvote.save
-                    render json: UpvoteSerializer.new(upvote).serialized_json
+                    render json: UpvoteSerializer.new(upvote).serializable_hash
                else
                     render json: { erros: upvote.errors }
                end
@@ -18,7 +18,7 @@ class UpvotesController < ApplicationController
                upvote.layman_id = current_layman.id 
                upvote.question_id = elab.question_id
                if upvote.save
-                    render json: UpvoteSerializer.new(upvote).serialized_json
+                    render json: UpvoteSerializer.new(upvote).serializable_hash
                else
                     render json: { erros: upvote.errors }
                end

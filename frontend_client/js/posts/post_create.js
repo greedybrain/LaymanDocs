@@ -36,6 +36,7 @@ Post.prototype.createCardHeader = function () {
   const topicContentAtag = document.createElement('a')
   topicContentAtag.textContent = `${this.topic}`
   topicContentAtag.setAttribute('href', `${this.url}`)
+  topicContentAtag.setAttribute('target', "_blank")
   headerTopicH2tag.appendChild(topicContentAtag)
 
   topicWrapperDiv.appendChild(headerTopicH2tag)
@@ -108,7 +109,29 @@ class Fetch {
       },
       body: JSON.stringify(data)
     }
+
     fetch(`${BASE_URL}${VALIDATING_URL}`, options)
+      .then(res => res.json())
+      .then(post => console.log(post))
+      .catch(err => err.message)
+  }
+
+  // Should happen upon paste
+  static getPasteData() {
+    let data = {
+      pasteInfo: "Whether you prefer a more theoretical or a practical approach, we hope you’ll find this section helpful.",
+    }
+
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+
+    fetch(`${BASE_URL}${VALIDATING_INFO}`, options)
       .then(res => res.json())
       .then(post => console.log(post))
       .catch(err => err.message)
@@ -118,12 +141,21 @@ class Fetch {
 
 // EVENT STARTS HERE 
 class Event {
-
+  constructor() {
+    this.field = urlField
+  }
+  handleUrlFetchEvent() {
+    this.field.addEventListener('paste', () => {
+      Fetch.getUrlData()
+    })
+  }
 }
 // EVENT ENDS HERE 
 
-// Should happen upon submit 
-// const newPost = new Post(topicValue, urlValue, pasteInfoValue)
-
+let activate = new Event()
+activate.handleUrlFetchEvent()
 // Fetch.getAllPosts()
-Fetch.getUrlData()
+// Fetch.getPasteData()
+
+// Should happen upon submit
+// const newPost = new Post(topicValue, urlValue, pasteInfoValue)

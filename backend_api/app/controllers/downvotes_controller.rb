@@ -7,7 +7,7 @@ class DownvotesController < ApplicationController
                downvote = question.downvotes.build
                downvote.layman_id = current_layman.id 
                if downvote.save
-                    render json: DownvoteSerializer.new(downvote).serialized_json
+                    render json: DownvoteSerializer.new(downvote).serializable_hash
                else
                     render json: { erros: downvote.errors }
                end
@@ -18,7 +18,7 @@ class DownvotesController < ApplicationController
                downvote.layman_id = current_layman.id 
                downvote.question_id = elab.question_id
                if downvote.save
-                    render json: DownvoteSerializer.new(downvote).serialized_json
+                    render json: DownvoteSerializer.new(downvote).serializable_hash
                else
                     render json: { erros: downvote.errors }
                end

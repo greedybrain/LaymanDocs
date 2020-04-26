@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
      def validate_pasted_info 
           # if authenticate_layman
                questions_that_include_pasted_info = Question.all.select do |q| 
-                    q.pasted_info == params[:pasteInfo]
+                    q.pasted_info == params[:pasted_info]
                end
                if questions_that_include_pasted_info.count > 0
                     render json: {
@@ -104,7 +104,7 @@ class QuestionsController < ApplicationController
      private 
      
      def question_params 
-          params.permit(:topic, :url, :pasted_info)
+          params.require(:question).permit(:topic, :url, :pasted_info)
      end
 
 end

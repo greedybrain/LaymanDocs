@@ -12,12 +12,14 @@ const topicField = document.querySelector("input[name=topic]")
 let urlField = document.querySelector("input[name=url]")
 const pasteInfoField = document.querySelector("textarea[name=pasted-info]")
 
+
+
 // POST CLASS STARTS HERE 
-
-
 class Post {
 
-  constructor(topic, url, pasteInfo) {
+  constructor(id, laymanId, topic, url, pasteInfo) {
+    this.id = id
+    this.laymanId = laymanId
     this.topic = topic
     this.url = url
     this.pasteInfo = pasteInfo
@@ -69,6 +71,8 @@ Post.prototype.createCardBody = function () {
 Post.prototype.createCard = function () {
   const cardDiv = document.createElement('div')
   cardDiv.classList.add('post-card')
+  cardDiv.setAttribute('data-post-id', `${this.id}`)
+  cardDiv.setAttribute('data-layman-id', `${this.laymanId}`)
   const header = this.createCardHeader()
   const body = this.createCardBody()
   cardDiv.append(header, body)
@@ -76,139 +80,3 @@ Post.prototype.createCard = function () {
   return cardDiv
 }
 // POST CLASS ENDS HERE 
-
-// FETCH CLASS STARTS HERE 
-class Fetch {
-  static getAllPosts() {
-    fetch(`${BASE_URL}${ALL_QUESTIONS}`)
-      .then(res => res.json())
-      .then(posts => {
-        posts.data.forEach(post => {
-          if (!(Post.all.includes(post))) {
-            const newPost = new Post(
-              post.attributes.topic,
-              post.attributes.url,
-              post.attributes.pasteInfo
-            )
-            newPost.createCardHeader()
-            newPost.createCardBody()
-            body.appendChild(newPost.createCard())
-          }
-        })
-      })
-      .catch(err => err.message)
-  }
-
-  // Should happen upon paste
-  static getUrlData() {
-    let data = {
-      url: urlField.value,
-    }
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data)
-    }
-
-    fetch(`${BASE_URL}${VALIDATING_URL}`, options)
-      .then(res => res.json())
-      .then(post => console.log(post))
-      .catch(err => err.message)
-  }
-
-  // Should happen upon paste
-  static getPasteData() {
-    let data = {
-      pasteInfo: pasteInfoField.value,
-    }
-
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data)
-    }
-
-    fetch(`${BASE_URL}${VALIDATING_INFO}`, options)
-      .then(res => res.json())
-      .then(post => console.log(post))
-      .catch(err => err.message)
-  }
-
-  static submitAPost() {
-    let data = {
-      topic: topicField.value,
-      url: urlField.value,
-      pasteInfo: pasteInfoField.value,
-    }
-
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data)
-    }
-
-    fetch(`${BASE_URL}/laymen/1/questions`, options)
-      .then(res => res.json())
-      .then(post => {
-        const newPost = new Post(
-          post.data.attributes.topic,
-          post.data.attributes.url,
-          post.data.attributes.pasteInfo
-        )
-        newPost.createCardHeader()
-        newPost.createCardBody()
-        body.appendChild(newPost.createCard())
-      })
-      .catch(err => err.message)
-  }
-}
-// FETCH CLASS ENDS HERE 
-
-// Should happen upon submit
-// const newPost = new Post(topicValue, urlValue, pasteInfoValue)
-
-// EVENT STARTS HERE 
-class PostEvent {
-  static handleUrlFetchEvent() {
-    urlField.addEventListener("paste", e => {
-      setTimeout(() => {
-        Fetch.getUrlData()
-      }, 0)
-    })
-  }
-
-  static handlePasteInfoFetchEvent() {
-    pasteInfoField.addEventListener("paste", e => {
-      setTimeout(() => {
-        Fetch.getPasteData()
-      }, 0)
-    })
-  }
-
-  static handleFormSubmitEvent() {
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      setTimeout(() => {
-        Fetch.submitAPost()
-        form.reset()
-      }, 0)
-    })
-
-  }
-}
-// EVENT ENDS HERE 
-
-// ALL TOGETHER
-Fetch.getAllPosts()
-PostEvent.handleUrlFetchEvent()
-PostEvent.handlePasteInfoFetchEvent()
-PostEvent.handleFormSubmitEvent()

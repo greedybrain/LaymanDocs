@@ -1,15 +1,15 @@
-// let form = document.querySelector("form#post-form")
-// let topicField = document.querySelector("input[name=topic]")
-// let currUrlField = document.querySelector("input[name=url]")
-// let currPasteInfoField = document.querySelector("textarea[name=pasted-info]")
+document.addEventListener("DOMContentLoaded", () => {
+     app.start()
+})
 
-// document.addEventListener("DOMContentLoaded", () => {
-//      let newPost = new Post(
-//           topicField.value,
-//           urlField.value,
-//           pasteInfoField.value
-//      )
+class App {
+     start() {
+          // ALL TOGETHER
+          Fetch.getAllPosts()
+          PostEvent.handleUrlFetchEvent()
+          PostEvent.handlePasteInfoFetchEvent()
+          PostEvent.handleFormSubmitEvent()
+     }
+}
 
-//      let newEvent = new PostEvent()
-//      newEvent.handleUrlPasteEvent(newPost)
-// })
+const app = new App()

@@ -9,19 +9,22 @@ const VALIDATING_INFO = "validating_info"
 const body = document.body
 const form = document.querySelector("form#post-form")
 const topicField = document.querySelector("input[name=topic]")
-const topicValue = topicField.value
-const urlField = document.querySelector("input[name=url]")
-const urlValue = urlField.value
+let urlField = document.querySelector("input[name=url]")
 const pasteInfoField = document.querySelector("textarea[name=pasted-info]")
-const pasteInfoValue = pasteInfoField.value
 
 // POST CLASS STARTS HERE 
+
+
 class Post {
+
   constructor(topic, url, pasteInfo) {
     this.topic = topic
     this.url = url
     this.pasteInfo = pasteInfo
+    this.constructor.all.push(this)
   }
+
+  static all = []
 }
 
 Post.prototype.createCardHeader = function () {
@@ -81,15 +84,16 @@ class Fetch {
       .then(res => res.json())
       .then(posts => {
         posts.data.forEach(post => {
-          const newPost = new Post(
-            post.attributes.topic,
-            post.attributes.url,
-            post.attributes.pasteInfo
-          )
-          newPost.createCardHeader()
-          newPost.createCardBody()
-          const createdCard = newPost.createCard()
-          body.appendChild(createdCard)
+          if (!(Post.all.includes(post))) {
+            const newPost = new Post(
+              post.attributes.topic,
+              post.attributes.url,
+              post.attributes.pasteInfo
+            )
+            newPost.createCardHeader()
+            newPost.createCardBody()
+            body.appendChild(newPost.createCard())
+          }
         })
       })
       .catch(err => err.message)
@@ -98,9 +102,8 @@ class Fetch {
   // Should happen upon paste
   static getUrlData() {
     let data = {
-      url: urlValue,
+      url: urlField.value,
     }
-
     let options = {
       method: "POST",
       headers: {
@@ -119,7 +122,7 @@ class Fetch {
   // Should happen upon paste
   static getPasteData() {
     let data = {
-      pasteInfo: "Whether you prefer a more theoretical or a practical approach, we hope you’ll find this section helpful.",
+      pasteInfo: pasteInfoField.value,
     }
 
     let options = {
@@ -136,26 +139,76 @@ class Fetch {
       .then(post => console.log(post))
       .catch(err => err.message)
   }
+
+  static submitAPost() {
+    let data = {
+      topic: topicField.value,
+      url: urlField.value,
+      pasteInfo: pasteInfoField.value,
+    }
+
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+
+    fetch(`${BASE_URL}/laymen/1/questions`, options)
+      .then(res => res.json())
+      .then(post => {
+        const newPost = new Post(
+          post.data.attributes.topic,
+          post.data.attributes.url,
+          post.data.attributes.pasteInfo
+        )
+        newPost.createCardHeader()
+        newPost.createCardBody()
+        body.appendChild(newPost.createCard())
+      })
+      .catch(err => err.message)
+  }
 }
 // FETCH CLASS ENDS HERE 
 
+// Should happen upon submit
+// const newPost = new Post(topicValue, urlValue, pasteInfoValue)
+
 // EVENT STARTS HERE 
-class Event {
-  constructor() {
-    this.field = urlField
-  }
-  handleUrlFetchEvent() {
-    this.field.addEventListener('paste', () => {
-      Fetch.getUrlData()
+class PostEvent {
+  static handleUrlFetchEvent() {
+    urlField.addEventListener("paste", e => {
+      setTimeout(() => {
+        Fetch.getUrlData()
+      }, 0)
     })
+  }
+
+  static handlePasteInfoFetchEvent() {
+    pasteInfoField.addEventListener("paste", e => {
+      setTimeout(() => {
+        Fetch.getPasteData()
+      }, 0)
+    })
+  }
+
+  static handleFormSubmitEvent() {
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      setTimeout(() => {
+        Fetch.submitAPost()
+        form.reset()
+      }, 0)
+    })
+
   }
 }
 // EVENT ENDS HERE 
 
-let activate = new Event()
-activate.handleUrlFetchEvent()
-// Fetch.getAllPosts()
-// Fetch.getPasteData()
-
-// Should happen upon submit
-// const newPost = new Post(topicValue, urlValue, pasteInfoValue)
+// ALL TOGETHER
+Fetch.getAllPosts()
+PostEvent.handleUrlFetchEvent()
+PostEvent.handlePasteInfoFetchEvent()
+PostEvent.handleFormSubmitEvent()

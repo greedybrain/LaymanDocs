@@ -1,3 +1,5 @@
+const withThisPost = new Post()
+
 // FETCH CLASS STARTS HERE
 class Fetch {
      static getAllPosts() {
@@ -11,11 +13,11 @@ class Fetch {
                                    post.relationships.layman.data.id,
                                    post.attributes.topic,
                                    post.attributes.url,
-                                   post.attributes.pasteInfo
+                                   post.attributes.pasted_info
                               )
                               newPost.createCardHeader()
                               newPost.createCardBody()
-                              body.appendChild(newPost.createCard())
+                              allCardsWrapper.appendChild(newPost.createCard())
                          }
                     })
                })
@@ -83,16 +85,7 @@ Fetch.prototype.submitAPost = function () {
      fetch(`${BASE_URL}/laymen/1/questions`, options)
           .then(res => res.json())
           .then(post => {
-               const newPost = new Post(
-                    post.data.id,
-                    post.data.relationships.layman.data.id,
-                    post.data.attributes.topic,
-                    post.data.attributes.url,
-                    post.data.attributes.pasteInfo
-               )
-               newPost.createCardHeader()
-               newPost.createCardBody()
-               body.appendChild(newPost.createCard())
+               withThisPost.createPostAsObject(post)
           })
           .catch(err => err.message)
 }

@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
      # before_action :logged_in?, only: %i[create update destroy]
 
      def index
-          questions = Question.all
+          questions = Question.all.order("created_at DESC")
           render json: QuestionSerializer.new(questions).serializable_hash
      end
 
@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
      def validate_pasted_info 
           # if authenticate_layman
                questions_that_include_pasted_info = Question.all.select do |q| 
-                    q.pasted_info == params[:pasted_info]
+                    q.pasted_info == params[:pasteInfo]
                end
                if questions_that_include_pasted_info.count > 0
                     render json: {

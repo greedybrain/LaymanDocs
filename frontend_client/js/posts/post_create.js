@@ -7,6 +7,8 @@ const VALIDATING_URL = "validating_url"
 const VALIDATING_INFO = "validating_info"
 
 const body = document.body
+const allCardsWrapper = document.querySelector("div.all-cards")
+body.appendChild(allCardsWrapper)
 const form = document.querySelector("form#post-form")
 const topicField = document.querySelector("input[name=topic]")
 let urlField = document.querySelector("input[name=url]")
@@ -17,7 +19,7 @@ const pasteInfoField = document.querySelector("textarea[name=pasted-info]")
 // POST CLASS STARTS HERE 
 class Post {
 
-  constructor(id, laymanId, topic, url, pasteInfo) {
+  constructor(id = null, laymanId = null, topic = null, url = null, pasteInfo = null) {
     this.id = id
     this.laymanId = laymanId
     this.topic = topic
@@ -27,6 +29,20 @@ class Post {
   }
 
   static all = []
+
+}
+
+Post.prototype.createPostAsObject = function (post, data = null) {
+  const newPost = new Post(
+    post.data.id,
+    post.data.relationships.layman.data.id,
+    post.data.attributes.topic,
+    post.data.attributes.url,
+    post.data.attributes.pasted_info
+  )
+  newPost.createCardHeader()
+  newPost.createCardBody()
+  allCardsWrapper.prepend(newPost.createCard())
 }
 
 Post.prototype.createCardHeader = function () {

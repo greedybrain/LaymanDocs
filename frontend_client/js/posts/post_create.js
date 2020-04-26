@@ -19,7 +19,7 @@ const pasteInfoField = document.querySelector("textarea[name=pasted-info]")
 // POST CLASS STARTS HERE 
 class Post {
 
-  constructor(id = null, laymanId = null, topic = null, url = null, pasteInfo = null) {
+  constructor(id, laymanId, topic, url, pasteInfo) {
     this.id = id
     this.laymanId = laymanId
     this.topic = topic
@@ -32,17 +32,21 @@ class Post {
 
 }
 
-Post.prototype.createPostAsObject = function (post, data = null) {
+Post.prototype.createPostAsObject = function (post, position) {
   const newPost = new Post(
-    post.data.id,
-    post.data.relationships.layman.data.id,
-    post.data.attributes.topic,
-    post.data.attributes.url,
-    post.data.attributes.pasted_info
+    post.id,
+    post.relationships.layman.data.id,
+    post.attributes.topic,
+    post.attributes.url,
+    post.attributes.pasted_info
   )
   newPost.createCardHeader()
   newPost.createCardBody()
-  allCardsWrapper.prepend(newPost.createCard())
+  if (position === "prepend") {
+    allCardsWrapper.prepend(newPost.createCard())
+  } else if (position === "append") {
+    allCardsWrapper.appendChild(newPost.createCard())
+  }
 }
 
 Post.prototype.createCardHeader = function () {

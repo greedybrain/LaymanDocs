@@ -7,7 +7,7 @@ class ElabsController < ApplicationController
           else
                elabs = Elab.all
           end
-          render json: ElabSerializer.new(elabs).serializable_hash
+          render json: ElabSerializer.new(elabs).serialized_json
      end
 
      def show 
@@ -17,7 +17,7 @@ class ElabsController < ApplicationController
           else
                elab = Elab.find(params[:id])
           end
-          render json: ElabSerializer.new(elab).serializable_hash
+          render json: ElabSerializer.new(elab).serialized_json
      end
 
      def create 
@@ -26,7 +26,7 @@ class ElabsController < ApplicationController
                elab = question.elabs.build(elab_params)
                elab.layman_id = current_layman.id # hard coded for now
                if elab.save
-                    render json: ElabSerializer.new(elab).serializable_hash
+                    render json: ElabSerializer.new(elab).serialized_json
                else
                     render json: { errors: elab.errors }
                end
@@ -40,7 +40,7 @@ class ElabsController < ApplicationController
                elab = question.elabs.find(params[:id])
                # if authenticate_elab(elab)
                     if elab.update(elab_params)
-                         render json: ElabSerializer.new(elab).serializable_hash
+                         render json: ElabSerializer.new(elab).serialized_json
                     else
                          render json: { errors: elab.errors }
                     end

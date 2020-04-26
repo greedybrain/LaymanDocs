@@ -8,16 +8,7 @@ class Fetch {
                .then(posts => {
                     posts.data.forEach(post => {
                          if (!(Post.all.includes(post))) {
-                              const newPost = new Post(
-                                   post.id,
-                                   post.relationships.layman.data.id,
-                                   post.attributes.topic,
-                                   post.attributes.url,
-                                   post.attributes.pasted_info
-                              )
-                              newPost.createCardHeader()
-                              newPost.createCardBody()
-                              allCardsWrapper.appendChild(newPost.createCard())
+                              withThisPost.createPostAsObject(post, "append")
                          }
                     })
                })
@@ -85,7 +76,7 @@ Fetch.prototype.submitAPost = function () {
      fetch(`${BASE_URL}/laymen/1/questions`, options)
           .then(res => res.json())
           .then(post => {
-               withThisPost.createPostAsObject(post)
+               withThisPost.createPostAsObject(post.data, "prepend")
           })
           .catch(err => err.message)
 }

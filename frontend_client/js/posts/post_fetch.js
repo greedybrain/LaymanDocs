@@ -1,83 +1,85 @@
-const withThisPost = new Post()
+const withThisPost = new Post();
 
 // FETCH CLASS STARTS HERE
-class Fetch {
+class Fetch extends Post {
+     // constructor(laymanId) {
+     //      super(laymanId);
+     // }
      static getAllPosts() {
           fetch(`${BASE_URL}${ALL_QUESTIONS}`)
-               .then(res => res.json())
-               .then(posts => {
-                    posts.data.forEach(post => {
-                         if (!(Post.all.includes(post))) {
-                              withThisPost.createPostAsObject(post, "append")
-                         }
-                    })
+               .then((res) => res.json())
+               .then((posts) => {
+                    posts.data.forEach((post) => {
+                         withThisPost.createPostAsObject(post, "append");
+                    });
+                    Post.all
                })
-               .catch(err => err.message)
+               .catch(console.log);
      }
 }
 
 // Should happen upon paste
 Fetch.prototype.getUrlData = function () {
-     let data = {
+     const data = {
           url: urlField.value,
-     }
-     let options = {
+     };
+     const options = {
           method: "POST",
           headers: {
                "Content-Type": "application/json",
-               "Accept": "application/json"
+               Accept: "application/json",
           },
-          body: JSON.stringify(data)
-     }
+          body: JSON.stringify(data),
+     };
 
      fetch(`${BASE_URL}${VALIDATING_URL}`, options)
-          .then(res => res.json())
-          .then(post => console.log(post))
-          .catch(err => err.message)
-}
+          .then((res) => res.json())
+          .then((post) => console.log(post))
+          .catch(console.log);
+};
 
 // Should happen upon paste
 Fetch.prototype.getPasteData = function () {
-     let data = {
+     const data = {
           pasteInfo: pasteInfoField.value,
-     }
+     };
 
-     let options = {
+     const options = {
           method: "POST",
           headers: {
                "Content-Type": "application/json",
-               "Accept": "application/json"
+               Accept: "application/json",
           },
-          body: JSON.stringify(data)
-     }
+          body: JSON.stringify(data),
+     };
 
      fetch(`${BASE_URL}${VALIDATING_INFO}`, options)
-          .then(res => res.json())
-          .then(post => console.log(post))
-          .catch(err => err.message)
-}
+          .then((res) => res.json())
+          .then((post) => console.log(post))
+          .catch(console.log);
+};
 
 Fetch.prototype.submitAPost = function () {
-     let data = {
+     const data = {
           topic: topicField.value,
           url: urlField.value,
           pasteInfo: pasteInfoField.value,
-     }
+     };
 
-     let options = {
+     const options = {
           method: "POST",
           headers: {
                "Content-Type": "application/json",
-               "Accept": "application/json"
+               Accept: "application/json",
           },
-          body: JSON.stringify(data)
-     }
+          body: JSON.stringify(data),
+     };
 
-     fetch(`${BASE_URL}/laymen/1/questions`, options)
-          .then(res => res.json())
-          .then(post => {
-               withThisPost.createPostAsObject(post.data, "prepend")
+     fetch(`${BASE_URL}/laymen/${this.laymanId}/questions`, options)
+          .then((res) => res.json())
+          .then((post) => {
+               withThisPost.createPostAsObject(post.data, "prepend");
           })
-          .catch(err => err.message)
-}
-// FETCH CLASS ENDS HERE 
+          .catch(console.log);
+};
+// FETCH CLASS ENDS HERE

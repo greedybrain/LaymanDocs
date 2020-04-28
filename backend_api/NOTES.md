@@ -206,3 +206,7 @@ fetch(`${BASEURL}/laymen`)
   })
   .catch((err) => console.log(err.message));
 ```
+
+```js
+// REACT/RAILS API AUTH
+```

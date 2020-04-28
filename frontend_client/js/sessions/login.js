@@ -23,7 +23,7 @@ actualForm.addEventListener("submit", e => {
 
      let options = {
           method: "POST",
-          header: {
+          headers: {
                "Content-Type": "application/json",
                "Accept": "application/json"
           },
@@ -32,4 +32,7 @@ actualForm.addEventListener("submit", e => {
      fetch(`${BASE_URL}${LOGIN}`, options)
           .then(res => res.json())
           .then(console.log)
+
+     actualForm.reset()
+     loginForm.style.display = "none"
 })

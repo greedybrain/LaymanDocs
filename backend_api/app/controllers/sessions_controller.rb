@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
           layman = Layman.find_by(email: params[:email])
           if layman&.authenticate(params[:password])
             session[:layman_id] = layman.id 
+            
             render json: LaymanSerializer.new(layman).serialized_json  
           else
                render json: { status: 401 }

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API # or < ActionController::Base
      include AbstractController::Helpers
+     include ActionView::Helpers::DateHelper
      # include ActionController::Cookies
      # include ActionController::RequestForgeryProtection
 

@@ -32,7 +32,7 @@ class LaymenController < ApplicationController
      private 
 
      def layman_params
-          params.permit(:name, :email, :password)
+          params.require(:layman).permit(:name, :email, :password)
      end
 
 end

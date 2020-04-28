@@ -2,7 +2,6 @@ require "nokogiri"
 require "open-uri"
 
 class Question < ApplicationRecord
-
      validates :url, :topic, :pasted_info, presence: true
      validates :pasted_info, uniqueness: true
 

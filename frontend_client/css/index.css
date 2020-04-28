@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,400&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 a {
@@ -24,11 +23,11 @@ header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border-bottom: 1px solid #262b85;
   background-image: -webkit-gradient(linear, left top, right top, from(#262b85), to(#20257a));
   background-image: linear-gradient(to right, #262b85, #20257a);
@@ -43,8 +42,8 @@ header .logo-and-search {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header .logo-and-search h1 {
@@ -102,16 +101,52 @@ header .search-and-btns .btns .signup-btn {
   font-size: 1rem;
 }
 
+div.login-form {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(0, 0, 0, 0.461);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  height: 100vh;
+  width: 100%;
+}
+
+div.login-form form {
+  border: 1px solid red;
+  height: 400px;
+  width: 400px;
+}
+
+div.login-form form h2 {
+  text-align: center;
+  border-bottom: 1px solid #333;
+  padding: 10px 0;
+  letter-spacing: 2px;
+}
+
+div.login-form form h2 span {
+  float: right;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
 div.wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
+      justify-content: space-around;
   padding: 50px 0;
 }
 
@@ -134,11 +169,11 @@ div.wrapper .post-card .card-header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 1px solid #c9c9c9;
   border-top-left-radius: 5px;
@@ -192,11 +227,11 @@ div.wrapper .post-card .card-footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 div.wrapper .post-card .card-footer .post-date {
@@ -234,8 +269,8 @@ div.wrapper .post-card .card-footer .votes .downvotes i {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .join-form form#signup-form {
@@ -260,5 +295,4 @@ div.wrapper .post-card .card-footer .votes .downvotes i {
   display: none;
   color: #fff;
 }
-
 /*# sourceMappingURL=index.css.map */

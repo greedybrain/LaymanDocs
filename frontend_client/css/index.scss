@@ -79,7 +79,8 @@ header {
                     margin-right: 10px;
                }
 
-               .login-btn {
+               .login-btn,
+               .signup-btn {
                     background-color: transparent;
                     border: none;
                     height: 35px;
@@ -94,6 +95,42 @@ header {
      }
 
 }
+
+// LOGIN FORM 
+div.login-form {
+     display: none;
+     align-items: center;
+     justify-content: center;
+     background-color: rgba(0, 0, 0, 0.461);
+     position: absolute;
+     top: 0;
+     left: 0;
+     z-index: 101;
+     height: 100vh;
+     width: 100%;
+
+     form {
+          border: 1px solid red;
+          height: 400px;
+          width: 400px;
+
+          h2 {
+               text-align: center;
+               border-bottom: 1px solid #333;
+               padding: 10px 0;
+               letter-spacing: 2px;
+
+               span {
+                    float: right;
+                    padding-right: 5px;
+                    cursor: pointer;
+               }
+          }
+     }
+
+}
+
+// WRAPPER AND CHILDREN STYLES
 
 div.wrapper {
      display: flex;

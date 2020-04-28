@@ -1,3 +1,0 @@
-loginBtn.addEventListener("click", () => {
-
-})

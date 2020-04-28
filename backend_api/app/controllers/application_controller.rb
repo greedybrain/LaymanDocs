@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API # or < ActionController::Base
+     require_relative "../../lib/tasks/auth.rb"
+
      include AbstractController::Helpers
      # include ActionController::Cookies
      # include ActionController::RequestForgeryProtection
@@ -6,16 +8,14 @@ class ApplicationController < ActionController::API # or < ActionController::Bas
      # protect_from_forgery with: :exception
 
      # skip_before_action :verify_authenticity_token
-     
-     helper_method :current_layman
 
-     def current_layman 
-          @current_layman ||= Layman.find(session[:layman_id])
-     end
+     # def current_layman 
+     #      @current_layman ||= Layman.find(session[:layman_id])
+     # end
 
-     def logged_in? 
-          !session[:layman_id].nil?
-     end
+     # def logged_in? 
+     #      !session[:layman_id].nil?
+     # end
 
      # def authenticate_layman
      #      current_layman && session[:layman_id]

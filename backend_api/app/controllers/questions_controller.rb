@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-     # before_action :logged_in?, only: %i[create update destroy]
 
      def index
           questions = Question.all.order("created_at DESC")

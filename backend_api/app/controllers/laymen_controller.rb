@@ -1,5 +1,3 @@
-require_relative "../../lib/tasks/auth.rb"
-
 class LaymenController < ApplicationController
 
      # this renders all activity (questions and elabs)
@@ -18,9 +16,9 @@ class LaymenController < ApplicationController
           # send signup request through form in html 
           layman = Layman.new(layman_params)
           if layman.save
+               this_token = LaymanSerializer.new(layman).serialized_json
                render json: {
-                    status: :created,
-                    token: Auth.encode_token(layman)
+                    token: Auth.encode_token(this_token)
                }
           else
                render json: {  

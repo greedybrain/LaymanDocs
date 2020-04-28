@@ -1,11 +1,15 @@
+require_relative "../../lib/tasks/auth.rb"
+
 class SessionsController < ApplicationController
 
      def create 
           layman = Layman.find_by(email: params[:email])
-          if layman&.authenticate(params[:password])
-            session[:layman_id] = layman.id 
-            
-            render json: LaymanSerializer.new(layman).serialized_json  
+          if layman&.authenticate(params[:password])  
+            render json: {
+                 token: Auth.encode_token(
+                      LaymanSerializer.new(layman).serialized_json
+                 )
+            }
           else
                render json: { status: 401 }
           end

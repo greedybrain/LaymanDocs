@@ -1,8 +1,10 @@
+require_relative "../../lib/tasks/auth.rb"
+
 class LaymenController < ApplicationController
 
      # this renders all activity (questions and elabs)
      def index 
-          laymen = Layman.all
+          laymen = Layman.all.order("created_at DESC")
           render json: LaymanSerializer.new(laymen).serialized_json
      end
 
@@ -16,14 +18,13 @@ class LaymenController < ApplicationController
           # send signup request through form in html 
           layman = Layman.new(layman_params)
           if layman.save
-               session[:layman_id] = layman.id
                render json: {
                     status: :created,
-                    layman: LaymanSerializer.new(layman).serialized_json
+                    token: Auth.encode_token(layman)
                }
           else
                render json: {  
-                    errors: layman.errors,
+                    errors: { message: "A user already exists with that email"},
                     status: 500
                }
           end
@@ -32,7 +33,7 @@ class LaymenController < ApplicationController
      private 
 
      def layman_params
-          params.require(:layman).permit(:name, :email, :password)
+          params.permit(:name, :email, :password)
      end
 
 end

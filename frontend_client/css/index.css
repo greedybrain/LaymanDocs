@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;1,400&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -23,11 +24,11 @@ header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   border-bottom: 1px solid #262b85;
   background-image: -webkit-gradient(linear, left top, right top, from(#262b85), to(#20257a));
   background-image: linear-gradient(to right, #262b85, #20257a);
@@ -42,8 +43,8 @@ header .logo-and-search {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 header .logo-and-search h1 {
@@ -90,7 +91,8 @@ header .search-and-btns .btns button:nth-child(1) {
   margin-right: 10px;
 }
 
-header .search-and-btns .btns .login-btn {
+header .search-and-btns .btns .login-btn,
+header .search-and-btns .btns .signup-btn {
   background-color: transparent;
   border: none;
   height: 35px;
@@ -106,10 +108,10 @@ div.wrapper {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   padding: 50px 0;
 }
 
@@ -132,11 +134,11 @@ div.wrapper .post-card .card-header {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 10px 20px;
   border-bottom: 1px solid #c9c9c9;
   border-top-left-radius: 5px;
@@ -190,11 +192,11 @@ div.wrapper .post-card .card-footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 div.wrapper .post-card .card-footer .post-date {
@@ -232,8 +234,8 @@ div.wrapper .post-card .card-footer .votes .downvotes i {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .join-form form#signup-form {
@@ -258,4 +260,5 @@ div.wrapper .post-card .card-footer .votes .downvotes i {
   display: none;
   color: #fff;
 }
+
 /*# sourceMappingURL=index.css.map */

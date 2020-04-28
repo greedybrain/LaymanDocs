@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   post '/validating_info', to: "questions#validate_pasted_info"
 
   # Signup, Login, and Logout routing
-  resources :sessions, only: [:create]
   post "/signup", to: "laymen#create"
   get "/logged_in", to: "sessions#logged_in"
+  post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#logout"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

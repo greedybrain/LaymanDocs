@@ -1,13 +1,21 @@
 class ApplicationController < ActionController::API # or < ActionController::Base
      include AbstractController::Helpers
-     include ActionController::Cookies
-     include ActionController::RequestForgeryProtection
+     # include ActionController::Cookies
+     # include ActionController::RequestForgeryProtection
 
-     protect_from_forgery with: :exception
+     # protect_from_forgery with: :exception
 
-     skip_before_action :verify_authenticity_token
+     # skip_before_action :verify_authenticity_token
      
-     # helper_method :set_current_layman
+     helper_method :current_layman
+
+     def current_layman 
+          @current_layman ||= Layman.find(session[:layman_id])
+     end
+
+     def logged_in? 
+          !session[:layman_id].nil?
+     end
 
      # def authenticate_layman
      #      current_layman && session[:layman_id]

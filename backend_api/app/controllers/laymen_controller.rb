@@ -17,8 +17,11 @@ class LaymenController < ApplicationController
           layman = Layman.new(layman_params)
           if layman.save
                this_token = LaymanSerializer.new(layman).serialized_json
+               this_token_user = this_token
                render json: {
-                    token: Auth.encode_token(this_token)
+                    message: { "Signup Successful!" },
+                    token: Auth.encode_token(this_token),
+                    layman: this_token_user
                }
           else
                render json: {  

@@ -1,5 +1,5 @@
 class Login {
-     constructor(email, password) {
+     constructor(email, password, token = null) {
           this.email = email
           this.password = password
      }
@@ -31,7 +31,18 @@ actualForm.addEventListener("submit", e => {
      }
      fetch(`${BASE_URL}${LOGIN}`, options)
           .then(res => res.json())
-          .then(console.log)
+          .then(data => {
+               const msg = document.createElement("h2")
+               if (data.token) {
+                    msg.textContent = `${data.message}`
+                    msg.style.color = "#42f560"
+               } else {
+                    msg.textContent = `${data.errors.message}`
+                    msg.style.color = "#f55142"
+               }
+               allCardsWrapper.prepend(msg)
+               localStorage.setItem("token", data.token)
+          })
 
      actualForm.reset()
      loginForm.style.display = "none"

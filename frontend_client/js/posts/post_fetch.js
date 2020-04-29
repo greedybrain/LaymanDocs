@@ -2,9 +2,6 @@ const withThisPost = new Post();
 
 // FETCH CLASS STARTS HERE
 class Fetch extends Post {
-  // constructor(laymanId) {
-  //      super(laymanId);
-  // }
   static getAllPosts() {
     fetch(`${BASE_URL}${ALL_QUESTIONS}`)
       .then((res) => res.json())
@@ -59,6 +56,8 @@ Fetch.prototype.getPasteData = function () {
 };
 
 Fetch.prototype.submitAPost = function () {
+  const token = localStorage.getItem("token")
+
   const data = {
     topic: topicField.value,
     url: urlField.value,
@@ -68,6 +67,7 @@ Fetch.prototype.submitAPost = function () {
   const options = {
     method: "POST",
     headers: {
+      "Authorization": Bearer `${token}`,
       "Content-Type": "application/json",
       Accept: "application/json",
     },

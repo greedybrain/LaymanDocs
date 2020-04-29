@@ -1,44 +1,47 @@
 class ApplicationController < ActionController::API # or < ActionController::Base
-     require_relative "../../lib/tasks/auth.rb"
+     # require_relative "../../lib/tasks/auth.rb"
 
      include AbstractController::Helpers
-     # include ActionController::Cookies
-     # include ActionController::RequestForgeryProtection
+     
+     before_action :require_login
 
-     # protect_from_forgery with: :exception
+     def encode_token(payload)
+          JWT.encode(payload, ENV['JWT_TOKEN_SECRET'])
+     end
 
-     # skip_before_action :verify_authenticity_token
+     def auth_header
+          request.headers['Authorization']
+          # get authorization key from headers hash
+     end
 
-     # def current_layman 
-     #      @current_layman ||= Layman.find(session[:layman_id])
-     # end
+     def decoded_token
+          if auth_header
+               token = auth_header.split(' ')[1]
+               begin
+                    JWT.decode(token, ENV['JWT_TOKEN_SECRET'], true, algorithm: ENV['JWT_ALGORITHM'])
+               rescue JWT::DecodeError
+                    []
+               end
+          end
+     end
 
-     # def logged_in? 
-     #      !session[:layman_id].nil?
-     # end
+     def session_user
+          decoded_hash = decoded_token
+          if !decoded_hash.empty? 
+               # puts decoded_hash.class
+               user_id = decoded_hash[0]['user_id']
+               @user = User.find(user_id)
+          else
+               nil 
+          end
+     end
 
-     # def authenticate_layman
-     #      current_layman && session[:layman_id]
-     # end
+     def logged_in?
+          !!session_user
+     end
 
-     # def authenticate_question(question)
-     #      question.layman_id == current_layman.id
-     # end
-
-     # def authenticate_elab(elab)
-     #      elab.layman_id == current_layman.id
-     # end
-
-     # def authenticate_reply(reply)
-     #      reply.layman_id == current_layman.id
-     # end
-
-     # def logged_in? 
-     #      !session[:layman_id].nil?
-     # end
-
-     # def authenticate_user 
-     #      logged_in? && current_layman
-     # end
+     def require_login
+          render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
+     end
 
 end

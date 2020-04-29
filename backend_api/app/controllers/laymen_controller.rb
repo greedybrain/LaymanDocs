@@ -1,10 +1,10 @@
 class LaymenController < ApplicationController
 
      # this renders all activity (questions and elabs)
-     def index 
-          laymen = Layman.all.order("created_at DESC")
-          render json: LaymanSerializer.new(laymen).serialized_json
-     end
+     # def index 
+     #      laymen = Layman.all.order("created_at DESC")
+     #      render json: LaymanSerializer.new(laymen).serialized_json
+     # end
 
      def show 
           # make sure to assign div a data-id
@@ -16,12 +16,12 @@ class LaymenController < ApplicationController
           # send signup request through form in html 
           layman = Layman.new(layman_params)
           if layman.save
-               this_token = LaymanSerializer.new(layman).serialized_json
-               this_token_user = this_token
+               payload = LaymanSerializer.new(layman).serialized_json
+               token = encode_token(payload)
                render json: {
-                    message: { "Signup Successful!" },
-                    token: Auth.encode_token(this_token),
-                    layman: this_token_user
+                    layman: layman,
+                    jwt_token: token,
+                    message: "Signup Successful!" 
                }
           else
                render json: {  

@@ -25,9 +25,9 @@ class ApplicationController < ActionController::API # or < ActionController::Bas
           end
      end
 
-     def session_user
+     def session_layman
           decoded_hash = decoded_token
-          if !decoded_hash.empty? 
+          if !decoded_hash.nil?
                # puts decoded_hash.class
                user_id = decoded_hash[0]['user_id']
                @user = User.find(user_id)
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::API # or < ActionController::Bas
      end
 
      def logged_in?
-          !!session_user
+          !!session_layman
      end
 
      def require_login

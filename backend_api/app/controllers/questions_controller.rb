@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+     skip_before_action :require_login, only: %i[index show]
 
      def index
           questions = Question.all.order("created_at DESC")
@@ -8,8 +9,8 @@ class QuestionsController < ApplicationController
      def show 
           if params[:layman_id ]
                layman = Layman.find(params[:layman_id])
-               @question = layman.questions.find(params[:id])
-               render json: QuestionSerializer.new(@question).serialized_json
+               question = layman.questions.find(params[:id])
+               render json: QuestionSerializer.new(question).serializable_hash
           end
      end
 
@@ -103,7 +104,7 @@ class QuestionsController < ApplicationController
      private 
      
      def question_params 
-          params.require(:question).permit(:topic, :url, :pasted_info)
+          params.permit(:topic, :url, :pasted_info)
      end
 
 end

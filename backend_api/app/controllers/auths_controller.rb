@@ -1,15 +1,15 @@
 class AuthsController < ApplicationController
-     skip_before_action :require_login, only: [:login, :auto_login]
+     skip_before_action :require_login, only: [:create, :auto_login]
 
      def create 
           layman = Layman.find_by(email: params[:email])
           if layman&.authenticate(params[:password])  
-               this_token = LaymanSerializer.new(layman).serializable_hash
-               this_token_user = this_token
+               payload = LaymanSerializer.new(layman).serialized_json
+               token = encode_token(payload)
                render json: {
-                    message: "Login Successful",
-                    token: Auth.encode_token(this_token),
-                    layman: this_token_user,
+                    layman: layman,
+                    jwt_token: token,
+                    message: "Welcome back, #{layman.name}",
                     status: 200
                }
           else
@@ -19,4 +19,26 @@ class AuthsController < ApplicationController
                }
           end
      end
+
+     def auto_login 
+          if session_layman
+               render json: session_layman
+          else
+               render json: { errors: "No User Logged In" }
+          end
+     end
+
+     def user_authorized 
+          render json: { message: "You've been authorized" }
+     end
+
+     def logout 
+          session.delete(:layman_id)
+          render json: { 
+               jwt_token: nil,
+               message: "Logged out successfully" ,
+               status: 200
+          }
+     end
+
 end

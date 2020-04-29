@@ -21,9 +21,11 @@ Rails.application.routes.draw do
 
   # Signup, Login, and Logout routing
   post "/signup", to: "laymen#create"
-  get "/logged_in", to: "sessions#logged_in"
-  post "/login", to: "sessions#create"
+  post "/login", to: "auths#create"
   delete "/logout", to: "sessions#logout"
+
+  get "/auto_login", to: "auths#auto_login"
+  get "/user_authorized", to: "auths#user_authorized"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -19,15 +19,6 @@ class SessionsController < ApplicationController
      #      end
      # end
 
-     def logout 
-          session.delete(:layman_id)
-          render json: { 
-               status: 200,
-               token: nil,
-               message: "Logged out successfully" 
-          }
-     end
-
 end
 
 

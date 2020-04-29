@@ -2,7 +2,8 @@ const withThisPost = new Post();
 
 // FETCH CLASS STARTS HERE
 class Fetch extends Post {
-  static getAllPosts() {
+
+  static getAllPosts = () => {
     fetch(`${BASE_URL}${ALL_QUESTIONS}`)
       .then((res) => res.json())
       .then((posts) => {
@@ -11,6 +12,21 @@ class Fetch extends Post {
         });
       })
       .catch(console.log);
+  }
+
+  static authCheck = () => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch("http://localhost:3000/auto_login", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+        })
+    }
   }
 }
 
@@ -67,7 +83,7 @@ Fetch.prototype.submitAPost = function () {
   const options = {
     method: "POST",
     headers: {
-      "Authorization": Bearer `${token}`,
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
       Accept: "application/json",
     },

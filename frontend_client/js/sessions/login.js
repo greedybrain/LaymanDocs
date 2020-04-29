@@ -32,16 +32,18 @@ actualForm.addEventListener("submit", e => {
      fetch(`${BASE_URL}${LOGIN}`, options)
           .then(res => res.json())
           .then(data => {
-               const msg = document.createElement("h2")
-               if (data.token) {
-                    msg.textContent = `${data.message}`
-                    msg.style.color = "#42f560"
-               } else {
-                    msg.textContent = `${data.errors.message}`
-                    msg.style.color = "#f55142"
-               }
-               allCardsWrapper.prepend(msg)
-               localStorage.setItem("token", data.token)
+               debugger
+               localStorage.setItem("token", data.jwt_token)
+               // const msg = document.createElement("h2")
+               // if (data.token) {
+               //      msg.textContent = `${data.message}`
+               //      msg.style.color = "#42f560"
+               // } else {
+               //      msg.textContent = `${data.errors.message}`
+               //      msg.style.color = "#f55142"
+               // }
+               // allCardsWrapper.prepend(msg)
+               console.log(data)
           })
 
      actualForm.reset()

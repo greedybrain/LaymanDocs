@@ -42,41 +42,45 @@
       </form>
     </div>
 
-    <div class="wrapper">
-      <div class="post-form">
-        <form id="post-form">
-          <h2>Create a Post</h2>
-          <div class="topic">
-            <input type="text" name="topic" placeholder="Topic here" />
-          </div>
-          <span class="topic-error"></span>
-          <div class="url">
-            <input type="text" name="url" placeholder="Url here" />
-          </div>
-          <span class="url-error"></span>
-          <div class="pasted-info">
-            <textarea
-              name="pasted-info"
-              id="pasted-info"
-              placeholder="Paste Here"
-              cols="30"
-              rows="10"
-            ></textarea>
-          </div>
-          <span class="paste-error"></span>
-          <br />
-          <button type="submit">Create</button>
-        </form>
+    <div class="content-wrapper">
+      <div class="post-form-wrapper">
+        <div class="post-form">
+          <form id="post-form">
+            <h2>Create a Post</h2>
+            <div class="topic">
+              <input type="text" name="topic" placeholder="Topic here" />
+            </div>
+            <span class="topic-error"></span>
+            <div class="url">
+              <input type="text" name="url" placeholder="Url here" />
+            </div>
+            <span class="url-error"></span>
+            <div class="pasted-info">
+              <textarea
+                name="pasted-info"
+                id="pasted-info"
+                placeholder="Paste Here"
+                cols="30"
+                rows="10"
+                noresize
+              ></textarea>
+            </div>
+            <span class="paste-error"></span>
+            <br />
+            <button type="submit">Create</button>
+          </form>
+        </div>
       </div>
-    </div>
 
-    <div class="all-cards"></div>
+      <div class="all-cards"></div>
+    </div>
 
     <script src="./js/dependent_var_file.js"></script>
     <script src="./js/registrations/signup.js"></script>
     <script src="./js/registrations/signup_events.js"></script>
     <script src="./js/sessions/login.js"></script>
     <script src="./js/sessions/login_events.js"></script>
+    <script src="./js/authorization/auth.js"></script>
     <script src="./js/posts/post_create.js"></script>
     <script src="./js/posts/post_fetch.js"></script>
     <script src="./js/posts/post_event.js"></script>

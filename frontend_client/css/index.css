@@ -114,14 +114,13 @@ div.login-form {
   top: 0;
   left: 0;
   z-index: 101;
-  height: 100vh;
   width: 100%;
 }
 
 div.login-form form {
   border: 1px solid red;
-  height: 400px;
   width: 400px;
+  height: 400px;
 }
 
 div.login-form form h2 {
@@ -137,7 +136,24 @@ div.login-form form h2 span {
   cursor: pointer;
 }
 
-div.wrapper {
+div.content-wrapper {
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 50px 40px;
+}
+
+div.content-wrapper div.all-cards {
+  padding: 0 50px;
+  overflow-y: scroll;
+}
+
+div.content-wrapper ::-webkit-scrollbar {
+  display: none;
+}
+
+div.post-form-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -147,15 +163,19 @@ div.wrapper {
           flex-direction: row-reverse;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 50px 0;
 }
 
-div.wrapper div.post-form {
+div.post-form-wrapper div.post-form {
   border: 1px solid #333;
   width: 400px;
+  height: 400px;
 }
 
-div.wrapper .post-card {
+div.post-form-wrapper div.post-form form {
+  height: auto;
+}
+
+div.post-form-wrapper .post-card {
   width: 500px;
   border-radius: 5px;
   -webkit-box-shadow: 1px 6px 23px 0px #bababa;
@@ -164,7 +184,7 @@ div.wrapper .post-card {
   border: 1px solid #c9c9c9;
 }
 
-div.wrapper .post-card .card-header {
+div.post-form-wrapper .post-card .card-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -180,30 +200,30 @@ div.wrapper .post-card .card-header {
   border-top-right-radius: 5px;
 }
 
-div.wrapper .post-card .card-header h2 {
+div.post-form-wrapper .post-card .card-header h2 {
   color: #5c5c5c;
   cursor: pointer;
 }
 
-div.wrapper .post-card .card-header h2:hover {
+div.post-form-wrapper .post-card .card-header h2:hover {
   color: #8b8b8b;
 }
 
-div.wrapper .post-card .card-header .card-menu {
+div.post-form-wrapper .post-card .card-header .card-menu {
   cursor: pointer;
 }
 
-div.wrapper .post-card .card-header .card-menu .dot {
+div.post-form-wrapper .post-card .card-header .card-menu .dot {
   border: 2px solid #5c5c5c;
   border-radius: 50px;
   margin: 0 0 3px 0;
 }
 
-div.wrapper .post-card .card-header .card-menu .dot:hover {
+div.post-form-wrapper .post-card .card-header .card-menu .dot:hover {
   color: #8b8b8b;
 }
 
-div.wrapper .post-card .card-body p {
+div.post-form-wrapper .post-card .card-body p {
   padding: 10px 20px;
   border-bottom: 1px solid #c9c9c9;
   min-height: 125px;
@@ -212,16 +232,16 @@ div.wrapper .post-card .card-body p {
   line-height: 1.4;
 }
 
-div.wrapper .post-card .card-body p i {
+div.post-form-wrapper .post-card .card-body p i {
   font-size: 1.2rem;
   cursor: pointer;
 }
 
-div.wrapper .post-card .card-body p i:hover {
+div.post-form-wrapper .post-card .card-body p i:hover {
   color: #8b8b8b;
 }
 
-div.wrapper .post-card .card-footer {
+div.post-form-wrapper .post-card .card-footer {
   padding: 10px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -234,33 +254,33 @@ div.wrapper .post-card .card-footer {
           justify-content: space-between;
 }
 
-div.wrapper .post-card .card-footer .post-date {
+div.post-form-wrapper .post-card .card-footer .post-date {
   font-size: .8rem;
 }
 
-div.wrapper .post-card .card-footer .votes {
+div.post-form-wrapper .post-card .card-footer .votes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-div.wrapper .post-card .card-footer .votes i {
+div.post-form-wrapper .post-card .card-footer .votes i {
   color: #5c5c5c;
 }
 
-div.wrapper .post-card .card-footer .votes i:hover {
+div.post-form-wrapper .post-card .card-footer .votes i:hover {
   color: #8b8b8b;
 }
 
-div.wrapper .post-card .card-footer .votes .upvotes {
+div.post-form-wrapper .post-card .card-footer .votes .upvotes {
   margin-right: 20px;
 }
 
-div.wrapper .post-card .card-footer .votes .upvotes i {
+div.post-form-wrapper .post-card .card-footer .votes .upvotes i {
   cursor: pointer;
 }
 
-div.wrapper .post-card .card-footer .votes .downvotes i {
+div.post-form-wrapper .post-card .card-footer .votes .downvotes i {
   cursor: pointer;
 }
 

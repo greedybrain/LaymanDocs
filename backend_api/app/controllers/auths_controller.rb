@@ -4,10 +4,10 @@ class AuthsController < ApplicationController
      def create 
           layman = Layman.find_by(email: params[:email])
           if layman&.authenticate(params[:password])  
-               payload = LaymanSerializer.new(layman).serialized_json
+               payload = LaymanSerializer.new(layman).serializable_hash
                token = encode_token(payload)
                render json: {
-                    layman: layman,
+                    layman: LaymanSerializer.new(layman).serializable_hash,
                     jwt_token: token,
                     message: "Welcome back, #{layman.name}",
                     status: 200

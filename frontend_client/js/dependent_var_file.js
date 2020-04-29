@@ -14,8 +14,10 @@ const emailField = document.querySelector("input[name=email]")
 const passwordField = document.querySelector("input[name=password]")
 
 const body = document.body;
+const contentWrapper = document.querySelector("div.content-wrapper")
+body.appendChild(contentWrapper);
 const allCardsWrapper = document.querySelector("div.all-cards");
-body.appendChild(allCardsWrapper);
+contentWrapper.prepend(allCardsWrapper)
 const form = document.querySelector("form#post-form");
 const topicField = document.querySelector("input[name=topic]");
 let urlField = document.querySelector("input[name=url]");

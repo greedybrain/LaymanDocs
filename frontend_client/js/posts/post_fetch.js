@@ -4,7 +4,12 @@ const withThisPost = new Post();
 class Fetch extends Post {
 
   static getAllPosts = () => {
-    fetch(`${BASE_URL}${ALL_QUESTIONS}`)
+    const token = localStorage.getItem("token")
+    fetch(`${BASE_URL}${ALL_QUESTIONS}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
       .then((res) => res.json())
       .then((posts) => {
         posts.data.forEach((post) => {
@@ -12,21 +17,6 @@ class Fetch extends Post {
         });
       })
       .catch(console.log);
-  }
-
-  static authCheck = () => {
-    const token = localStorage.getItem("token")
-    if (token) {
-      fetch("http://localhost:3000/auto_login", {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-        })
-    }
   }
 }
 

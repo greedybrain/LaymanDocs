@@ -106,13 +106,12 @@ div.login-form {
      top: 0;
      left: 0;
      z-index: 101;
-     height: 100vh;
      width: 100%;
 
      form {
           border: 1px solid red;
-          height: 400px;
           width: 400px;
+          height: 400px;
 
           h2 {
                text-align: center;
@@ -130,17 +129,38 @@ div.login-form {
 
 }
 
+// CONTENT WRAPPER  
+div.content-wrapper {
+     height: 90vh;
+     display: flex;
+     padding: 50px 40px;
+
+     div.all-cards {
+          padding: 0 50px;
+          overflow-y: scroll;
+     }
+
+     ::-webkit-scrollbar {
+          display: none;
+     }
+}
+
 // WRAPPER AND CHILDREN STYLES
 
-div.wrapper {
+div.post-form-wrapper {
      display: flex;
      flex-direction: row-reverse;
      justify-content: space-around;
-     padding: 50px 0;
 
      div.post-form {
           border: 1px solid #333;
           width: 400px;
+          height: 400px;
+
+          form {
+               height: auto;
+          }
+
      }
 
      .post-card {

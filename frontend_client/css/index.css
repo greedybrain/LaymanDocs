@@ -46,7 +46,7 @@ header .logo-and-search {
           align-items: center;
 }
 
-header .logo-and-search h1 {
+header .logo-and-search h2 {
   color: #fff;
   letter-spacing: 1px;
   margin-right: 35px;
@@ -147,13 +147,73 @@ div.content-wrapper {
 div.content-wrapper div.all-cards {
   padding: 0 50px;
   overflow-y: scroll;
+  border-left: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+}
+
+div.content-wrapper div.all-cards .post-card {
+  border-radius: 5px;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header h2 a {
+  color: #5c5c5c;
+  cursor: pointer;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header h2 a:hover {
+  color: #8b8b8b;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header .menu {
+  cursor: pointer;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header .menu .dot {
+  border: 2px solid #333;
+  border-radius: 50px;
+  margin-bottom: 2px;
+}
+
+div.content-wrapper div.all-cards .post-card .card-header .menu .dot:hover {
+  color: #8b8b8b;
+}
+
+div.content-wrapper div.all-cards .post-card .card-body p {
+  padding: 10px 0;
+  border-bottom: 1px solid #c9c9c9;
+  min-height: 150px;
+  color: #5c5c5c;
+  font-weight: bolder;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+
+div.content-wrapper div.all-cards .post-card .card-body p i {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+div.content-wrapper div.all-cards .post-card .card-body p i:hover {
+  color: #8b8b8b;
 }
 
 div.content-wrapper ::-webkit-scrollbar {
   display: none;
 }
 
-div.post-form-wrapper {
+div.content-wrapper div.post-form-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -163,125 +223,125 @@ div.post-form-wrapper {
           flex-direction: row-reverse;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin-left: 10px;
 }
 
-div.post-form-wrapper div.post-form {
-  border: 1px solid #333;
+div.content-wrapper div.post-form-wrapper div.post-form {
   width: 400px;
-  height: 400px;
 }
 
-div.post-form-wrapper div.post-form form {
-  height: auto;
+div.content-wrapper div.post-form-wrapper div.post-form form {
+  height: 100%;
 }
 
-div.post-form-wrapper .post-card {
-  width: 500px;
+div.content-wrapper div.post-form-wrapper div.post-form h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.keyboard {
+  float: left;
+  width: 10%;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.keyboard i {
+  color: #ff7a7a;
+  font-size: 1.5rem;
+  position: relative;
+  top: 13px;
+  left: 10px;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.mouse {
+  float: left;
+  width: 10%;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.mouse i {
+  color: #ff7a7a;
+  font-size: 1.5rem;
+  position: relative;
+  top: 10px;
+  left: 15px;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.topic {
+  margin: 30px auto 0 auto;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.url {
+  margin: 10px auto;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.pasted-info {
+  margin: 20px auto 0 auto;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.topic,
+div.content-wrapper div.post-form-wrapper div.post-form div.url,
+div.content-wrapper div.post-form-wrapper div.post-form div.pasted-info {
+  width: 90%;
+  border-bottom: 1px solid #b0b0b0;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form input[name=topic] {
+  font-size: 1rem;
+  width: 100%;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form input[name=topic],
+div.content-wrapper div.post-form-wrapper div.post-form input[name=url] {
+  padding: 15px;
+  width: 85%;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form input[name=url],
+div.content-wrapper div.post-form-wrapper div.post-form textarea[name=pasted-info] {
+  cursor: not-allowed;
+  font-size: 1rem;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form textarea[name=pasted-info] {
+  resize: none;
+  width: 100%;
+  padding-left: 15px;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form input[name=topic],
+div.content-wrapper div.post-form-wrapper div.post-form input[name=url],
+div.content-wrapper div.post-form-wrapper div.post-form textarea[name=pasted-info] {
+  border: none;
+  outline: none;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.btn {
+  width: 90%;
+  height: 50px;
+  margin: 10px auto 0 auto;
+}
+
+div.content-wrapper div.post-form-wrapper div.post-form div.btn button {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #333;
   border-radius: 5px;
-  -webkit-box-shadow: 1px 6px 23px 0px #bababa;
-  box-shadow: 1px 6px 23px 0px #bababa;
-  background-color: #ffffff;
-  border: 1px solid #c9c9c9;
-}
-
-div.post-form-wrapper .post-card .card-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid #c9c9c9;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-div.post-form-wrapper .post-card .card-header h2 {
-  color: #5c5c5c;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: #fff;
+  background-image: -webkit-gradient(linear, left top, right top, from(#262b85), to(#20257a));
+  background-image: linear-gradient(to right, #262b85, #20257a);
   cursor: pointer;
+  outline: none;
 }
 
-div.post-form-wrapper .post-card .card-header h2:hover {
-  color: #8b8b8b;
+div.content-wrapper div.post-form-wrapper div.post-form div.btn button:hover {
+  background-image: -webkit-gradient(linear, left top, right top, from(#2e34a0), to(#2e35ac));
+  background-image: linear-gradient(to right, #2e34a0, #2e35ac);
 }
 
-div.post-form-wrapper .post-card .card-header .card-menu {
-  cursor: pointer;
-}
-
-div.post-form-wrapper .post-card .card-header .card-menu .dot {
-  border: 2px solid #5c5c5c;
-  border-radius: 50px;
-  margin: 0 0 3px 0;
-}
-
-div.post-form-wrapper .post-card .card-header .card-menu .dot:hover {
-  color: #8b8b8b;
-}
-
-div.post-form-wrapper .post-card .card-body p {
-  padding: 10px 20px;
-  border-bottom: 1px solid #c9c9c9;
-  min-height: 125px;
-  color: #5c5c5c;
-  font-weight: bolder;
-  line-height: 1.4;
-}
-
-div.post-form-wrapper .post-card .card-body p i {
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-div.post-form-wrapper .post-card .card-body p i:hover {
-  color: #8b8b8b;
-}
-
-div.post-form-wrapper .post-card .card-footer {
-  padding: 10px 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-div.post-form-wrapper .post-card .card-footer .post-date {
-  font-size: .8rem;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes i {
-  color: #5c5c5c;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes i:hover {
-  color: #8b8b8b;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes .upvotes {
-  margin-right: 20px;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes .upvotes i {
-  cursor: pointer;
-}
-
-div.post-form-wrapper .post-card .card-footer .votes .downvotes i {
-  cursor: pointer;
+div.content-wrapper div.post-form-wrapper div.post-form div.btn button:active {
+  background-image: -webkit-gradient(linear, left top, right top, from(#262b85), to(#20257a));
+  background-image: linear-gradient(to right, #262b85, #20257a);
 }
 
 .join-form {

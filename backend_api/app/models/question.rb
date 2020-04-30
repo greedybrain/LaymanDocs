@@ -15,8 +15,12 @@ class Question < ApplicationRecord
           info = {}
           begin
                scraped_info = Nokogiri::HTML(open(url))
-          rescue OpenURI::HTTPError => e
-               raise "Something went wrong with that link"
+          rescue Errno::ENOENT => e
+               invalid_message = "Please enter a valid link"
+               raise invalid_message
+          ensure
+               url = invalid_message
+               return url
           end
 
           textCollection = scraped_info.css("*").collect do |el|

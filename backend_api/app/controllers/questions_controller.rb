@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-     skip_before_action :require_login, only: %i[index show]
 
      def index
           questions = Question.all.order("created_at DESC")
@@ -9,30 +8,33 @@ class QuestionsController < ApplicationController
      def show 
           if params[:layman_id ]
                layman = Layman.find(params[:layman_id])
-               question = layman.questions.find(params[:id])
-               render json: QuestionSerializer.new(question).serializable_hash
+               @question = layman.questions.find(params[:id])
+               render json: QuestionSerializer.new(@question).serialized_json
           end
      end
 
      def validate_url
-          # if authenticate_layman
-               @@question = 
-               questions_that_include_url = Question.all.select{|q| q.url == params[:url]}
-               if questions_that_include_url.count > 0 
-                    render json: {
-                         message: "Related Searches",
-                         posts: QuestionSerializer.new(questions_that_include_url).serialized_json
-                    }
-               else
-                    @@documentation_by_url = Question.get_doc_content_by(params[:url])
+          @@question = Layman.find(1).questions.build
+          questions_that_include_url = Question.all.select{|q| q.url == params[:url]}
+          if questions_that_include_url.count > 0 
+               render json: {
+                    message: "Related Searches",
+                    posts: QuestionSerializer.new(questions_that_include_url).serialized_json
+               }
+          else
+               @@documentation_by_url = Question.get_doc_content_by(params[:url])
+          
+               if @@documentation_by_url != "Please enter a valid link"
                     @@question.url = params[:url]
                     render json: { 
                          message: @@documentation_by_url[:title]
                     }
+               else
+                    render json: {
+                         message: @@documentation_by_url
+                    }
                end
-          # else
-          #      render json: { message: "You must be logged in to do that" } 
-          # end
+          end
      end
 
      def validate_pasted_info 
@@ -104,7 +106,7 @@ class QuestionsController < ApplicationController
      private 
      
      def question_params 
-          params.permit(:topic, :url, :pasted_info)
+          params.require(:question).permit(:topic, :url, :pasted_info)
      end
 
 end

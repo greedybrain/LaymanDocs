@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layman Docs | Now Let's Research!</title>
+    <title>Layman Docs | Let Me Explain</title>
     <link rel="stylesheet" href="./css/index.css" />
     <script
       src="https://kit.fontawesome.com/125c865154.js"
@@ -13,7 +13,7 @@
   <body>
     <header>
       <div class="logo-and-search">
-        <h1>LaymanDocs</h1>
+        <h2>LaymanDocs</h2>
         <form id="search-form">
           <div class="input-wrapper">
             <input
@@ -48,26 +48,47 @@
           <form id="post-form">
             <h2>Create a Post</h2>
             <div class="topic">
-              <input type="text" name="topic" placeholder="Topic here" />
+              <div class="keyboard">
+                <i class="fas fa-keyboard"></i>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="topic"
+                  placeholder="Enter Section Name or Topic"
+                />
+              </div>
             </div>
             <span class="topic-error"></span>
             <div class="url">
-              <input type="text" name="url" placeholder="Url here" />
+              <div class="mouse">
+                <i class="fas fa-mouse"></i>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="url"
+                  placeholder="Paste Url Here"
+                  disabled="true"
+                  autocomplete="off"
+                />
+              </div>
             </div>
             <span class="url-error"></span>
             <div class="pasted-info">
               <textarea
                 name="pasted-info"
                 id="pasted-info"
-                placeholder="Paste Here"
-                cols="30"
-                rows="10"
-                noresize
+                placeholder="Paste Document Info Here"
+                rows="13"
+                disabled="true"
               ></textarea>
             </div>
             <span class="paste-error"></span>
             <br />
-            <button type="submit">Create</button>
+            <div class="btn">
+              <button type="submit">Create</button>
+            </div>
           </form>
         </div>
       </div>

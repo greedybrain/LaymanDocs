@@ -18,7 +18,13 @@ const contentWrapper = document.querySelector("div.content-wrapper")
 body.appendChild(contentWrapper);
 const allCardsWrapper = document.querySelector("div.all-cards");
 contentWrapper.prepend(allCardsWrapper)
+
 const form = document.querySelector("form#post-form");
+const topicDiv = document.querySelector("div.topic")
+const keyBoard = document.querySelector("div.keyboard i")
+const urlDiv = document.querySelector("div.url")
+const mouse = document.querySelector("div.mouse i")
+const pastedInfoDiv = document.querySelector("div.pasted-info")
 const topicField = document.querySelector("input[name=topic]");
 let urlField = document.querySelector("input[name=url]");
 const pasteInfoField = document.querySelector("textarea[name=pasted-info]");

@@ -36,7 +36,7 @@ header {
           display: flex;
           align-items: center;
 
-          h1 {
+          h2 {
                color: #fff;
                letter-spacing: 1px;
                margin-right: 35px;
@@ -135,134 +135,200 @@ div.content-wrapper {
      display: flex;
      padding: 50px 40px;
 
+
      div.all-cards {
           padding: 0 50px;
           overflow-y: scroll;
+          border-left: 1px solid #e4e4e4;
+          border-right: 1px solid #e4e4e4;
+
+          .post-card {
+               border-radius: 5px;
+
+               .card-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    h2 {
+
+                         a {
+                              color: #5c5c5c;
+                              cursor: pointer;
+
+                              &:hover {
+                                   color: #8b8b8b;
+                              }
+                         }
+
+                    }
+
+                    .menu {
+                         cursor: pointer;
+
+                         .dot {
+                              border: 2px solid #333;
+                              border-radius: 50px;
+                              margin-bottom: 2px;
+
+                              &:hover {
+                                   color: #8b8b8b;
+                              }
+                         }
+                    }
+               }
+
+               .card-body {
+                    // display: flex;
+                    // flex-direction: column;
+
+                    p {
+                         padding: 10px 0;
+                         border-bottom: 1px solid #c9c9c9;
+                         min-height: 150px;
+                         color: #5c5c5c;
+                         font-weight: bolder;
+                         line-height: 1.4;
+                         margin-bottom: 40px;
+
+                         i {
+                              font-size: 1.2rem;
+                              cursor: pointer;
+
+                              &:hover {
+                                   color: #8b8b8b;
+                              }
+                         }
+                    }
+               }
+
+          }
      }
 
      ::-webkit-scrollbar {
           display: none;
      }
-}
 
-// WRAPPER AND CHILDREN STYLES
+     // WRAPPER AND CHILDREN STYLES
 
-div.post-form-wrapper {
-     display: flex;
-     flex-direction: row-reverse;
-     justify-content: space-around;
+     div.post-form-wrapper {
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-around;
+          margin-left: 10px;
 
-     div.post-form {
-          border: 1px solid #333;
-          width: 400px;
-          height: 400px;
+          div.post-form {
+               // background-color: #fafafa;
+               width: 400px;
 
-          form {
-               height: auto;
-          }
-
-     }
-
-     .post-card {
-          // position: relative;
-          width: 500px;
-          // border: 1px solid #a5a4a4;
-          border-radius: 5px;
-          -webkit-box-shadow: 1px 6px 23px 0px #bababa;
-          -moz-box-shadow: 1px 6px 23px 0px #bababa;
-          box-shadow: 1px 6px 23px 0px #bababa;
-          background-color: #ffffff;
-          border: 1px solid #c9c9c9;
-
-          .card-header {
-               display: flex;
-               align-items: center;
-               justify-content: space-between;
-               padding: 10px 20px;
-               border-bottom: 1px solid #c9c9c9;
-               // background-image: linear-gradient(to right, #262b85, #20257a);
-               border-top-left-radius: 5px;
-               border-top-right-radius: 5px;
+               form {
+                    height: 100%;
+               }
 
                h2 {
-                    color: #5c5c5c;
-                    cursor: pointer;
-
-                    &:hover {
-                         color: #8b8b8b;
-                    }
+                    text-align: center;
+                    margin-top: 20px;
                }
 
-               .card-menu {
-                    cursor: pointer;
-
-                    .dot {
-                         border: 2px solid #5c5c5c;
-                         border-radius: 50px;
-                         margin: 0 0 3px 0;
-
-                         &:hover {
-                              color: #8b8b8b;
-                         }
-                    }
-               }
-          }
-
-          .card-body {
-               // display: flex;
-               // flex-direction: column;
-
-               p {
-                    padding: 10px 20px;
-                    border-bottom: 1px solid #c9c9c9;
-                    min-height: 125px;
-                    color: #5c5c5c;
-                    font-weight: bolder;
-                    line-height: 1.4;
+               div.keyboard {
+                    float: left;
+                    width: 10%;
 
                     i {
-                         font-size: 1.2rem;
+                         color: #ff7a7a;
+                         font-size: 1.5rem;
+                         position: relative;
+                         top: 13px;
+                         left: 10px;
+                    }
+               }
+
+               div.mouse {
+                    float: left;
+                    width: 10%;
+
+                    i {
+                         color: #ff7a7a;
+                         font-size: 1.5rem;
+                         position: relative;
+                         top: 10px;
+                         left: 15px;
+                    }
+               }
+
+               div.topic {
+                    margin: 30px auto 0 auto;
+               }
+
+               div.url {
+                    margin: 10px auto;
+               }
+
+               div.pasted-info {
+                    margin: 20px auto 0 auto;
+               }
+
+               div.topic,
+               div.url,
+               div.pasted-info {
+                    width: 90%;
+                    border-bottom: 1px solid #b0b0b0;
+               }
+
+               input[name=topic] {
+                    font-size: 1rem;
+                    width: 100%;
+               }
+
+               input[name=topic],
+               input[name=url] {
+                    padding: 15px;
+                    width: 85%;
+               }
+
+               input[name=url],
+               textarea[name=pasted-info] {
+                    cursor: not-allowed;
+                    font-size: 1rem;
+               }
+
+               textarea[name=pasted-info] {
+                    resize: none;
+                    width: 100%;
+                    padding-left: 15px;
+               }
+
+               input[name=topic],
+               input[name=url],
+               textarea[name=pasted-info] {
+                    border: none;
+                    outline: none;
+                    // background-color: #fafafa;
+               }
+
+               div.btn {
+                    width: 90%;
+                    height: 50px;
+                    margin: 10px auto 0 auto;
+
+                    button {
+                         width: 100%;
+                         height: 100%;
+                         border: 1px solid #333;
+                         border-radius: 5px;
+                         font-size: 1.1rem;
+                         letter-spacing: 2px;
+                         color: #fff;
+                         background-image: linear-gradient(to right, #262b85, #20257a);
                          cursor: pointer;
+                         outline: none;
 
                          &:hover {
-                              color: #8b8b8b;
+                              background-image: linear-gradient(to right, #2e34a0, #2e35ac);
                          }
-                    }
-               }
-          }
 
-          .card-footer {
-               padding: 10px 20px;
-               display: flex;
-               align-items: center;
-               justify-content: space-between;
-
-               .post-date {
-                    font-size: .8rem;
-               }
-
-               .votes {
-                    display: flex;
-
-                    i {
-                         color: #5c5c5c;
-
-                         &:hover {
-                              color: #8b8b8b;
-                         }
-                    }
-
-                    .upvotes {
-                         margin-right: 20px;
-
-                         i {
-                              cursor: pointer;
-                         }
-                    }
-
-                    .downvotes {
-                         i {
-                              cursor: pointer;
+                         &:active {
+                              background-image: linear-gradient(to right, #262b85, #20257a);
                          }
                     }
                }
@@ -270,6 +336,7 @@ div.post-form-wrapper {
           }
      }
 }
+
 
 
 // FORM STYLES

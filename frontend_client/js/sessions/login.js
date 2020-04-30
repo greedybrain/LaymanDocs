@@ -25,7 +25,7 @@ actualForm.addEventListener("submit", e => {
      fetch(`${BASE_URL}${LOGIN}`, options)
           .then(res => res.json())
           .then(data => {
-               localStorage.setItem("token", data.jwt_token)
+               // localStorage.setItem("token", data.jwt_token)
                console.log(data)
           })
 

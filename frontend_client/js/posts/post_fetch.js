@@ -4,12 +4,8 @@ const withThisPost = new Post();
 class Fetch extends Post {
 
   static getAllPosts = () => {
-    const token = localStorage.getItem("token")
-    fetch(`${BASE_URL}${ALL_QUESTIONS}`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      })
+    // const token = localStorage.getItem("token")
+    fetch(`${BASE_URL}${ALL_QUESTIONS}`)
       .then((res) => res.json())
       .then((posts) => {
         posts.data.forEach((post) => {
@@ -34,7 +30,7 @@ Fetch.prototype.getUrlData = function () {
     body: JSON.stringify(data),
   };
 
-  fetch(`${BASE_URL}${VALIDATING_URL}`, options)
+  return fetch(`${BASE_URL}${VALIDATING_URL}`, options)
     .then((res) => res.json())
     .then((post) => console.log(post))
     .catch(console.log);
@@ -73,7 +69,7 @@ Fetch.prototype.submitAPost = function () {
   const options = {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${token}`,
+      // "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
       Accept: "application/json",
     },

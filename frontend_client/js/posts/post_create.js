@@ -61,6 +61,7 @@ Post.prototype.createCardBody = function () {
   const bodyDiv = document.createElement("div");
   bodyDiv.classList.add("card-body");
   const bodyContentPtag = document.createElement("p");
+  const span = document.createElement("span")
   bodyContentPtag.classList.add("body-content");
   bodyContentPtag.textContent = `${this.pasteInfo}`;
   bodyDiv.appendChild(bodyContentPtag);

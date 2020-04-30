@@ -16,6 +16,7 @@ const passwordField = document.querySelector("input[name=password]")
 const body = document.body;
 const contentWrapper = document.querySelector("div.content-wrapper")
 body.appendChild(contentWrapper);
+const postFormWrapper = document.querySelector("div.post-form-wrapper")
 const allCardsWrapper = document.querySelector("div.all-cards");
 contentWrapper.prepend(allCardsWrapper)
 

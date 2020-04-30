@@ -30,9 +30,22 @@ Fetch.prototype.getUrlData = function () {
     body: JSON.stringify(data),
   };
 
-  return fetch(`${BASE_URL}${VALIDATING_URL}`, options)
+  fetch(`${BASE_URL}${VALIDATING_URL}`, options)
     .then((res) => res.json())
-    .then((post) => console.log(post))
+    .then((post) => {
+      if (post.message !== "Please enter a valid link") {
+        withThisPost.createResponseModal(post)
+        mouse.style.color = "#21fc6e"
+        mouse.style.transition = "color .5s ease-in-out"
+        pasteInfoField.disabled = false
+        pasteInfoField.style.cursor = "pointer"
+        pastedInfoDiv.style.borderBottom = "1px solid #4851f5"
+      } else {
+        mouse.querySelector('i.fa-mouse').style.display = "none"
+        mouse.querySelector('i.fa-mouse').style.display = "none"
+        withThisPost.createResponseModal(post)
+      }
+    })
     .catch(console.log);
 };
 
@@ -53,7 +66,18 @@ Fetch.prototype.getPasteData = function () {
 
   fetch(`${BASE_URL}${VALIDATING_INFO}`, options)
     .then((res) => res.json())
-    .then((post) => console.log(post))
+    .then((post) => {
+      if (post.message !== "Please enter a valid link") {
+        withThisPost.createResponseModal(post)
+        mouse.style.color = "#21fc6e"
+        mouse.style.transition = "color .5s ease-in-out"
+        pasteInfoField.disabled = false
+        pasteInfoField.style.cursor = "pointer"
+        pastedInfoDiv.style.borderBottom = "1px solid #4851f5"
+      } else {
+        withThisPost.createResponseModal(post)
+      }
+    })
     .catch(console.log);
 };
 

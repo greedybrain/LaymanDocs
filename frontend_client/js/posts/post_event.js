@@ -28,25 +28,24 @@ class PostEvent {
 
      static checkIfPastedInfoIsTyped() {
           urlField.addEventListener("keypress", e => {
-               alert("Please paste in the url link. Do not type it in.")
+               alert("Please paste in the Url link, do not type it in.")
                setTimeout(() => {
                     urlField.value = ""
+               })
+          })
+          pasteInfoField.addEventListener("keypress", e => {
+               alert("Please paste in the Document Info, do not type it in.")
+               setTimeout(() => {
+                    pasteInfoField.value = ""
                })
           })
      }
 
      static handleUrlFetchEvent() {
           urlField.addEventListener("paste", e => {
-               const errMessage = "That link is invalid, please enter a valid link"
                setTimeout(() => {
                     if (urlField.value.length > 0) {
-                         pasteInfoField.disabled = false
-                         pasteInfoField.style.cursor = "pointer"
-                         pastedInfoDiv.style.borderBottom = "1px solid #4851f5"
-                         if (initFetchTo.getUrlData().message !== errMessage) {
-                              mouse.style.color = "#21fc6e"
-                              mouse.style.transition = "color .5s ease-in-out"
-                         }
+                         initFetchTo.getUrlData()
                     } else {
                          pasteInfoField.disabled = true
                          pasteInfoField.style.cursor = "not-allowed"
@@ -61,7 +60,9 @@ class PostEvent {
      static handlePasteInfoFetchEvent() {
           pasteInfoField.addEventListener("paste", e => {
                setTimeout(() => {
-                    initFetchTo.getPasteData()
+                    if (pasteInfoField.value.length > 0) {
+                         initFetchTo.getPasteData()
+                    }
                }, 0)
           })
      }

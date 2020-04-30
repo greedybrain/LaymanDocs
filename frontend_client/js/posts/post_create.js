@@ -12,6 +12,25 @@ class Post {
   static all = [];
 }
 
+Post.prototype.createResponseModal = function (post) {
+  const resModalDiv = document.createElement("div")
+  resModalDiv.classList.add('res-modal-div') //border #333/ width 200px / height 100px
+  const modalMsg = document.createElement("p")
+  if (post.message === "Please enter a valid link") {
+    modalMsg.textContent = post.message
+  } else if (post.message === "We couldn't find that in the documentation. Please check your pasted info.") {
+    modalMsg.textContent = post.message
+    pasteInfoField.value = ""
+  } else {
+    modalMsg.textContent = `We found a document titled: ${post.message}`
+  }
+  resModalDiv.appendChild(modalMsg)
+  postFormWrapper.appendChild(resModalDiv)
+  setTimeout(() => {
+    resModalDiv.remove()
+  }, 10000)
+}
+
 Post.prototype.createPostAsObject = function (post, position) {
   const newPost = new Post(
     post.id,

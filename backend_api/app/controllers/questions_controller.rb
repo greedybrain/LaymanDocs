@@ -19,13 +19,12 @@ class QuestionsController < ApplicationController
           if questions_that_include_url.count > 0 
                render json: {
                     message: "Related Searches",
-                    posts: QuestionSerializer.new(questions_that_include_url).serialized_json
+                    posts: QuestionSerializer.new(questions_that_include_url).serializable_hash
                }
           else
                @@documentation_by_url = Question.get_doc_content_by(params[:url])
-          
+               @@question.url = params[:url]
                if @@documentation_by_url != "Please enter a valid link"
-                    @@question.url = params[:url]
                     render json: { 
                          message: @@documentation_by_url[:title]
                     }

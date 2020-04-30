@@ -19,8 +19,12 @@ class Question < ApplicationRecord
                invalid_message = "Please enter a valid link"
                raise invalid_message
           ensure
-               url = invalid_message
-               return url
+               if invalid_message
+                    url = invalid_message
+                    return url
+               else
+                    url = scraped_info
+               end
           end
 
           textCollection = scraped_info.css("*").collect do |el|

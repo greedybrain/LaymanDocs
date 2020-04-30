@@ -213,9 +213,23 @@ div.content-wrapper {
 
      div.post-form-wrapper {
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: column-reverse;
           justify-content: space-around;
           margin-left: 10px;
+
+          div.res-modal-div {
+               display: block;
+               color: red;
+               margin: 20px auto 0 auto;
+               width: 300px;
+               padding: 10px 0;
+               text-align: center;
+               border-radius: 5px;
+               -webkit-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+               -moz-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+               box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+               letter-spacing: 2px;
+          }
 
           div.post-form {
                // background-color: #fafafa;
@@ -247,14 +261,25 @@ div.content-wrapper {
                     float: left;
                     width: 10%;
 
-                    i {
+                    i.fa-mouse {
+                         display: inline;
                          color: #ff7a7a;
                          font-size: 1.5rem;
                          position: relative;
                          top: 10px;
                          left: 15px;
                     }
+
+                    i.fa-spinner {
+                         display: none;
+                         color: #6f6f6f;
+                         font-size: 1.5rem;
+                         position: relative;
+                         top: 10px;
+                         left: 15px;
+                    }
                }
+
 
                div.topic {
                     margin: 30px auto 0 auto;

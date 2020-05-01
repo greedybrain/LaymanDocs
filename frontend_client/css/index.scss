@@ -137,13 +137,24 @@ div.content-wrapper {
 
 
      div.all-cards {
-          padding: 0 50px;
+          padding: 20px 40px;
           overflow-y: scroll;
-          border-left: 1px solid #e4e4e4;
-          border-right: 1px solid #e4e4e4;
 
           .post-card {
                border-radius: 5px;
+               margin-bottom: 50px;
+               padding: 15px 15px 10px 15px;
+               cursor: pointer;
+               -webkit-box-shadow: 0px 6px 13px -5px rgba(115, 115, 115, 1);
+               -moz-box-shadow: 0px 6px 13px -5px rgba(115, 115, 115, 1);
+               box-shadow: 0px 6px 13px -5px rgba(115, 115, 115, 1);
+
+               &:hover {
+                    -webkit-box-shadow: -4px 9px 44px -5px rgba(115, 115, 115, 1);
+                    -moz-box-shadow: -4px 9px 44px -5px rgba(115, 115, 115, 1);
+                    box-shadow: -4px 9px 44px -5px rgba(115, 115, 115, 1);
+                    transition: box-shadow .1s ease-in-out
+               }
 
                .card-header {
                     display: flex;
@@ -169,7 +180,7 @@ div.content-wrapper {
                          .dot {
                               border: 2px solid #333;
                               border-radius: 50px;
-                              margin-bottom: 2px;
+                              margin-bottom: 3px;
 
                               &:hover {
                                    color: #8b8b8b;
@@ -179,25 +190,29 @@ div.content-wrapper {
                }
 
                .card-body {
-                    // display: flex;
-                    // flex-direction: column;
+                    padding: 20px 0;
+               }
 
-                    p {
-                         padding: 10px 0;
-                         border-bottom: 1px solid #c9c9c9;
-                         min-height: 150px;
-                         color: #5c5c5c;
-                         font-weight: bolder;
-                         line-height: 1.4;
-                         margin-bottom: 40px;
+               div.footer {
+                    font-size: 0.8rem;
+                    display: flex;
+                    justify-content: space-between;
 
-                         i {
-                              font-size: 1.2rem;
-                              cursor: pointer;
+                    div.elabs-votes {
+                         display: flex;
+                    }
 
-                              &:hover {
-                                   color: #8b8b8b;
-                              }
+                    div.votes {
+                         display: flex;
+                         margin-left: 5px;
+                    }
+
+                    div.downvotes {
+                         margin-left: 10px;
+
+                         span {
+                              display: inline-block;
+                              transform: rotate(180deg);
                          }
                     }
                }

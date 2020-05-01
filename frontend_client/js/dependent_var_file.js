@@ -19,6 +19,7 @@ body.appendChild(contentWrapper);
 const postFormWrapper = document.querySelector("div.post-form-wrapper")
 const allCardsWrapper = document.querySelector("div.all-cards");
 contentWrapper.prepend(allCardsWrapper)
+const cardBodyP = document.querySelector("div.card-body p")
 
 const form = document.querySelector("form#post-form");
 const topicDiv = document.querySelector("div.topic")

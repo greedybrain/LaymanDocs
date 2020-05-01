@@ -41,8 +41,6 @@ Fetch.prototype.getUrlData = function () {
         pasteInfoField.style.cursor = "pointer"
         pastedInfoDiv.style.borderBottom = "1px solid #4851f5"
       } else {
-        mouse.querySelector('i.fa-mouse').style.display = "none"
-        mouse.querySelector('i.fa-mouse').style.display = "none"
         withThisPost.createResponseModal(post)
       }
     })

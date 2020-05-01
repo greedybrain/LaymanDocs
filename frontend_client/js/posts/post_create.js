@@ -16,14 +16,21 @@ Post.prototype.createResponseModal = function (post) {
   const resModalDiv = document.createElement("div")
   resModalDiv.classList.add('res-modal-div') //border #333/ width 200px / height 100px
   const modalMsg = document.createElement("p")
-  if (post.message === "Please enter a valid link") {
-    modalMsg.textContent = post.message
-  } else if (post.message === "We couldn't find that in the documentation. Please check your pasted info.") {
-    modalMsg.textContent = post.message
-    pasteInfoField.value = ""
-  } else {
-    modalMsg.textContent = `We found a document titled: ${post.message}`
+  switch (post.message) {
+    case "Please enter a valid link":
+      modalMsg.textContent = post.message
+      break;
+    case "We couldn't find that in the documentation. Please check your pasted info.":
+      modalMsg.textContent = post.message
+      break;
+    case "We've found the Doc info you pasted!":
+      modalMsg.textContent = post.message
+      break;
+    default:
+      modalMsg.textContent = `We've found: ${post.message}`
+      break;
   }
+
   resModalDiv.appendChild(modalMsg)
   postFormWrapper.appendChild(resModalDiv)
   setTimeout(() => {
@@ -41,6 +48,7 @@ Post.prototype.createPostAsObject = function (post, position) {
   );
   newPost.createCardHeader();
   newPost.createCardBody();
+  newPost.createCardFooter();
   if (position === "prepend") {
     allCardsWrapper.prepend(newPost.createCard());
   } else if (position === "append") {
@@ -82,11 +90,38 @@ Post.prototype.createCardBody = function () {
   const bodyContentPtag = document.createElement("p");
   const span = document.createElement("span")
   bodyContentPtag.classList.add("body-content");
-  bodyContentPtag.textContent = `${this.pasteInfo}`;
+  bodyContentPtag.textContent = `${this.pasteInfo.slice(0, 100)} ...`;
   bodyDiv.appendChild(bodyContentPtag);
 
   return bodyDiv;
 };
+
+Post.prototype.createCardFooter = function () {
+  const cardFooterDiv = document.createElement("div")
+  cardFooterDiv.classList.add("footer")
+  const postByDiv = document.createElement("div")
+  postByDiv.classList.add("post-by")
+  postByDiv.innerHTML += `
+    posted by:<a href="#" target="_blank"> <span>User: ${this.laymanId}</span></a>
+  `
+  const elabVotes = document.createElement("div")
+  elabVotes.classList.add("elabs-votes")
+  const elabs = document.createElement("div")
+  elabs.classList.add("elabs")
+  elabs.innerHTML += `
+    <a href="#" target="_blank">5</a> elabs •
+  `
+  const votes = document.createElement("div")
+  votes.classList.add("votes")
+  votes.innerHTML += `
+    <div class="upvotes"><a href="#" target="_blank">87</a> &#8679;</div>
+    <div class="downvotes"><a href="#" target="_blank">12</a> <span>&#8679;</span></div>
+  `
+  elabVotes.append(elabs, votes)
+  cardFooterDiv.append(postByDiv, elabVotes)
+
+  return cardFooterDiv
+}
 
 Post.prototype.createCard = function () {
   const cardDiv = document.createElement("div");
@@ -95,7 +130,8 @@ Post.prototype.createCard = function () {
   cardDiv.setAttribute("data-layman-id", `${this.laymanId}`);
   const header = this.createCardHeader();
   const body = this.createCardBody();
-  cardDiv.append(header, body);
+  const footer = this.createCardFooter();
+  cardDiv.append(header, body, footer);
 
   return cardDiv;
 };

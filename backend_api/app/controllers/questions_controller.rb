@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
                          if @@documentation_by_url[:body].include?(pasted_data)
                               @@question.pasted_info = params[:pasteInfo]
                               render json: { 
-                                   message: "We found that in the documentation!",
+                                   message: "We've found the Doc info you pasted!",
                                    doc: @@documentation_by_url[:body]
                               }
                          else

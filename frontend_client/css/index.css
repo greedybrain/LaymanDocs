@@ -193,13 +193,9 @@ div.content-wrapper div.all-cards .post-card .card-header .menu {
 }
 
 div.content-wrapper div.all-cards .post-card .card-header .menu .dot {
-  border: 2px solid #333;
+  border: 2px solid #747474;
   border-radius: 50px;
   margin-bottom: 3px;
-}
-
-div.content-wrapper div.all-cards .post-card .card-header .menu .dot:hover {
-  color: #8b8b8b;
 }
 
 div.content-wrapper div.all-cards .post-card .card-body {

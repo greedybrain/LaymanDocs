@@ -23,6 +23,7 @@ class PostEvent {
                     urlDiv.style.borderBottom = "1px solid #b0b0b0"
                     keyBoard.style.color = "#ff7a7a"
                }
+
           })
      }
 
@@ -76,6 +77,19 @@ class PostEvent {
                }, 0)
           })
 
+     }
+
+     static handlePostDeleteEvent() {
+          setTimeout(() => {
+               const postCards = document.querySelectorAll("div.post-card")
+               alert(postCards.length)
+               postCards.forEach(card => {
+                    card.addEventListener("click", e => {
+                         initFetchTo.deletePost();
+                    })
+               })
+
+          }, 5000)
      }
 }
 // EVENT ENDS HERE 

@@ -33,7 +33,7 @@ class AuthsController < ApplicationController
      # end
 
      # def logout 
-     #      session.delete(:layman_id)
+     #      # session.delete(:layman_id)
      #      render json: { 
      #           jwt_token: nil,
      #           message: "Logged out successfully" ,

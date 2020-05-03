@@ -1,4 +1,5 @@
 // const token = localStorage.getItem("token")
+// const laymanId = localStorage.getItem("layman_id")
 
 // const autoLogin = () => {
 //      if (token) {
@@ -15,5 +16,7 @@
 // }
 
 // const currentUser = () => {
-
+//      return token && laymanId ? {
+//           laymanId
+//      } : "Not logged in"
 // }

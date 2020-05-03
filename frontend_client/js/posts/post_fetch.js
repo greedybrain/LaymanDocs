@@ -4,7 +4,6 @@ const withThisPost = new Post();
 class Fetch extends Post {
 
   static getAllPosts = () => {
-    // const token = localStorage.getItem("token")
     fetch(`${BASE_URL}${ALL_QUESTIONS}`)
       .then((res) => res.json())
       .then((posts) => {
@@ -80,7 +79,7 @@ Fetch.prototype.getPasteData = function () {
 };
 
 Fetch.prototype.submitAPost = function () {
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
 
   const data = {
     topic: topicField.value,
@@ -105,4 +104,12 @@ Fetch.prototype.submitAPost = function () {
     })
     .catch(console.log);
 };
+
+Fetch.prototype.deletePost = function () {
+  const options = {
+    method: "DELETE"
+  };
+  fetch(`${BASE_URL}laymen/${this.laymanId}/questions/${this.id}`, options)
+  debugger
+}
 // FETCH CLASS ENDS HERE

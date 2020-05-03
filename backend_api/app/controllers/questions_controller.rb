@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+     # skip_before_action :require_login, only: [:index, :show]
 
      def index
           questions = Question.all.order("created_at DESC")
@@ -44,7 +45,7 @@ class QuestionsController < ApplicationController
                if questions_that_include_pasted_info.count > 0
                     render json: {
                          message: "Found related searches",
-                         post: QuestionSerializer.new(questions_that_include_pasted_info).serialized_json
+                         post: QuestionSerializer.new(questions_that_include_pasted_info).serializable_hash
                     }
                else
                     pasted_data = Question.get_laymans_paste_info(params[:pasteInfo])
@@ -69,7 +70,7 @@ class QuestionsController < ApplicationController
      def create
           @@question.topic = params[:topic]
           if @@question.save
-               render json: QuestionSerializer.new(@@question).serialized_json
+               render json: QuestionSerializer.new(@@question).serializable_hash
           else
                render json: { errors: @@question.errors }
           end
@@ -81,7 +82,7 @@ class QuestionsController < ApplicationController
                question = layman.questions.find(params[:id])
                # if authenticate_question(question) 
                     if question.update(question_params)
-                         render json: QuestionSerializer.new(question).serialized_json
+                         render json: QuestionSerializer.new(question).serializable_hash
                     else
                          render json: { message: "It seems like this post doesn't belong to you" }
                     end
@@ -91,8 +92,12 @@ class QuestionsController < ApplicationController
 
      def destroy 
           # should test against current user
-          layman = Layman.find(params[:layman_id])
-          question = layman.questions.find(params[:id])
+          layman = Layman.find(1)
+          
+          binding.pry
+          
+          question = find(params[:id])
+          binding.pry
           # if authenticate_question(question)
                if question.destroy
                     render json: { message: "Post deleted" }

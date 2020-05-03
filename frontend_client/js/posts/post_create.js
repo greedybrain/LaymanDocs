@@ -10,6 +10,7 @@ class Post {
   }
 
   static all = [];
+
 }
 
 Post.prototype.createResponseModal = function (post) {
@@ -102,7 +103,7 @@ Post.prototype.createCardFooter = function () {
   const postByDiv = document.createElement("div")
   postByDiv.classList.add("post-by")
   postByDiv.innerHTML += `
-    posted by:<a href="#" target="_blank"> <span>User: ${this.laymanId}</span></a>
+    posted by:<a href="#" target="_blank"> <span>User ${this.laymanId}</span></a>
   `
   const elabVotes = document.createElement("div")
   elabVotes.classList.add("elabs-votes")
@@ -135,4 +136,5 @@ Post.prototype.createCard = function () {
 
   return cardDiv;
 };
+
 // POST CLASS ENDS HERE

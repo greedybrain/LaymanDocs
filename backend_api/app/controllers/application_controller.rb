@@ -29,8 +29,8 @@ class ApplicationController < ActionController::API # or < ActionController::Bas
      #      decoded_hash = decoded_token
      #      if !decoded_hash.nil?
      #           # puts decoded_hash.class
-     #           user_id = decoded_hash[0]['user_id']
-     #           @user = User.find(user_id)
+     #           layman_id = decoded_hash[0]['layman_id']
+     #           @layman = Layman.find(layman_id)
      #      else
      #           nil 
      #      end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_131806) do
+ActiveRecord::Schema.define(version: 2020_05_04_132858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_131806) do
     t.integer "elab_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "layman_id"
     t.index ["elab_id"], name: "index_downvotes_on_elab_id"
     t.index ["question_id"], name: "index_downvotes_on_question_id"
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_131806) do
     t.bigint "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "layman_id"
     t.index ["question_id"], name: "index_elabs_on_question_id"
   end
 
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_131806) do
     t.text "pasted_info"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "layman_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -62,16 +65,12 @@ ActiveRecord::Schema.define(version: 2020_05_04_131806) do
     t.index ["elab_id"], name: "index_replies_on_elab_id"
   end
 
-  create_table "scrapers", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "upvotes", force: :cascade do |t|
     t.integer "question_id"
     t.integer "elab_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "layman_id"
     t.index ["elab_id"], name: "index_upvotes_on_elab_id"
     t.index ["question_id"], name: "index_upvotes_on_question_id"
   end

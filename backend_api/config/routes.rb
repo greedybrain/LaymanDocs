@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :laymen
   root to: "home#index"
+  
+  devise_for :laymen,
+             path: '',
+            #  path_names: {
+            #    sign_in: 'login',
+            #    sign_out: 'logout',
+            #    registration: 'signup'
+            #  },
+             controllers: {
+               sessions: 'sessions',
+               registrations: 'registrations'
+             }
+
 
   resources :questions, except: %i[new edit] # All other CRUD under laymen
 

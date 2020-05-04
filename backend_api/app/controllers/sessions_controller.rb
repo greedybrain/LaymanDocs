@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+# class SessionsController < ApplicationController
 
      # def create 
      #      layman = Layman.find_by(email: params[:email])
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
      #      end
      # end
 
-end
+# end
 
 

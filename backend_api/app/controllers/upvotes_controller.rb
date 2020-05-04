@@ -5,7 +5,6 @@ class UpvotesController < ApplicationController
                # check if upvote is placed on question
                question = Question.find(params[:question_id])
                upvote = question.upvotes.build
-               upvote.layman_id = current_layman.id 
                if upvote.save
                     render json: UpvoteSerializer.new(upvote).serialized_json
                else
@@ -15,7 +14,6 @@ class UpvotesController < ApplicationController
                # check if upvote is placed on elab
                elab = Elab.find(params[:elab_id])
                upvote = elab.upvotes.build
-               upvote.layman_id = current_layman.id 
                upvote.question_id = elab.question_id
                if upvote.save
                     render json: UpvoteSerializer.new(upvote).serialized_json

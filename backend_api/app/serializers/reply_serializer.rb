@@ -3,5 +3,4 @@ class ReplySerializer
   attributes :content
 
   belongs_to :elab
-  belongs_to :layman
 end

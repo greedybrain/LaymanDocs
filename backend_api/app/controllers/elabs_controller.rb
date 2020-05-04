@@ -24,7 +24,6 @@ class ElabsController < ApplicationController
           if params[:question_id]
                question = Question.find(params[:question_id])
                elab = question.elabs.build(elab_params)
-               elab.layman_id = current_layman.id # hard coded for now
                if elab.save
                     render json: ElabSerializer.new(elab).serialized_json
                else

@@ -4,7 +4,6 @@ class RepliesController < ApplicationController
           if params[:elab_id]
                elab = Elab.find(params[:elab_id])
                reply = elab.replies.build(reply_params)
-               reply.layman_id = current_layman.id
                if reply.save 
                     render json: ReplySerializer.new(reply).serialized_json
                end

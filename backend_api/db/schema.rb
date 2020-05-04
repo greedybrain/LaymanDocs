@@ -10,45 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_154204) do
+ActiveRecord::Schema.define(version: 2020_05_04_130213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "downvotes", force: :cascade do |t|
     t.integer "question_id"
-    t.integer "layman_id"
     t.integer "elab_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["elab_id"], name: "index_downvotes_on_elab_id"
-    t.index ["layman_id"], name: "index_downvotes_on_layman_id"
     t.index ["question_id"], name: "index_downvotes_on_question_id"
   end
 
   create_table "elabs", force: :cascade do |t|
     t.text "elaboration"
     t.bigint "question_id"
-    t.bigint "layman_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["layman_id"], name: "index_elabs_on_layman_id"
     t.index ["question_id"], name: "index_elabs_on_question_id"
-  end
-
-  create_table "laymen", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "questions", force: :cascade do |t|
     t.string "topic"
     t.string "url"
     t.text "pasted_info"
-    t.integer "layman_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -69,22 +56,17 @@ ActiveRecord::Schema.define(version: 2020_04_24_154204) do
 
   create_table "upvotes", force: :cascade do |t|
     t.integer "question_id"
-    t.integer "layman_id"
     t.integer "elab_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["elab_id"], name: "index_upvotes_on_elab_id"
-    t.index ["layman_id"], name: "index_upvotes_on_layman_id"
     t.index ["question_id"], name: "index_upvotes_on_question_id"
   end
 
   add_foreign_key "downvotes", "elabs"
-  add_foreign_key "downvotes", "laymen"
   add_foreign_key "downvotes", "questions"
-  add_foreign_key "elabs", "laymen"
   add_foreign_key "elabs", "questions"
   add_foreign_key "replies", "elabs"
   add_foreign_key "upvotes", "elabs"
-  add_foreign_key "upvotes", "laymen"
   add_foreign_key "upvotes", "questions"
 end

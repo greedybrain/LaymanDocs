@@ -35,6 +35,8 @@ header {
      .logo-and-search {
           display: flex;
           align-items: center;
+          // justify-content: space-between;
+          width: 100%;
 
           h2 {
                color: #fff;
@@ -96,37 +98,23 @@ header {
 
 }
 
-// LOGIN FORM 
-div.login-form {
-     display: none;
-     align-items: center;
-     justify-content: center;
-     background-color: rgba(0, 0, 0, 0.461);
-     position: absolute;
-     top: 0;
-     left: 0;
-     z-index: 101;
-     width: 100%;
+div.res-modal-div {
+     display: block;
+     color: #fff;
+     margin: 20px auto 0 auto;
+     width: 90%;
+     padding: 20px 0;
+     text-align: center;
+     border-radius: 5px;
+     -webkit-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+     -moz-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+     box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
+     letter-spacing: 2px;
 
-     form {
-          border: 1px solid red;
-          width: 400px;
-          height: 400px;
-
-          h2 {
-               text-align: center;
-               border-bottom: 1px solid #333;
-               padding: 10px 0;
-               letter-spacing: 2px;
-
-               span {
-                    float: right;
-                    padding-right: 5px;
-                    cursor: pointer;
-               }
-          }
+     p {
+          font-weight: bold;
+          font-size: 1.2rem;
      }
-
 }
 
 // CONTENT WRAPPER  
@@ -139,6 +127,8 @@ div.content-wrapper {
      div.all-cards {
           padding: 20px 40px;
           overflow-y: scroll;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
 
           .post-card {
                border-radius: 5px;
@@ -227,20 +217,6 @@ div.content-wrapper {
           flex-direction: column-reverse;
           justify-content: space-around;
           margin-left: 10px;
-
-          div.res-modal-div {
-               display: block;
-               color: red;
-               margin: 20px auto 0 auto;
-               width: 300px;
-               padding: 10px 0;
-               text-align: center;
-               border-radius: 5px;
-               -webkit-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
-               -moz-box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
-               box-shadow: 0px 7px 29px -1px rgba(184, 184, 184, 1);
-               letter-spacing: 2px;
-          }
 
           div.post-form {
                // background-color: #fafafa;

@@ -11,7 +11,6 @@ class App {
           PostEvent.handleUrlFetchEvent()
           PostEvent.handlePasteInfoFetchEvent()
           PostEvent.handleFormSubmitEvent()
-          PostEvent.handlePostDeleteEvent()
      }
 }
 

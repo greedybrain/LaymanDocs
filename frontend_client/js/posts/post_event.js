@@ -15,7 +15,7 @@ class PostEvent {
                     urlField.disabled = false
                     urlField.style.cursor = "pointer"
                     urlDiv.style.borderBottom = "1px solid #4851f5"
-                    keyBoard.style.color = "#21fc6e"
+                    keyBoard.style.color = "#5cb85c"
                     keyBoard.style.transition = "color .5s ease-in-out"
                } else {
                     urlField.disabled = true
@@ -77,19 +77,6 @@ class PostEvent {
                }, 0)
           })
 
-     }
-
-     static handlePostDeleteEvent() {
-          setTimeout(() => {
-               const postCards = document.querySelectorAll("div.post-card")
-               alert(postCards.length)
-               postCards.forEach(card => {
-                    card.addEventListener("click", e => {
-                         initFetchTo.deletePost();
-                    })
-               })
-
-          }, 5000)
      }
 }
 // EVENT ENDS HERE 

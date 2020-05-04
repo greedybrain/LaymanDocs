@@ -34,7 +34,7 @@ Fetch.prototype.getUrlData = function () {
     .then((post) => {
       if (post.message !== "Please enter a valid link") {
         withThisPost.createResponseModal(post)
-        mouse.style.color = "#21fc6e"
+        mouse.style.color = "#5cb85c"
         mouse.style.transition = "color .5s ease-in-out"
         pasteInfoField.disabled = false
         pasteInfoField.style.cursor = "pointer"
@@ -64,6 +64,7 @@ Fetch.prototype.getPasteData = function () {
   fetch(`${BASE_URL}${VALIDATING_INFO}`, options)
     .then((res) => res.json())
     .then((post) => {
+      debugger
       if (post.message !== "Please enter a valid link") {
         withThisPost.createResponseModal(post)
         mouse.style.color = "#21fc6e"
@@ -97,19 +98,11 @@ Fetch.prototype.submitAPost = function () {
     body: JSON.stringify(data),
   };
 
-  fetch(`${BASE_URL}/laymen/${this.laymanId}/questions`, options)
+  fetch(`${BASE_URL}${ALL_QUESTIONS}`, options)
     .then((res) => res.json())
     .then((post) => {
       withThisPost.createPostAsObject(post.data, "prepend");
     })
     .catch(console.log);
 };
-
-Fetch.prototype.deletePost = function () {
-  const options = {
-    method: "DELETE"
-  };
-  fetch(`${BASE_URL}laymen/${this.laymanId}/questions/${this.id}`, options)
-  debugger
-}
 // FETCH CLASS ENDS HERE

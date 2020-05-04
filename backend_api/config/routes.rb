@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :laymen, only: %i[index show destroy] do 
-    resources :questions, except: %i[new edit] # All other CRUD under laymen
-  end
+  # resources :laymen, only: %i[index show destroy] do 
+  # end
+  resources :questions, except: %i[new edit] # All other CRUD under laymen
 
   resources :questions, only: %i[index show] do 
     resources :elabs # All other CRUD under questions
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   post '/validating_info', to: "questions#validate_pasted_info"
 
   # Signup, Login, and Logout routing
-  post "/signup", to: "laymen#create"
-  post "/login", to: "auths#create"
-  delete "/logout", to: "sessions#logout"
+  # post "/signup", to: "laymen#create"
+  # post "/login", to: "auths#create"
+  # delete "/logout", to: "sessions#logout"
 
   get "/auto_login", to: "auths#auto_login"
   get "/user_authorized", to: "auths#user_authorized"

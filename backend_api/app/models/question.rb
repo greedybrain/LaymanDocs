@@ -6,7 +6,7 @@ class Question < ApplicationRecord
      validates :pasted_info, uniqueness: true
 
 
-     belongs_to :layman
+     # belongs_to :layman
      has_many :elabs, dependent: :destroy
      has_many :upvotes, dependent: :destroy
      has_many :downvotes, dependent: :destroy

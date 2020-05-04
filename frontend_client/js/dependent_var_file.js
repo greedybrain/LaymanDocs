@@ -1,19 +1,11 @@
 const BASE_URL = "http://localhost:3000/";
 const ALL_QUESTIONS = "questions";
-const SIGNUP = "signup";
-const LOGIN = "login";
-const LOGOUT = "logout";
 const VALIDATING_URL = "validating_url";
 const VALIDATING_INFO = "validating_info";
 
-const loginBtn = document.querySelector("button.login-btn")
-const loginForm = document.querySelector("div.login-form")
-const actualForm = loginForm.querySelector("form")
-const closeBtn = document.querySelector("span.close")
-const emailField = document.querySelector("input[name=email]")
-const passwordField = document.querySelector("input[name=password]")
 
 const body = document.body;
+const responseMsg = document.querySelector("div.response-msg")
 const contentWrapper = document.querySelector("div.content-wrapper")
 body.appendChild(contentWrapper);
 const postFormWrapper = document.querySelector("div.post-form-wrapper")

@@ -44,6 +44,7 @@ header .logo-and-search {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 header .logo-and-search h2 {
@@ -101,39 +102,22 @@ header .search-and-btns .btns .signup-btn {
   font-size: 1rem;
 }
 
-div.login-form {
-  display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: rgba(0, 0, 0, 0.461);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 101;
-  width: 100%;
-}
-
-div.login-form form {
-  border: 1px solid red;
-  width: 400px;
-  height: 400px;
-}
-
-div.login-form form h2 {
+div.res-modal-div {
+  display: block;
+  color: #fff;
+  margin: 20px auto 0 auto;
+  width: 90%;
+  padding: 20px 0;
   text-align: center;
-  border-bottom: 1px solid #333;
-  padding: 10px 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 7px 29px -1px #b8b8b8;
+  box-shadow: 0px 7px 29px -1px #b8b8b8;
   letter-spacing: 2px;
 }
 
-div.login-form form h2 span {
-  float: right;
-  padding-right: 5px;
-  cursor: pointer;
+div.res-modal-div p {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 div.content-wrapper {
@@ -147,6 +131,8 @@ div.content-wrapper {
 div.content-wrapper div.all-cards {
   padding: 20px 40px;
   overflow-y: scroll;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 div.content-wrapper div.all-cards .post-card {
@@ -250,19 +236,6 @@ div.content-wrapper div.post-form-wrapper {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-left: 10px;
-}
-
-div.content-wrapper div.post-form-wrapper div.res-modal-div {
-  display: block;
-  color: red;
-  margin: 20px auto 0 auto;
-  width: 300px;
-  padding: 10px 0;
-  text-align: center;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 7px 29px -1px #b8b8b8;
-  box-shadow: 0px 7px 29px -1px #b8b8b8;
-  letter-spacing: 2px;
 }
 
 div.content-wrapper div.post-form-wrapper div.post-form {

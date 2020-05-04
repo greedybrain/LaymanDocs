@@ -1,21 +1,17 @@
 class QuestionsController < ApplicationController
-     # skip_before_action :require_login, only: [:index, :show]
-
+     
      def index
           questions = Question.all.order("created_at DESC")
           render json: QuestionSerializer.new(questions).serialized_json
      end
 
      def show 
-          if params[:layman_id ]
-               layman = Layman.find(params[:layman_id])
-               @question = layman.questions.find(params[:id])
-               render json: QuestionSerializer.new(@question).serialized_json
-          end
+          question = Question.find(params[:id])
+          render json: QuestionSerializer.new(question).serialized_json
      end
 
      def validate_url
-          @@question = Layman.find(1).questions.build
+          @@question = Question.new
           questions_that_include_url = Question.all.select{|q| q.url == params[:url]}
           if questions_that_include_url.count > 0 
                render json: {
@@ -77,40 +73,28 @@ class QuestionsController < ApplicationController
      end
 
      def update
-          if params[:layman_id]
-               layman = Layman.find(params[:layman_id])
-               question = layman.questions.find(params[:id])
-               # if authenticate_question(question) 
-                    if question.update(question_params)
-                         render json: QuestionSerializer.new(question).serializable_hash
-                    else
-                         render json: { message: "It seems like this post doesn't belong to you" }
-                    end
-               # end
+          question = Question.find(params[:id]) 
+          if question.update(question_params)
+               render json: QuestionSerializer.new(question).serializable_hash
+          else
+               render json: { message: "It seems like this post doesn't belong to you" }
           end
      end
 
      def destroy 
           # should test against current user
-          layman = Layman.find(1)
-          
-          binding.pry
-          
-          question = find(params[:id])
-          binding.pry
-          # if authenticate_question(question)
-               if question.destroy
-                    render json: { message: "Post deleted" }
-               else
-                    render json: { message: "You must be logged in and the owner of this post to do that" }
-               end
-          # end
+          question = Question.find(params[:id])
+          if question.destroy
+               render json: { message: "Post deleted" }
+          else
+               render json: { message: "You must be logged in and the owner of this post to do that" }
+          end
      end
 
      private 
      
      def question_params 
-          params.require(:question).permit(:topic, :url, :pasted_info)
+          params.permit(:topic, :url, :pasted_info)
      end
 
 end

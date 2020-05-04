@@ -1,39 +1,38 @@
 // POST CLASS STARTS HERE
 class Post {
-  constructor(id, laymanId, topic, url, pasteInfo) {
+  constructor(id, topic, url, pasteInfo) {
     this.id = id;
-    this.laymanId = laymanId;
     this.topic = topic;
     this.url = url;
     this.pasteInfo = pasteInfo;
-    this.constructor.all.push(this);
   }
-
-  static all = [];
 
 }
 
 Post.prototype.createResponseModal = function (post) {
-  const resModalDiv = document.createElement("div")
+  const resModalDiv = document.querySelector("div.response-msg")
   resModalDiv.classList.add('res-modal-div') //border #333/ width 200px / height 100px
   const modalMsg = document.createElement("p")
   switch (post.message) {
     case "Please enter a valid link":
       modalMsg.textContent = post.message
+      resModalDiv.style.backgroundColor = "#ff7a7a"
       break;
     case "We couldn't find that in the documentation. Please check your pasted info.":
       modalMsg.textContent = post.message
+      resModalDiv.style.backgroundColor = "#ff7a7a"
       break;
     case "We've found the Doc info you pasted!":
       modalMsg.textContent = post.message
+      resModalDiv.style.backgroundColor = "#5cb85c"
       break;
     default:
       modalMsg.textContent = `We've found: ${post.message}`
+      resModalDiv.style.backgroundColor = "#5cb85c"
       break;
   }
-
+  
   resModalDiv.appendChild(modalMsg)
-  postFormWrapper.appendChild(resModalDiv)
   setTimeout(() => {
     resModalDiv.remove()
   }, 10000)
@@ -42,7 +41,6 @@ Post.prototype.createResponseModal = function (post) {
 Post.prototype.createPostAsObject = function (post, position) {
   const newPost = new Post(
     post.id,
-    post.relationships.layman.data.id,
     post.attributes.topic,
     post.attributes.url,
     post.attributes.pasted_info
@@ -103,8 +101,7 @@ Post.prototype.createCardFooter = function () {
   const postByDiv = document.createElement("div")
   postByDiv.classList.add("post-by")
   postByDiv.innerHTML += `
-    posted by:<a href="#" target="_blank"> <span>User ${this.laymanId}</span></a>
-  `
+    created: `
   const elabVotes = document.createElement("div")
   elabVotes.classList.add("elabs-votes")
   const elabs = document.createElement("div")
@@ -128,7 +125,6 @@ Post.prototype.createCard = function () {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("post-card");
   cardDiv.setAttribute("data-post-id", `${this.id}`);
-  cardDiv.setAttribute("data-layman-id", `${this.laymanId}`);
   const header = this.createCardHeader();
   const body = this.createCardBody();
   const footer = this.createCardFooter();

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :laymen
+  root to: "home#index"
 
   resources :questions, except: %i[new edit] # All other CRUD under laymen
 

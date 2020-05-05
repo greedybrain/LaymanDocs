@@ -28,6 +28,15 @@ class PostEvent {
      }
 
      static checkIfPastedInfoIsTyped() {
+          const urlHolder = document.querySelector("div.url-div-input")
+          urlHolder.addEventListener("mouseenter", () => {
+               if (urlField.disabled) {
+                    urlHolder.setAttribute("title", "Enter a topic or section name to enable this field")
+               } else {
+                    urlField.setAttribute("title", "Paste url here")
+               }
+          })
+
           urlField.addEventListener("keypress", e => {
                alert("Please paste in the Url link, do not type it in.")
                setTimeout(() => {
@@ -65,6 +74,15 @@ class PostEvent {
                          initFetchTo.getPasteData()
                     }
                }, 0)
+          })
+
+          const pasteInfoHolder = document.querySelector("div.pasted-info")
+          pasteInfoHolder.addEventListener("mouseenter", () => {
+               if (pasteInfoField.disabled) {
+                    pasteInfoHolder.setAttribute("title", "Enter a topic or section and/or valid url link to enable this field")
+               } else {
+                    pasteInfoHolder.setAttribute("title", "Paste document info here")
+               }
           })
      }
 

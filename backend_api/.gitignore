@@ -22,3 +22,5 @@
 /config/master.key
 NOTES.md
 .env
+.vscode
+/node_modules

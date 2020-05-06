@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
   root to: "home#index"
-  
-  devise_for :laymen,
-             path: '',
-            #  path_names: {
-            #    sign_in: 'login',
-            #    sign_out: 'logout',
-            #    registration: 'signup'
-            #  },
-             controllers: {
-               sessions: 'sessions',
-               registrations: 'registrations'
-             }
 
+  resource :registration, controller: 'registrations', only: [:create]
+  resource :session, controller: 'rails_jwt_auth/sessions', only: [:create, :destroy]
 
   resources :questions, except: %i[new edit] # All other CRUD under laymen
 
